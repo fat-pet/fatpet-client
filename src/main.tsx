@@ -9,12 +9,12 @@ import DetailInformation from './pages/DetailInformation.tsx'
 import Result from './pages/Result.tsx'
 import Solution from './pages/Solution.tsx'
 import Login from './pages/Login.tsx'
-import CreateAccount from './pages/CreateAccount.tsx'
 import MyPage from './pages/MyPage.tsx'
 import EditPet from './pages/EditPet.tsx'
 import PetList from './pages/PetList.tsx'
 import PetResultList from './pages/PetResultList.tsx'
 import EditMember from './pages/EditMember.tsx'
+import Join from './pages/Join.tsx'
 
 const router = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     children : [
       {index: true, element:<Main/>},
       {path: '/login', element:<Login/>},
-      {path: '/join', element:<CreateAccount/>},
+      {path: '/join', element:<Join/>},
       {path: '/inputData', element:<BasicInformation/>},
       {path: '/inputData/detail', element:<DetailInformation/>},
       {path: '/result', element:<Result/>},
@@ -34,6 +34,7 @@ const router = createBrowserRouter([
       {path: '/petList', element:<PetList/>},
       {path: '/editMember', element:<EditMember/>},
     ]
+
   }
 ])
 

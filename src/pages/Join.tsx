@@ -7,7 +7,7 @@ interface Login {
     "비밀번호" : string;
 }
 
-export default function Login() {
+export default function Join() {
     const navigate = useNavigate();
     const handleLogin = (data:any)=>{
     }
@@ -20,8 +20,10 @@ export default function Login() {
             </header>
 
             <Form onSubmit={handleLogin} className="flex flex-col space-y-10 items-center ">
-                <Form.Input name="아이디"/>
+                <Form.Input name="이름"/>
                 <Form.Input name="비밀번호" type="password"/>
+                <Form.Input name="비밀번호 재확인" type="password"/>
+                <Form.Input name="이메일" type="password"/>
                 <Form.Button name="로그인" type="submit"/>
                 <Form.Button name="회원가입" type="button" onClick={()=>navigate('/join')}/>
             </Form>

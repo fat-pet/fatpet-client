@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "../components/Form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../api/axios";
 
 interface Login {
@@ -11,7 +11,6 @@ interface Login {
 export default function Login() {
     const navigate = useNavigate();
     const handleLogin = (data : Login)=>{
-        console.log('눌림')
         login(data['아이디'],data['비밀번호'])
         .then((data)=>{console.log(data.data.body.token)})
         .catch((err)=>{
@@ -25,7 +24,7 @@ export default function Login() {
         <div className="h-full flex flex-col justify-center">
             <header className="-mt-32 my-16 ml-10">
                 <p className="text-sm font-bold -mb-2">반려동물 비만도 검사</p>
-                <p className="text-5xl font-extrabold text-[#79D7FF]">Fatpet</p>
+                <Link to="/" className="text-5xl font-extrabold text-[#79D7FF]">Fatpet</Link>
             </header>
 
             <Form onSubmit={handleLogin} className="flex flex-col space-y-10 items-center ">

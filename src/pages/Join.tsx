@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "../components/Form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { join } from "../api/axios";
 
 interface Join {
@@ -29,7 +29,7 @@ export default function Join() {
         <div className="h-full flex flex-col justify-center">
             <header className=" my-8 ml-10">
                 <p className="text-sm font-bold -mb-2">반려동물 비만도 검사</p>
-                <p className="text-5xl font-extrabold text-[#79D7FF]">Fatpet</p>
+                <Link to='/' className="text-5xl font-extrabold text-[#79D7FF]">Fatpet</Link>
             </header>
 
             <Form onSubmit={handleJoin} className="flex flex-col space-y-4 items-center ">

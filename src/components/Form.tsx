@@ -6,7 +6,7 @@ import FormButton from './FormButton';
 
 interface FormProps{
     children : React.ReactNode;
-    onSubmit : SubmitHandler<FieldValues>
+    onSubmit : (data:any)=>void;
     className ?: string
 }
 
@@ -15,7 +15,7 @@ export default function Form({children, onSubmit, className}:FormProps) {
     const {
         register, 
         handleSubmit,
-        formState : {isSubmitting}
+        formState : {isSubmitting, errors}
     } = useForm<FieldValues>()
     const submit : SubmitHandler<FieldValues> = async(data)=>{
         await onSubmit(data)
@@ -23,7 +23,7 @@ export default function Form({children, onSubmit, className}:FormProps) {
 
 
   return (
-    <FormContext.Provider value = {{register, isSubmitting}}>
+    <FormContext.Provider value = {{register, isSubmitting, errors}}>
         <form onSubmit={handleSubmit(submit)} className={className}>
             {children}
         </form>

@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "../components/Form";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { login } from "../api/axios";
 
 interface Login {
     "아이디" : string;
@@ -9,7 +10,15 @@ interface Login {
 
 export default function Login() {
     const navigate = useNavigate();
-    const handleLogin = (data:any)=>{
+    const handleLogin = (data : Login)=>{
+        console.log('눌림')
+        login(data['아이디'],data['비밀번호'])
+        .then((data)=>{console.log(data.data.body.token)})
+        .catch((err)=>{
+            if(err.response.status==403){
+                console.log('아이디 혹은 비밀번호가 틀립니다.')
+            }
+        })
     }
 
     return (

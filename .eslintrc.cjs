@@ -13,14 +13,6 @@ module.exports = {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
-    ],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "ts": "never",
-        "tsx": "never"
-      }
     ]
   },
 }

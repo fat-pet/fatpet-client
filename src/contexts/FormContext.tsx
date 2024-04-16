@@ -4,7 +4,7 @@ import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form"
 interface FormContextInterface {
     register: UseFormRegister<FieldValues>;
     isSubmitting : boolean;
-    errors : FieldErrors<FieldValues>
+    errors : FieldErrors<FieldValues>;
   }
 
 export const FormContext = createContext<FormContextInterface | undefined>(undefined);

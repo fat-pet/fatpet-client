@@ -8,13 +8,13 @@ interface FormButtonProps{
     type?:"button"| "submit";
 }
 
-const FormButton:React.FC<FormButtonProps> = ({name, type="button", onClick})=>{
+const FormSmallButton:React.FC<FormButtonProps> = ({name, type="button", onClick})=>{
 
     const {isSubmitting} = useFormContext();
     return(
         <button
             type={type}
-            className="w-5/6 aspect-[6/1] bg-[#333333] text-white font-bold"
+            className="w-20 h-10 bg-[#333333] text-white tracking-tighter text-sm mb-1"
             onClick={onClick ? onClick : ()=>{}}
             disabled={isSubmitting}
             >
@@ -24,4 +24,4 @@ const FormButton:React.FC<FormButtonProps> = ({name, type="button", onClick})=>{
     )
 }
 
-export default FormButton
+export default FormSmallButton

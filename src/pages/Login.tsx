@@ -28,13 +28,17 @@ export default function Login() {
 
     return (
         <div className="h-full flex flex-col justify-center">
-            <Header/>
-            <Form onSubmit={handleLogin} className="flex flex-col space-y-10 items-center ">
-                <Form.Input name="아이디"/>
-                <Form.Input name="비밀번호" type="password"/>
-                <Form.Button name="로그인" type="submit"/>
-                <Form.Button name="회원가입" type="button" onClick={()=>navigate('/signup')}/>
-            </Form>
+            <div className="h-1/3 flex items-end ml-12 pb-10">
+                <Header/>
+            </div>
+            <div className="h-2/3">
+                <Form onSubmit={handleLogin} className="flex flex-col space-y-10 items-center ">
+                    <Form.Input name="아이디"/>
+                    <Form.Input name="비밀번호" type="password"/>
+                    <Form.Button name="로그인" type="submit"/>
+                    <Form.Button name="회원가입" type="button" onClick={()=>navigate('/signup')}/>
+                </Form>
+            </div>
         </div>
     );
 }

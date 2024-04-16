@@ -28,16 +28,26 @@ export default function Join() {
     }
 
     return (
-        <div className="h-full flex flex-col justify-center pt-32">
-            <Header />
-            <Form onSubmit={handleJoin} className="flex flex-col space-y-4 items-center ">
-                <Form.Input name="닉네임" type="text" />
-                <Form.Input name="아이디" type="text" />
-                <Form.Input name="비밀번호" type="password" />
-                <Form.Input name="이메일" type="email"/>
-                <Form.Button name="회원가입" type="submit" />
-                <Form.Button name="뒤로가기" type="button" onClick={()=>navigate('/signin')} />
-            </Form>
+        <div className="h-full flex flex-col justify-center">
+            <div className="h-1/5 flex items-end pb-5 pl-12">
+              <Header />
+            </div>
+            <div className="h-4/5">
+              <Form onSubmit={handleJoin} className="h-full flex flex-col space-y-4 items-center justify-evenly ">
+                  <div className="flex w-5/6 items-end justify-between">
+                    <Form.Input name="닉네임" type="text" />
+                    <Form.SmallButton name="중복검사" type="button"/>
+                  </div>
+                  <div className="flex w-5/6 items-end justify-between">
+                    <Form.Input name="아이디" type="text" />
+                    <Form.SmallButton name="중복검사" type="button"/>
+                  </div>
+                  <Form.Input name="비밀번호" type="password" />
+                  <Form.Input name="이메일" type="email"/>
+                  <Form.Button name="회원가입" type="submit" />
+                  <Form.Button name="뒤로가기" type="button" onClick={()=>navigate('/signin')} />
+              </Form>
+            </div>
         </div>
     );
 }

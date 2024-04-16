@@ -8,8 +8,6 @@ interface FormButtonProps{
 }
 
 const FormButton:React.FC<FormButtonProps> = ({name, type="button", onClick})=>{
-
-
     return(
         <button
             type={type}

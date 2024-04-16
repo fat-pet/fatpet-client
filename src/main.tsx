@@ -22,8 +22,8 @@ const router = createBrowserRouter([
     element : <BasicLayout/>,
     children : [
       {index: true, element:<Main/>},
-      {path: '/login', element:<Login/>},
-      {path: '/join', element:<Join/>},
+      {path: '/signin', element:<Login/>},
+      {path: '/signup', element:<Join/>},
       {path: '/inputData', element:<BasicInformation/>},
       {path: '/inputData/detail', element:<DetailInformation/>},
       {path: '/result', element:<Result/>},

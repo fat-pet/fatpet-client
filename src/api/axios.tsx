@@ -8,15 +8,15 @@ const api= axios.create({
     }
 });
 
-export function login(id : string, password : string){
-    return api.post('/api/members/signin',{
+export async function login(id : string, password : string){
+    return await api.post('/api/members/signin',{
         loginId : id,
         password  : password
     })
 }
 
-export function join(email: string, loginId:string, password:string, nickname:string){
-    return api.post('api/members/signup',{
+export async function join(email: string, loginId:string, password:string, nickname:string){
+    return await api.post('api/members/signup',{
         email:email,
         loginId:loginId,
         password:password,

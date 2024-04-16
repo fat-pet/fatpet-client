@@ -1,9 +1,9 @@
 
 
-export function constrain(name : string){
+export function constrain(name : string) {
     if(name==='이메일'){
         return({pattern : { 
-            value: new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'),
+            value: new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"),
             message: "이메일 형식에 맞지 않습니다"}})
     }
     else if(name==='아이디'){

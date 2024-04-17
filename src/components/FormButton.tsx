@@ -1,6 +1,5 @@
 import { useFormContext } from "@/contexts/FormContext";
-import React
- from "react";
+import React from "react";
 interface FormButtonProps{
     name?:string;
     // icon?:IconType
@@ -8,9 +7,10 @@ interface FormButtonProps{
     type?:"button"| "submit";
 }
 
-const FormButton:React.FC<FormButtonProps> = ({name, type="button", onClick})=>{
+const FormButton:React.FC<FormButtonProps> = ({name, type="button", onClick })=>{
 
     const {isSubmitting} = useFormContext();
+
     return(
         <button
             type={type}

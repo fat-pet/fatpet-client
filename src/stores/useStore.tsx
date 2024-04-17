@@ -5,17 +5,7 @@ type Store = {
   setToken: (token:string) => void
 }
 
-const useStore = create<Store>()((set) => ({
+export const useTokenStore = create<Store>()((set) => ({
   token: '',
-  setToken: (token) => set(() => ({token: token})),
+  setToken: (tokenData) => set(() => ({token: tokenData})),
 }))
-
-export function TokenState(data : string) : void {
-  const { setToken } = useStore()
-  setToken(data);
-}
-
-export function Token() : string {
-    const { token } = useStore()
-    return(token)
-  }

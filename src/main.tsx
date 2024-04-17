@@ -9,12 +9,12 @@ import DetailInformation from './pages/DetailInformation.tsx'
 import Result from './pages/Result.tsx'
 import Solution from './pages/Solution.tsx'
 import Login from './pages/Login.tsx'
-import MyPage from './pages/MyPage.tsx'
 import EditPet from './pages/EditPet.tsx'
 import PetList from './pages/PetList.tsx'
 import PetResultList from './pages/PetResultList.tsx'
 import EditMember from './pages/EditMember.tsx'
 import Join from './pages/Join.tsx'
+import DashBoard from './pages/DashBoard.tsx'
 
 const router = createBrowserRouter([
   {
@@ -22,13 +22,13 @@ const router = createBrowserRouter([
     element : <BasicLayout/>,
     children : [
       {index: true, element:<Main/>},
-      {path: '/login', element:<Login/>},
-      {path: '/join', element:<Join/>},
+      {path: '/signin', element:<Login/>},
+      {path: '/signup', element:<Join/>},
       {path: '/inputData', element:<BasicInformation/>},
       {path: '/inputData/detail', element:<DetailInformation/>},
       {path: '/result', element:<Result/>},
       {path: '/result/solution', element:<Solution/>},
-      {path: '/mypage', element:<MyPage/>},
+      {path: '/dashboard', element:<DashBoard/>},
       {path: '/editPet', element:<EditPet/>},
       {path: '/resultList', element:<PetResultList/>},
       {path: '/petList', element:<PetList/>},

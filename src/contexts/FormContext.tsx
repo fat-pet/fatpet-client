@@ -1,10 +1,15 @@
 import { createContext, useContext } from "react"
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form"
+import { FieldErrors, FieldValues, UseFormRegister, UseFormWatch } from "react-hook-form"
 
 interface FormContextInterface {
     register: UseFormRegister<FieldValues>;
     isSubmitting : boolean;
-    errors : FieldErrors<FieldValues>
+    errors : FieldErrors<FieldValues>;
+    watch : UseFormWatch<FieldValues>;
+    duplicateId : boolean | string
+    duplicateName : boolean | string
+    setDuplicateName : React.Dispatch<React.SetStateAction<boolean|string>>
+    setDuplicateId : React.Dispatch<React.SetStateAction<boolean|string>>
   }
 
 export const FormContext = createContext<FormContextInterface | undefined>(undefined);

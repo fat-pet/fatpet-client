@@ -1,21 +1,26 @@
 import { create } from 'zustand'
 
-type Store = {
+interface TokenStore{
   token: string
   setToken: (token:string) => void
 }
 
-const useStore = create<Store>()((set) => ({
-  token: '',
-  setToken: (token) => set(() => ({token: token})),
-}))
 
-export function TokenState(data : string) : void {
-  const { setToken } = useStore()
-  setToken(data);
+interface DupStore{
+  dupId : boolean | string
+  dupName : boolean | string
+  setId : (data:boolean|string)=>void
+  setName : (data:boolean|string)=>void
 }
 
-export function Token() : string {
-    const { token } = useStore()
-    return(token)
-  }
+export const useTokenStore = create<TokenStore>()((set) => ({
+  token: '',
+  setToken: (tokenData) => set(() => ({token: tokenData})),
+}))
+
+export const useDupStore = create<DupStore>()((set)=>({
+  dupId : 'null',
+  dupName : 'null',
+  setId : (data)=>set(()=>({dupId : data})),
+  setName : (data)=>set(()=>({dupName : data})),
+}))

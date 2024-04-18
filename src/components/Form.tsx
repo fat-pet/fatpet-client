@@ -1,13 +1,13 @@
-import React from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { FormContext } from '../contexts/FormContext';
 import FormInput from './FormInput'
 import FormButton from './FormButton';
 import FormSmallButton from './FormSmallButton';
 
+
 interface FormProps{
     children : React.ReactNode;
-    onSubmit : (data:any)=>void;
+    onSubmit : (data: any)=>void;
     className ?: string
 }
 
@@ -16,15 +16,14 @@ export default function Form({children, onSubmit, className}:FormProps) {
     const {
         register, 
         handleSubmit,
-        formState : {isSubmitting, errors}
+        formState : {isSubmitting, errors},
+        watch
     } = useForm<FieldValues>()
-    const submit : SubmitHandler<FieldValues> = async(data)=>{
-        await onSubmit(data)
+    const submit : SubmitHandler<FieldValues> = (data)=>{
+         onSubmit(data)
     }
-
-
   return (
-    <FormContext.Provider value = {{register, isSubmitting, errors}}>
+    <FormContext.Provider value = {{register, isSubmitting, errors, watch}}>
         <form onSubmit={handleSubmit(submit)} className={className}>
             {children}
         </form>

@@ -11,9 +11,8 @@ interface FormInputProps{
 const FormInput :React.FC<FormInputProps> = ({name, type="text"})=>{
     const { register, errors} = useFormContext();
     const {dupId, dupName} = useDupStore();
-    const style1 = dupName==='null' || dupName==='error'? 'hidden' : 'block'
+    const style1 = dupName==='null' || dupName==='error' || dupId==="null" || dupId==='error' ? 'hidden' : 'block'
     const style2 = name==='닉네임' || name==='아이디' ? 'block' : 'hidden'
-    const style3 = dupId==='null' || dupId ==='error'? 'hidden' : 'block'
     const style5 = 'text-sm text-red-400 pt-3'
     const style6 = 'text-sm text-green-400 pt-3'
     return(
@@ -27,8 +26,8 @@ const FormInput :React.FC<FormInputProps> = ({name, type="text"})=>{
                     :<p className={`${style1} ${style2} ${style5}`}>중복된 {name} 입니다</p>}
 
                     {dupId===true
-                    ?<p className={`${style3} ${style2} ${style6}`}>사용 가능한 {name} 입니다</p>
-                    :<p className={`${style3} ${style2} ${style5}`}>중복된 {name} 입니다</p>}
+                    ?<p className={`${style1} ${style2} ${style6}`}>사용 가능한 {name} 입니다</p>
+                    :<p className={`${style1} ${style2} ${style5}`}>중복된 {name} 입니다</p>}
 
                     {dupName === 'error' && name==='닉네임'
                     ? <p className={`${style2} ${style5}`}>4글자 이상 12글자 이하이어야 합니다</p>

@@ -17,6 +17,7 @@ export default function Join() {
     const {dupId, dupName} = useDupStore();
 
     const handleJoin = (data:Join) :void=>{
+      console.log(dupName)
 
       if(dupId ===true && dupName ===true){
         join(data['이메일'],data['아이디'],data['비밀번호'],data['닉네임'])

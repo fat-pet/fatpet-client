@@ -15,7 +15,6 @@ const FormSmallButton:React.FC<FormButtonProps> = ({name, type="button", dup})=>
     const {setId, setName} = useDupStore();
 
 
-
     const handleDup= () =>{
         const Id : string= watch('아이디')
         const Nickname : string = watch('닉네임')

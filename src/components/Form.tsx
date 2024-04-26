@@ -3,6 +3,7 @@ import { FormContext } from '../contexts/FormContext';
 import FormInput from './FormInput'
 import FormButton from './FormButton';
 import FormSmallButton from './FormSmallButton';
+import FormDupInput from './FormDupInput';
 
 
 interface FormProps{
@@ -35,3 +36,4 @@ export default function Form({children, onSubmit, className}:FormProps) {
 Form.Input = FormInput
 Form.Button = FormButton
 Form.SmallButton = FormSmallButton
+Form.DupInput = FormDupInput

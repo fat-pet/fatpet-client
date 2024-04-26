@@ -1,5 +1,7 @@
 import React from "react";
 import { useFormContext } from "../contexts/FormContext";
+import { useDupStore } from "@/stores/useStore";
+import InputError from "@/components/InputError";
 
 interface FormInputProps{
     name : string;
@@ -8,18 +10,16 @@ interface FormInputProps{
     maxlen ?: number;
 }
 
-const FormInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxlen})=>{
-    const { register, errors} = useFormContext();
+const FormDupInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxlen})=>{
+    const { register} = useFormContext();
+    const {dupId, dupName} = useDupStore();
+
     return(
         <>
             <label htmlFor={name} className="flex flex-col font-bold justify-start text-lg w-5/6">
                 <div className="flex justify-between">
                     <span className="tracking-tighter">{name}</span>
-                    {errors[name] && 
-                    <span className="text-sm text-red-500 pt-2">
-                        { errors[name]?.message as string}
-                    </span>}
-
+                    <InputError name={name} dupId={dupId} dupName={dupName}/>
                 </div>
                 <input 
                 id={name}
@@ -41,4 +41,4 @@ const FormInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxlen}
     )
 }
 
-export default FormInput
+export default FormDupInput

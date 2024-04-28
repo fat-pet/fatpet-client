@@ -43,3 +43,15 @@ export async function resign(){
 export async function checkdup(id:string, nickname:string){
     return await api.get(`/api/members/check?loginId=${id}&nickname=${nickname}`)
 }
+
+export async function createPet(sex:string, name:string, species:string, breedsName:string, birthDate:string, neutered:boolean, feedCalories:number){
+    return await api.post('/api/pets',{
+        sex,name,species,breedsName,birthDate,neutered,feedCalories
+    })
+}
+
+export async function getPetList(){
+    // return await api.get('/api/pets')
+    return axios.get('/mockJson/petList')
+}
+

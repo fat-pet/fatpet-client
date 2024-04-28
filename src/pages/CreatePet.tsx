@@ -2,31 +2,23 @@ import Form from "@/components/Form";
 import { FaDog } from "react-icons/fa6";
 import { FaCat } from "react-icons/fa";
 import { IoMdFemale, IoMdMale } from "react-icons/io";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import DogBreed from "@/api/mock";
-import { createPet } from "@/api/axios";
 
 interface DogBreedItem {
     id : string;
     value : string;
 }
 
-export default function BasicInformation() {
+export default function CreatePet() {
 
     const [species, setSpecies] = useState<string>('')
     const [sex, setSex] = useState<string>('')
     const [isDropdownView, setIsDropdownView] = useState<boolean>(false)
     const [breed,setBreed] = useState<string>(`품종을 선택해주세요 ${isDropdownView ?  '▲' : '▼'}`)
-    const dateRef = useRef<HTMLInputElement>(null);
-    const neuteredRef = useRef<HTMLInputElement>(null);
 
-    function handleSumbit(data :any){
-        const date = dateRef.current!.value.split('-')
-        const birthDate = `${date[0]}-${date[1]}`
-        const neutered = neuteredRef.current!.checked
-        const feedCalories = parseInt(data['급여 사료 열량(100g당)'])
-        const name = data['이름']
-        createPet(sex,name,species,breed,birthDate,neutered,feedCalories)
+    function handleSumbit(){
+        return
     }
 
     function handleDropdown(breed : string){
@@ -39,34 +31,31 @@ export default function BasicInformation() {
             <Form onSubmit={handleSumbit} className="flex flex-col items-center justify-center">
                 {/* 이름 */}
                 <div className="w-full">
-                    <Form.Input name="이름"/>
-                </div>
-
-                {/* 나이 */}
-                <div className="flex my-5 w-full">
-                    <div className="w-full mr-10">
-                        <label>나이</label>
-                        <br />
-                        <input type="date" ref={dateRef} className="border-2 w-5/6 h-12"/>
-                    </div>
+                    <Form.Input name="펫 이름" minlen={2} maxlen={6}/>
                 </div>
                 
-                {/* 종류 */}
-                <div className="w-full">
+                {/* 나이 & 종류 */}
+                <div className="flex mt-5 w-full">
+                    <div className="w-1/3 flex mr-10">
+                        <Form.Input name="나이" type="number"/>
+                        <p className="mt-12 ml-5">살</p>
+                    </div>
+                    <div className="w-2/3">
                         <label>종류</label>
                         <div className="flex mt-4">
-                            <Form.SelectButton label="강아지" state={species==='DOG' ? true : false} icon={<FaDog className="w-7 h-7 mr-2"/>} handleClick={()=>setSpecies('DOG')}/>
-                            <Form.SelectButton label="고양이" state={species==='CAT' ? true : false} icon={<FaCat className="w-7 h-7 mr-2"/>} handleClick={()=>setSpecies('CAT')}/>
+                            <Form.SelectButton label="강아지" state={species==='dog' ? true : false} icon={<FaDog className="w-7 h-7 mr-2"/>} handleClick={()=>setSpecies('dog')}/>
+                            <Form.SelectButton label="고양이" state={species==='cat' ? true : false} icon={<FaCat className="w-7 h-7 mr-2"/>} handleClick={()=>setSpecies('cat')}/>
                         </div>
                     </div>
+                </div>
 
                 {/* 성별 */}
                 <div className="my-5 w-full">
                     <label>성별</label>
                     <div className="flex mt-2 w-full">
-                        <Form.SelectButton label="수컷" state={sex==='MALE' ? true : false} icon={<IoMdMale className="w-6 h-6 mr-2 text-blue-600"/>} handleClick={()=>setSex('MALE')}/>
-                        <Form.SelectButton label="암컷" state={sex==='FEMALE' ? true : false} icon={<IoMdFemale className="w-6 h-6 mr-2 text-red-600"/>} handleClick={()=>setSex('FEMALE')}/>
-                        <p className="flex items-center w-1/2">중성화여부<input ref={neuteredRef} className="w-5 h-5 ml-3" type="checkbox"/></p>
+                        <Form.SelectButton label="수컷" state={sex==='male' ? true : false} icon={<IoMdMale className="w-6 h-6 mr-2 text-blue-600"/>} handleClick={()=>setSex('male')}/>
+                        <Form.SelectButton label="암컷" state={sex==='female' ? true : false} icon={<IoMdFemale className="w-6 h-6 mr-2 text-red-600"/>} handleClick={()=>setSex('female')}/>
+                        <p className="flex items-center w-1/2">중성화여부<input className="w-5 h-5 ml-3" type="checkbox"/></p>
                     </div>
                 </div>
 
@@ -86,12 +75,12 @@ export default function BasicInformation() {
                 </div>
 
                 {/* 급여 사료 열량 */}
-                <div className="flex mb-10 w-full">
+                <div className="flex mb-20 w-full">
                     <Form.Input name="급여 사료 열량(100g당)" type="number"/>
                     <p className="mt-12 ml-5">kcal</p>
                 </div>
 
-                <Form.Button name="다음" type="submit"/>
+                <Form.Button name="펫 생성" type="submit"/>
             </Form>
         </div>
     );

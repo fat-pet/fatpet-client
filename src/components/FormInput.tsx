@@ -24,10 +24,10 @@ const FormInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxlen}
                 id={name}
                 type={type}
                 {...register(name, {
-                    required: `${name}을(를) 입력해주세요.`,
+                    required: `필수 입력입니다`,
                     pattern: {
-                        value: new RegExp(name==='이메일' ? "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" : "^[A-Za-z0-9]*$"),
-                        message: "띄어쓰기를 사용할 수 없습니다."
+                        value: new RegExp(name==='이메일' ? '' : "^[가-힣A-Za-z0-9]*$"),
+                        message: "띄어쓰기 또는 기호를 사용할 수 없습니다."
                     },
                     ...(minlen && { minLength: { value: minlen, message: `${name}는 ${minlen}글자 이상이어야 합니다.` }}),
                     ...(maxlen && { maxLength: { value: maxlen, message: `${name}는 ${maxlen}글자 이하이어야 합니다.` }}),

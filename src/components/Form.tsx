@@ -4,6 +4,7 @@ import FormInput from './FormInput'
 import FormButton from './FormButton';
 import FormSmallButton from './FormSmallButton';
 import FormDupInput from './FormDupInput';
+import FormSelectButton from './FormSelectButton';
 
 
 interface FormProps{
@@ -37,3 +38,4 @@ Form.Input = FormInput
 Form.Button = FormButton
 Form.SmallButton = FormSmallButton
 Form.DupInput = FormDupInput
+Form.SelectButton = FormSelectButton

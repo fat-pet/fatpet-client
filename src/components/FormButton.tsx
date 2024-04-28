@@ -1,8 +1,7 @@
 import { useFormContext } from "@/contexts/FormContext";
 import React from "react";
 interface FormButtonProps{
-    name?:string;
-    // icon?:IconType
+    name:string;
     onClick?: ()=>void;
     type?:"button"| "submit";
 }

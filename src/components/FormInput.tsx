@@ -24,7 +24,7 @@ const FormInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxlen}
                 id={name}
                 type={type}
                 {...register(name, {
-                    required: `필수 입력입니다`,
+                    required: `필수입력 항목입니다`,
                     pattern: {
                         value: new RegExp(name==='이메일' ? '' : "^[가-힣A-Za-z0-9]*$"),
                         message: "띄어쓰기 또는 기호를 사용할 수 없습니다."

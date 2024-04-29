@@ -55,3 +55,6 @@ export async function getPetList(){
     return axios.get('/mockJson/petList')
 }
 
+export async function deletePet(id : number){
+    return api.delete(`/api/pets/${id}`)
+}

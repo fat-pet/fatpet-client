@@ -11,6 +11,11 @@ interface DogBreedItem {
     value : string;
 }
 
+interface SubmitProps{
+    '이름' : string,
+    '급여 사료 열량(100g당)' : string
+}
+
 export default function BasicInformation() {
 
     const [species, setSpecies] = useState<string>('')
@@ -20,7 +25,7 @@ export default function BasicInformation() {
     const dateRef = useRef<HTMLInputElement>(null);
     const neuteredRef = useRef<HTMLInputElement>(null);
 
-    function handleSumbit(data :any){
+    function handleSumbit(data :SubmitProps){
         const date = dateRef.current!.value.split('-')
         const birthDate = `${date[0]}-${date[1]}`
         const neutered = neuteredRef.current!.checked

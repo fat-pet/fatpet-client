@@ -11,3 +11,13 @@ html,body{
     font-family: 'Rastanty';
     src: url('/src/assets/Rastanty\ Cortez.ttf')
 } 
+
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  

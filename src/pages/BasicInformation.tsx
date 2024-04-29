@@ -7,8 +7,14 @@ import DogBreed from "@/api/mock";
 import { createPet } from "@/api/axios";
 
 interface DogBreedItem {
-    id : string;
+    id : number;
     value : string;
+    code :string;
+}
+
+interface SubmitProps{
+    '이름' : string,
+    '급여 사료 열량(100g당)' : string
 }
 
 export default function BasicInformation() {
@@ -16,21 +22,23 @@ export default function BasicInformation() {
     const [species, setSpecies] = useState<string>('')
     const [sex, setSex] = useState<string>('')
     const [isDropdownView, setIsDropdownView] = useState<boolean>(false)
+    const [code,setCode]=useState<string>('')
     const [breed,setBreed] = useState<string>(`품종을 선택해주세요 ${isDropdownView ?  '▲' : '▼'}`)
     const dateRef = useRef<HTMLInputElement>(null);
     const neuteredRef = useRef<HTMLInputElement>(null);
 
-    function handleSumbit(data :any){
+    function handleSumbit(data :SubmitProps){
         const date = dateRef.current!.value.split('-')
         const birthDate = `${date[0]}-${date[1]}`
         const neutered = neuteredRef.current!.checked
         const feedCalories = parseInt(data['급여 사료 열량(100g당)'])
         const name = data['이름']
-        createPet(sex,name,species,breed,birthDate,neutered,feedCalories)
+        createPet(sex,name,species,code,birthDate,neutered,feedCalories)
     }
 
-    function handleDropdown(breed : string){
+    function handleDropdown(breed :string , code : string){
         setBreed(breed)
+        setCode(code)
         setIsDropdownView(false)
     }
     return (
@@ -77,9 +85,9 @@ export default function BasicInformation() {
                         {breed}
                     </button>
                     {isDropdownView ?
-                    <ul className="border-2 w-5/6 absolute top-20 z-10" onBlur={()=>console.log('hello')}>
+                    <ul className="border-2 w-5/6 absolute top-20 z-10 h-40 overflow-auto" onBlur={()=>console.log('hello')}>
                         {DogBreed.map((item : DogBreedItem) =>{
-                            return <li onClick={()=>handleDropdown(item.value)} className="border-b-2 h-10 flex justify-center items-center hover:cursor-pointer hover:bg-gray-200 bg-white">{item.value}</li>
+                            return <li onClick={()=>handleDropdown(item.value, item.code)} className="border-b-2 h-10 flex justify-center items-center hover:cursor-pointer hover:bg-gray-200 bg-white">{item.value}</li>
                         })}
                     </ul>
                     :''}

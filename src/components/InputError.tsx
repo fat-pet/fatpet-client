@@ -1,4 +1,3 @@
-import React from 'react';
 
 interface Props{
     name : string
@@ -7,8 +6,8 @@ interface Props{
 }
 
 export default function InputError({name, dupName, dupId} : Props) {
-    const red = 'text-sm text-red-400 pt-3'
-    const green = 'text-sm text-green-400 pt-3'
+    const red = 'text-sm text-red-400'
+    const green = 'text-sm text-green-400'
 
     if(name==='닉네임'){
         if(dupName==='null'){

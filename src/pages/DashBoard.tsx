@@ -56,7 +56,7 @@ export default function DashBoard() {
                 <span>펫 변화 추이</span>    
                 <span className="text-sm text-gray-400">(최근 3회)</span>    
                 <Line/>
-                <p className="text-sm text-gray-500">*BCS(Body Condition Score) : 펫의 비만도를 1~9만큼 측정한 값</p>
+                <p className="text-sm text-gray-500">*BCS(Body Condition Score) <br/> 펫의 비만도를 1~9만큼 측정한 값</p>
             </div>
             
 

@@ -29,11 +29,11 @@ export default function PetStatus({pet, handleDelete} : Props) {
             }
             <div className="mr-5">
                 <p>이름 : {pet.name}</p>
-                <div className="flex mb-1">
+                <div className="hidden mb-1 sm:flex ">
                     <p className="text-xs">품종 : {transBreed(pet!.breeds.name)}</p>
                     <p className="text-xs ml-3">성별 : {pet?.breeds.sex==='MALE' ? '수컷' : '암컷'}</p>
                 </div>
-                <p className="text-xs">생일 : {`${pet?.birthDate[0]}년 ${pet?.birthDate[1]}월`}</p>
+                <p className="text-xs hidden sm:block">생일 : {`${pet?.birthDate[0]}년 ${pet?.birthDate[1]}월`}</p>
             </div>
             <Link to='./petList'><IoIosArrowForward className="text-4xl"/></Link>
         </div>

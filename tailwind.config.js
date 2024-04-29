@@ -4,7 +4,12 @@ module.exports = {
     "./index.html"  
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'xsm' : '420px',
+        'sm': '480px',
+      }
+    },
   },
   plugins: [],
 }

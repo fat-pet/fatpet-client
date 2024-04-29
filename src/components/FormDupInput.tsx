@@ -17,8 +17,9 @@ const FormDupInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxl
     return(
         <>
             <label htmlFor={name} className="flex flex-col font-bold justify-start text-lg w-5/6">
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                     <span className="tracking-tighter">{name}</span>
+                    {/* 에러 메세지 출력 */}
                     <InputError name={name} dupId={dupId} dupName={dupName}/>
                 </div>
                 <input 

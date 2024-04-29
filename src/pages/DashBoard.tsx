@@ -4,17 +4,24 @@ import { FaGear, FaDog, FaStethoscope } from "react-icons/fa6";
 import { FaCat, FaClipboardList } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { deletePet, getPetList } from "@/api/axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import transBreed from "@/utils/transBreed";
+import { PetProps } from "@/types/types";
+
+
+
 
 export default function DashBoard() {
+    const [pet,setPet]=useState<PetProps>()
 
     useEffect(()=>{
         getPetList()
-        .then((data)=>console.log(data))
+        .then((data)=>setPet(data.data.body[0]))
     },[])
 
+
     function handleDelete(){
-        // deletePet()
+        deletePet(pet.id)
     }
     
     return (
@@ -29,16 +36,13 @@ export default function DashBoard() {
                 <div className="w-5/6 h-40 bg-blue-400 rounded-xl px-5 text-white">
                     <div className="h-2/3 flex items-center pl-3 justify-between">
                         <FaDog className="text-6xl"/>
-                        <div className="mr-12">
+                        <div className="mr-5">
                             <p>이름 : 마루</p>
                             <div className="flex mb-1">
-                                <p className="text-xs">품종 : 푸들</p>
-                                <p className="text-xs ml-3">나이 : 7살</p>
+                                <p className="text-xs">품종 : {transBreed(pet?.breeds.name)}</p>
+                                <p className="text-xs ml-3">성별 : {pet?.breeds.sex==='MALE' ? '수컷' : '암컷'}</p>
                             </div>
-                            <div className="flex">
-                                <p className="text-xs">성별 : 수컷</p>
-                                <p className="text-xs ml-3">중성화 : X</p>
-                            </div>
+                            <p className="text-xs">생일 : {`${pet?.birthDate[0]}년 ${pet?.birthDate[1]}월`}</p>
                         </div>
                         <Link to='./petList'><IoIosArrowForward className="text-4xl"/></Link>
                     </div>

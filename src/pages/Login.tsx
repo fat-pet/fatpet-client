@@ -25,8 +25,8 @@ export default function Login() {
         })
         .catch((err)=>{
             console.log(err)
-            if(err.response.status==403){
-                console.log('아이디 혹은 비밀번호가 틀립니다.')
+            if(err.response.status==400){
+                alert('아이디 혹은 비밀번호가 틀립니다.')
             }
         })
     }

@@ -3,7 +3,13 @@ import { FaDog } from "react-icons/fa6";
 import { FaCat } from "react-icons/fa"
 import React, { useEffect } from 'react'
 
-export default function PetListComponent() {
+interface Props{
+  name : string;
+  breed : string;
+  date : string;
+}
+
+export default function PetListComponent({name, breed, date} : Props) {
     useEffect(()=>{
         getPetList()
         .then((data)=>console.log(data))
@@ -15,8 +21,9 @@ export default function PetListComponent() {
         }
         <FaDog className='w-24 h-24 mr-5'/>
         <div>
-          <p className='text-lg font-bold'>이름 : 마루</p>
-          <p className='text-sm'>푸들 7세</p>
+          <p className='text-lg font-bold'>이름 : {name}</p>
+          <p className='text-sm'>품종 : {breed}</p>
+          <p className='text-sm'>생일 : {date}</p>
         </div>
       </div>
   )

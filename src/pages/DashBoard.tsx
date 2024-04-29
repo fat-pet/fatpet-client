@@ -41,18 +41,23 @@ export default function DashBoard() {
     }
 
     return (
-        <div className="flex flex-col items-center mx-8 mt-12 font-bold tracking-tighter ">
-            <div className="flex justify-between w-full items-center">
-                <p className="text-lg">이상연님<br/> 안녕하세요</p>
+        <div className="flex flex-col items-center font-bold tracking-tighter h-full ">
+            <header className="h-16 flex justify-between w-full items-center">
+                <p className="text-lg">대시보드</p>
                 <Link to='./editMember'><FaGear className="text-2xl"/></Link>  
-            </div>
+            </header>
+
+            <div className="w-full h-1/5">
             {pet 
             ? <PetStatus pet={pet as PetProps} handleDelete={handleDelete}/>
             : <PetNotStatus/>}
+            </div>
 
-            {pet && <Diagnose/>}
+            <div className="w-full h-1/7">
+                {pet && <Diagnose/>}
+            </div>
 
-            <div className="w-full h-80 mt-16   ">
+            <div className="w-full h-1/3 mt-16   ">
                 <span>펫 변화 추이</span>    
                 <span className="text-sm text-gray-400">(최근 3회)</span>    
                 <Line/>

@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       {path: '/dashboard/editPet', element:<EditPet/>},
       {path: '/resultList', element:<PetResultList/>},
       {path: '/dashboard/petList', element:<PetList/>},
-      {path: '/petList/create', element:<CreatePet/>},
+      {path: '/petList/createPet', element:<CreatePet/>},
       {path: '/dashboard/editMember', element:<EditMember/>},
     ]
 

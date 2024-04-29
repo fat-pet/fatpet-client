@@ -1,5 +1,5 @@
-import EditNickName from "@/features/EditMember/EditNickName";
-import ResignPopup from "@/features/EditMember/ResignPopup";
+import EditNickName from "@/features/editMember/EditNickName";
+import ResignPopup from "@/features/editMember/ResignPopup";
 import { useTokenStore } from "@/stores/useStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

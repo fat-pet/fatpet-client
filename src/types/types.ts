@@ -1,6 +1,14 @@
+interface breed {
+    avgWeightHigh : number;
+    avgWeightLow : number;
+    name : string;
+    sex : string;
+    species : string;
+}
+
 export interface PetProps {
     birthDate: [number, number]; // [year, month]
-    breeds: string[]; // 견종
+    breeds: breed; // 견종
     avgWeightHigh: number; // 평균 체중 상한선
     avgWeightLow: number; // 평균 체중 하한선
     name: string; // 이름

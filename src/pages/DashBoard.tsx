@@ -7,6 +7,7 @@ import { PetProps } from "@/types/types";
 import PetStatus from "@/features/DashBoard/PetStatus";
 import PetNotStatus from "@/features/DashBoard/PetNotStatus";
 import Diagnose from "@/features/DashBoard/Diagnose";
+import Line from "@/features/chart/Line";
 
 
 
@@ -50,6 +51,14 @@ export default function DashBoard() {
             : <PetNotStatus/>}
 
             {pet && <Diagnose/>}
+
+            <div className="w-full h-80 mt-16   ">
+                <span>펫 변화 추이</span>    
+                <span className="text-sm text-gray-400">(최근 3회)</span>    
+                <Line/>
+                <p className="text-sm text-gray-500">*BCS(Body Condition Score) : 펫의 비만도를 1~9만큼 측정한 값</p>
+            </div>
+            
 
         </div>
     );

@@ -1,5 +1,5 @@
 import { getPetList } from "@/api/axios";
-import PetListComponent from "@/features/petList/PetListComponent";
+import PetListComponent from "@/features/PetList/PetListComponent";
 import { PetProps } from "@/types/types";
 import { useEffect, useState } from "react";
 import { CiSquarePlus } from "react-icons/ci";

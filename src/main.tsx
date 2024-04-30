@@ -16,6 +16,7 @@ import EditMember from './pages/EditMember.tsx'
 import Join from './pages/Join.tsx'
 import DashBoard from './pages/DashBoard.tsx'
 import CreatePet from './pages/CreatePet.tsx'
+import MemberLayout from './layouts/Member-layout.tsx'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,14 @@ const router = createBrowserRouter([
       {path: '/inputData/detail', element:<DetailInformation/>},
       {path: '/result', element:<Result/>},
       {path: '/result/solution', element:<Solution/>},
+      
+    ]
+  },
+
+  {
+    path: '/',
+    element : <MemberLayout/>,
+    children : [
       {path: '/dashboard', element:<DashBoard/>},
       {path: '/dashboard/editPet', element:<EditPet/>},
       {path: '/resultList', element:<PetResultList/>},
@@ -36,8 +45,8 @@ const router = createBrowserRouter([
       {path: '/petList/createPet', element:<CreatePet/>},
       {path: '/dashboard/editMember', element:<EditMember/>},
     ]
-
   }
+
 ])
 
 

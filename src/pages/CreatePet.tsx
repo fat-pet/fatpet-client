@@ -3,11 +3,12 @@ import { FaDog } from "react-icons/fa6";
 import { FaCat } from "react-icons/fa";
 import { IoMdFemale, IoMdMale } from "react-icons/io";
 import { useRef, useState } from "react";
-import DogBreed from "@/api/mock";
+import DogBreed from "@/api/DogBreed";
 import { createPet } from "@/api/axios";
 import { useNavigate } from "react-router-dom";
+import CatBreed from "@/api/CatBreed";
 
-interface DogBreedItem {
+interface BreedItem {
     id : number;
     value : string;
     code :string;
@@ -45,7 +46,7 @@ export default function BasicInformation() {
         setIsDropdownView(false)
     }
     return (
-        <div className="flex flex-col items-center justify-center mt-20 mx-8 font-bold text-lg">
+        <div className="flex flex-col items-center justify-center font-bold text-lg">
             <p className="text-xl font-bold tracking-tighter mb-10">반려동물의 기본정보를 입력해주세요</p>
             <Form onSubmit={handleSumbit} className="flex flex-col items-center justify-center">
                 {/* 이름 */}
@@ -89,7 +90,7 @@ export default function BasicInformation() {
                     </button>
                     {isDropdownView ?
                     <ul className="border-2 w-5/6 absolute top-20 z-10 h-40 overflow-auto" onBlur={()=>console.log('hello')}>
-                        {DogBreed.map((item : DogBreedItem) =>{
+                       { (species === 'DOG' ? DogBreed : CatBreed).map((item : BreedItem) =>{
                             return <li onClick={()=>handleDropdown(item.value, item.code)} className="border-b-2 h-10 flex justify-center items-center hover:cursor-pointer hover:bg-gray-200 bg-white">{item.value}</li>
                         })}
                     </ul>

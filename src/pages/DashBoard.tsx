@@ -7,7 +7,7 @@ import { PetProps } from "@/types/types";
 import PetStatus from "@/features/DashBoard/PetStatus";
 import PetNotStatus from "@/features/DashBoard/PetNotStatus";
 import Diagnose from "@/features/DashBoard/Diagnose";
-import Line from "@/features/chart/Line";
+import Line from "@/features/Chart/Line";
 
 
 
@@ -42,12 +42,12 @@ export default function DashBoard() {
 
     return (
         <div className="flex flex-col items-center font-bold tracking-tighter h-full ">
-            <header className="h-16 flex justify-between w-full items-center">
+            <header className="flex justify-between w-full items-center">
                 <p className="text-lg">대시보드</p>
                 <Link to='./editMember'><FaGear className="text-2xl"/></Link>  
             </header>
 
-            <div className="w-full h-1/5">
+            <div className="w-full h-1/3 mt-10">
             {pet 
             ? <PetStatus pet={pet as PetProps} handleDelete={handleDelete}/>
             : <PetNotStatus/>}

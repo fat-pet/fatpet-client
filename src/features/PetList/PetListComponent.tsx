@@ -1,6 +1,6 @@
 import { FaDog } from "react-icons/fa6";
 import { FaCat } from "react-icons/fa"
-import React, { useEffect } from 'react'
+// import React, from 'react'
 import transBreed from "@/utils/transBreed";
 import { PetProps } from "@/types/types";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +23,7 @@ export default function PetListComponent({pet} : {pet: PetProps}) {
         
         <div>
           <p className='text-lg font-bold'>이름 : {pet.name}</p>
-          <p className='text-sm'>품종 : {transBreed(pet.breeds.name)}</p>
+          <p className='text-sm'>품종 : {transBreed(pet.species, pet.breeds.name)}</p>
           <p className='text-sm'>생일 : {`${pet.birthDate[0]}년 ${pet.birthDate[1]}월`}</p>
         </div>
       </div>

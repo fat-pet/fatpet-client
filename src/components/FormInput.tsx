@@ -6,13 +6,14 @@ interface FormInputProps{
     type? : "text" | "password" | "email" | "number";
     minlen ?: number;
     maxlen ?: number;
+    placeholder ?: string
 }
 
-const FormInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxlen})=>{
+const FormInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxlen, placeholder})=>{
     const { register, errors} = useFormContext();
     return(
         <>
-            <label htmlFor={name} className="flex flex-col font-bold justify-start text-lg w-5/6">
+            <label htmlFor={name} className="flex flex-col font-bold justify-start text-lg w-full">
                 <div className="flex justify-between">
                     <span className="tracking-tighter">{name}</span>
                     {errors[name] && 
@@ -22,6 +23,7 @@ const FormInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxlen}
                 </div>
                 <input 
                 id={name}
+                placeholder={placeholder}
                 type={type}
                 {...register(name, {
                     required: `필수입력 항목입니다`,

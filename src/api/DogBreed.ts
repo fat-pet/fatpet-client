@@ -29,5 +29,5 @@ const DogBreed = [
     { id: 27, value: '웰시코기', code: 'WEL' }
 ];
 
-export default DogBreed
 
+export default DogBreed;

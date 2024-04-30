@@ -13,7 +13,7 @@ export interface PetProps {
     avgWeightLow: number; // 평균 체중 하한선
     name: string; // 이름
     sex: "MALE" | "FEMALE"; // 성별
-    species: "DOG" | "CAT" | "OTHER"; // 종
+    species: "DOG" | "CAT"; // 종
     feedCalories: number; // 사료 칼로리
     id: number; // 고유 식별자
     neutered: boolean; // 중성화 여부

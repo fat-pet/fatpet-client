@@ -4,7 +4,7 @@ import { useTokenStore } from "@/stores/useStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const style = "text-xl font-bold tracking-tighter border-b border-[#727272] h-1/3 flex items-center hover:cursor-pointer pl-3"
+const style = "text-lg xsm:text-xl font-bold tracking-tighter border-b border-[#727272] h-1/3 flex items-center hover:cursor-pointer pl-3"
 
 export default function EditMember() {
 

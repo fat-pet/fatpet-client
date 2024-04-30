@@ -54,12 +54,12 @@ export default function Join() {
               <Header />
             </div>
             <div className="h-4/5">
-              <Form onSubmit={handleJoin} className="h-full flex flex-col space-y-4 items-center justify-evenly ">
-                  <div className="flex w-5/6 items-end justify-between">
+              <Form onSubmit={handleJoin} className="h-full flex flex-col space-y-4 items-center justify-evenly px-5">
+                  <div className="flex w-full items-end justify-between">
                     <Form.DupInput name="닉네임" type="text" minlen={4} maxlen={12}/>
                     <Form.SmallButton name="중복검사" type="button" dup="닉네임" />
                   </div>
-                  <div className="flex w-5/6 items-end justify-between">
+                  <div className="flex w-full items-end justify-between">
                     <Form.DupInput name="아이디" type="text" minlen={4} maxlen={12}/>
                     <Form.SmallButton name="중복검사" type="button" dup="아이디"/>
                   </div>

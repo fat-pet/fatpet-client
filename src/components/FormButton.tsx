@@ -13,7 +13,7 @@ const FormButton:React.FC<FormButtonProps> = ({name, type="button", onClick })=>
     return(
         <button
             type={type}
-            className="w-5/6 aspect-[6/1] bg-[#333333] text-white font-bold"
+            className="w-full aspect-[7/1] bg-[#333333] text-white font-bold"
             onClick={onClick ? onClick : ()=>{}}
             disabled={isSubmitting}
             >

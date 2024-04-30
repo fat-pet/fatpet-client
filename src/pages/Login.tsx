@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../api/axios";
 import Header from "@/components/Header";
 import { useTokenStore } from "@/stores/useStore";
+import { useEffect } from "react";
 
 interface Login {
     "아이디" : string;
@@ -13,7 +14,7 @@ interface Login {
 export default function Login() {
     const navigate = useNavigate();
     const {setToken} = useTokenStore();
-
+    const token = localStorage.getItem('token')
     const handleLogin = (data : Login)=>{
         login(data['아이디'],data['비밀번호'])
         .then((data)=>{
@@ -25,11 +26,17 @@ export default function Login() {
         })
         .catch((err)=>{
             console.log(err)
-            if(err.response.status==403){
-                console.log('아이디 혹은 비밀번호가 틀립니다.')
+            if(err.response.status==400){
+                alert('아이디 혹은 비밀번호가 틀립니다.')
             }
         })
     }
+
+    useEffect(()=>{
+        if(token){
+            navigate('/dashboard')
+        }
+    },[])
 
     return (
         <div className="h-full flex flex-col justify-center">
@@ -37,7 +44,7 @@ export default function Login() {
                 <Header/>
             </div>
             <div className="h-2/3">
-                <Form onSubmit={handleLogin} className="flex flex-col space-y-10 items-center ">
+                <Form onSubmit={handleLogin} className="flex flex-col space-y-10 items-center px-5">
                     <Form.Input name="아이디"/>
                     <Form.Input name="비밀번호" type="password"/>
                     <Form.Button name="로그인" type="submit"/>

@@ -51,7 +51,16 @@ export async function createPet(sex:string, name:string, species:string, breedsN
 }
 
 export async function getPetList(){
-    // return await api.get('/api/pets')
-    return axios.get('/mockJson/petList')
+    return await api.get('/api/pets')
+    // return axios.get('/mockJson/petList')
 }
 
+export async function deletePet(id : number){
+    return api.delete(`/api/pets/${id}`)
+}
+
+export async function editPet(name : string, neutered : boolean, feedCalaories : number, id : number){
+    return api.put(`api/pets/${id}`,{
+        name, neutered, feedCalaories
+    })
+}

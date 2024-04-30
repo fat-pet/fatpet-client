@@ -16,9 +16,10 @@ const FormDupInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxl
 
     return(
         <>
-            <label htmlFor={name} className="flex flex-col font-bold justify-start text-lg w-5/6">
-                <div className="flex justify-between">
+            <label htmlFor={name} className="flex flex-col font-bold justify-start text-lg w-full">
+                <div className="flex justify-between items-center">
                     <span className="tracking-tighter">{name}</span>
+                    {/* 에러 메세지 출력 */}
                     <InputError name={name} dupId={dupId} dupName={dupName}/>
                 </div>
                 <input 
@@ -33,9 +34,8 @@ const FormDupInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxl
                     ...(minlen && { minLength: { value: minlen, message: `${name}는 ${minlen}글자 이상이어야 합니다.` }}),
                     ...(maxlen && { maxLength: { value: maxlen, message: `${name}는 ${maxlen}글자 이하이어야 합니다.` }}),
                   })}
-                className="w-[5/6] mt-3 h-12 bg-gray-50 border-2 border-gray-200"
+                className="w-full mt-3 h-12 bg-gray-50 border-2 border-gray-200"
                 />
-                
             </label>
         </>
     )

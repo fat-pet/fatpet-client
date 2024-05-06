@@ -51,12 +51,12 @@ export default function DashBoard() {
             : <PetNotStatus/>}
             </div>
             {pet &&
-                <div className="w-full h-1/7">
+                <div className="w-full h-1/6 flex items-center">
                 <Diagnose/>
                 </div>
             }
             {pet &&
-                <div className="w-full h-1/3 mt-16">
+                <div className="w-full h-3/5 flex flex-col justify-center">
                     <span>펫 변화 추이</span>    
                     <span className="text-sm text-gray-400">(최근 3회)</span>
                     <ColumnBar name1='kg' data1={datas.map((item)=>item.kg)}name2='BCS' data2={datas.map((item)=>item.BCS)}/>

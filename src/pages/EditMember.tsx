@@ -20,9 +20,9 @@ export default function EditMember() {
 
     return (
         <div className={`w-full h-full relative  ${openNick || openResign ? 'bg-black bg-opacity-50': ''}`}>
-            <p className="text-xl font-bold tracking-tighter p-10">회원 정보 관리</p>
+            <p className="text-xl font-bold tracking-tighter pb-10">회원 정보 관리</p>
 
-            <div className="h-1/4 flex flex-col justify-between  z-10 px-10">
+            <div className="h-1/4 flex flex-col justify-between z-10">
                 <p className={`${style} , border-t`}>비밀번호 변경</p>
                 <p onClick={()=>setOpenNick(true)} className={style}>회원 닉네임 & 이메일 변경</p>
                 <p onClick={()=>handleLogout()} className={style}>로그아웃</p>

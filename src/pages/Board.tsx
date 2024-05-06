@@ -1,32 +1,39 @@
+import { getPost } from '@/api/axios';
 import BoardItem from '@/features/board/BoardItem';
-import React from 'react'
+import { BoardProps } from '@/types/types';
+import React, { useEffect, useState } from 'react'
 import { CiSearch } from "react-icons/ci";
+import { Link } from 'react-router-dom';
+
 export default function Board() {
+
+  const [boardData, setBoardData] = useState<BoardProps[]>();
+  useEffect(() => {
+    getPost()
+    .then((res)=>{
+      setBoardData(res.data.body)
+      console.log(res.data.body)
+    })
+  }, [])
   return (
     <div>
-        <header className='text-lg font-bold tracking-tighter mb-3 flex justify-between'>
+        <header className='text-lg font-bold tracking-tighter mb-3 flex justify-between '>
           <p>전체 게시판</p>
-            <input type="text" className='w-1/2 border-2 round relative'/>
-            <CiSearch className='absolute top-0'/>
+          <div className='w-1/2 relative'>
+              <input type="text" className='border-2 w-full rounded-xl'/>
+              <CiSearch className='absolute top-1/2 -translate-y-1/2 right-2 text-2xl'/>
+          </div>
         </header>
-        <hr />
-        <div className='flex flex-col w-full'>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
+        <Link to='./create' className='w-1/4 mb-2 border-2 rounded-lg hover:bg-slate-200 float-end flex justify-center'>
+          글쓰기
+          </Link>
+        <div className='flex flex-col w-full border-t-2'>
+            {boardData!==undefined 
+                ? boardData.map((item : BoardProps)=>{
+                      return <BoardItem boardData={item}/>
+                    })
+                : <div></div>
+            }
         </div>
     </div>
   )

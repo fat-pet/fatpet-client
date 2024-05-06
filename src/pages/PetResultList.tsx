@@ -1,5 +1,5 @@
 import { getPetResult } from "@/api/axios";
-import ResultInformation from "@/features/PetResultList/ResultInfomation";
+import ResultInformation from "@/features/petResultList/ResultInfomation";
 import { PetResult } from "@/types/types";
 import { useEffect, useState } from "react";
 

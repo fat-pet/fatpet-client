@@ -4,8 +4,7 @@ import { useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 interface SumbitProps{
-    "이름" : string;
-    "급여 사료 열량 (100g당)" : string;
+    [key: string] : string
 }
 
 export default function EditPet() {

@@ -19,6 +19,8 @@ import CreatePet from './pages/CreatePet.tsx'
 import MemberLayout from './layouts/Member-layout.tsx'
 import Board from './pages/Board.tsx'
 import BoardCreate from './pages/BoardCreate.tsx'
+import BoardContent from './pages/BoardContent.tsx'
+import BoardEdit from './pages/BoardEdit.tsx'
 
 const router = createBrowserRouter([
   {
@@ -48,6 +50,8 @@ const router = createBrowserRouter([
       {path: '/dashboard/editMember', element:<EditMember/>},
       {path: '/board', element:<Board/>},
       {path: '/board/create', element:<BoardCreate/>},
+      {path: '/board/:id', element:<BoardContent/>},
+      {path: '/board/edit/:id', element:<BoardEdit/>},
     ]
   }
 

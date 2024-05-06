@@ -4,10 +4,10 @@ import { FaGear } from "react-icons/fa6";
 import { deletePet, getPetList } from "@/api/axios";
 import { useEffect, useState } from "react";
 import { PetProps } from "@/types/types";
-import PetStatus from "@/features/DashBoard/PetStatus";
-import PetNotStatus from "@/features/DashBoard/PetNotStatus";
-import Diagnose from "@/features/DashBoard/Diagnose";
-import { ColumnBar } from "@/features/Chart/ColumnBar";
+import PetStatus from "@/features/dashBoard/PetStatus";
+import PetNotStatus from "@/features/dashBoard/PetNotStatus";
+import Diagnose from "@/features/dashBoard/Diagnose";
+import { ColumnBar } from "@/features/chart/ColumnBar";
 
 
 export default function DashBoard() {

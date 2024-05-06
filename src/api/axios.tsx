@@ -1,19 +1,18 @@
 import axios from "axios";
+import react from 'react';
 
-console.log(localStorage.getItem('token'))
+
+const token = localStorage.getItem('token')
 
 const api= axios.create({
     baseURL : import.meta.env.VITE_BASE_URL,
     headers:{
         'Content-Type' : 'application/json',
-        'Authorization' : `Bearer ${localStorage.getItem('token')}`
+        'Authorization' : `Bearer ${token}`
     }
 });
 
 
-// if (localStorage.getItem('token')) {
-//     api.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
-//   }
 
 export async function login(id : string, password : string){
     return await api.post('/api/members/signin',{
@@ -86,4 +85,28 @@ export async function postPost(title:string, content:string){
     return api.post('/api/posts',{
         title, content
     })
+}
+
+export async function getPostContent(id:number){
+    return api.get(`/api/posts/${id}`)
+}
+
+export async function deletePost(id:number){
+    return api.delete(`/api/posts/${id}`)
+}
+
+export async function putPost(id:number, title:string, content:string){
+    return api.put(`/api/posts/${id}`,{
+        title, content
+    })
+}
+
+export async function postComment(postId: number, content:string, parentId?:number){
+    return api.post(`/api/posts/${postId}/comments`,{
+        content, parentId
+    })
+}
+
+export async function deleteComment(commentId : number){
+    return api.delete(`/api/posts/comments/${commentId}`,)
 }

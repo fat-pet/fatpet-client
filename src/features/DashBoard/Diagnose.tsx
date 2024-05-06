@@ -8,7 +8,7 @@ export default function Diagnose() {
   return (
     <div className="w-full flex justify-around">
     <button className={buttonStyle} onClick={()=>navigate('/inputData/detail')}>
-        <FaStethoscope className="w-5 h-5 "/>BCS 검사하기
+        <FaStethoscope className="w-5 h-5 mr-2 "/>BCS 검사하기
     </button>
     <button className={buttonStyle} onClick={()=>navigate('./resultList')}>
         <FaClipboardList className="w-5 h-5 mr-2 "/>검사 기록보기

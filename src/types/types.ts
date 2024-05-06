@@ -31,7 +31,7 @@ export interface PetResult{
     id : number
 }
 
-interface BoardMember{
+export interface Member{
     email: string;
     nickname : string;
     loginId : string;
@@ -40,7 +40,14 @@ interface BoardMember{
 export interface BoardProps{
     title : string;
     createdDate : string;
-    member: BoardMember;
+    member: Member;
     id : number;
     content : string
+}
+
+export interface CommentProps{
+    id : number;
+    createdDate : string;
+    content : string;
+    member : Member
 }

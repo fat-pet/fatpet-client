@@ -1,13 +1,18 @@
 import { postPost } from '@/api/axios';
 import React, { useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function BoardCreate() {
     const TitleRef = useRef<HTMLInputElement>(null);
     const ContentRef = useRef<HTMLTextAreaElement>(null);
+    const navigate = useNavigate();
 
     const handleSubmit=(event : React.FormEvent<HTMLFormElement>)=>{
         event.preventDefault();
         postPost(TitleRef.current!.value, ContentRef.current!.value)
+        .then(()=>{
+            navigate(-1)
+        })
     }
 
     return (

@@ -28,24 +28,12 @@ export default function Board() {
           글쓰기
           </Link>
         <div className='flex flex-col w-full border-t-2'>
-            {/* {boardData!==undefined 
+            {boardData!==undefined 
                 ? boardData.map((item : BoardProps)=>{
                       return <BoardItem boardData={item}/>
                     })
                 : <div></div>
-            } */}
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
-            <BoardItem/>
+            }
         </div>
     </div>
   )

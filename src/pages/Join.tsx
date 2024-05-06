@@ -7,10 +7,7 @@ import { useDupStore } from "@/stores/useStore";
 import { useEffect } from "react";
 
 interface Join {
-    "닉네임" : string;
-    "아이디" : string;
-    "비밀번호" : string;
-    "이메일" : string;
+  [key:string] : string
 }
 
 export default function Join() {
@@ -56,14 +53,14 @@ export default function Join() {
             <div className="h-4/5">
               <Form onSubmit={handleJoin} className="h-full flex flex-col space-y-4 items-center justify-evenly px-5">
                   <div className="flex w-full items-end justify-between">
-                    <Form.DupInput name="닉네임" type="text" minlen={4} maxlen={12}/>
+                    <Form.Input name="닉네임" type="text" minlen={4} maxlen={12} placeholder="4글자 이상 12글자 이하"/>
                     <Form.SmallButton name="중복검사" type="button" dup="닉네임" />
                   </div>
-                  <div className="flex w-full items-end justify-between">
-                    <Form.DupInput name="아이디" type="text" minlen={4} maxlen={12}/>
+                  <div className="flex w-full items-end jusasify-between">
+                    <Form.Input name="아이디" type="text" minlen={4} maxlen={12} placeholder="4글자 이상 12글자 이하"/>
                     <Form.SmallButton name="중복검사" type="button" dup="아이디"/>
                   </div>
-                  <Form.Input name="비밀번호" type="password" minlen={6} maxlen={16}/>
+                  <Form.Input name="비밀번호" type="password" minlen={6} maxlen={16} placeholder="6글자 이상 16글자 이하"/>
                   <Form.Input name="이메일" type="email"/>
                   <Form.Button name="회원가입" type="submit" />
                   <Form.Button name="뒤로가기" type="button" onClick={handleBack} />

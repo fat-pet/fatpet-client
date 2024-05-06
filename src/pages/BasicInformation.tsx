@@ -14,8 +14,7 @@ interface BreedItem {
 }
 
 interface SubmitProps{
-    '이름' : string,
-    '급여 사료 열량(100g당)' : string
+    [key:string] : string
 }
 
 export default function BasicInformation() {
@@ -97,8 +96,7 @@ export default function BasicInformation() {
 
                 {/* 급여 사료 열량 */}
                 <div className="flex mb-10 w-full">
-                    <Form.Input name="급여 사료 열량(100g당)" type="number"/>
-                    <p className="mt-12 ml-5">kcal</p>
+                    <Form.Input name="급여 사료 열량(100g당)" type="number" unit="kcal"/>
                 </div>
 
                 <Form.Button name="다음" type="submit"/>

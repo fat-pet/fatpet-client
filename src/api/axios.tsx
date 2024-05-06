@@ -60,7 +60,11 @@ export async function deletePet(id : number){
 }
 
 export async function editPet(name : string, neutered : boolean, feedCalaories : number, id : number){
-    return api.put(`api/pets/${id}`,{
+    return api.put(`/api/pets/${id}`,{
         name, neutered, feedCalaories
     })
+}
+
+export async function getPetResult(id:number){
+    return api.get(`/api/diagnoses?petId=${id}`)
 }

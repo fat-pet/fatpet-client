@@ -18,3 +18,15 @@ export interface PetProps {
     id: number; // 고유 식별자
     neutered: boolean; // 중성화 여부
 }
+
+
+export interface PetResult{
+    neckCirc : number;
+    weight : number;
+    chestCirc : number;
+    feedAmount : number;
+    bcs : string;
+    der : number;
+    createdDate : Date;
+    id : number
+}

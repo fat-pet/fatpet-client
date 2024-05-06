@@ -51,7 +51,7 @@ export default function BasicInformation() {
             <Form onSubmit={handleSumbit} className="flex flex-col items-center justify-center">
                 {/* 이름 */}
                 <div className="w-full">
-                    <Form.Input name="이름"/>
+                    <Form.Input name="이름" placeholder="나비"/>
                 </div>
 
                 {/* 나이 */}
@@ -99,8 +99,7 @@ export default function BasicInformation() {
 
                 {/* 급여 사료 열량 */}
                 <div className="flex mb-10 w-full">
-                    <Form.Input name="급여 사료 열량(100g당)" type="number"/>
-                    <p className="mt-12 ml-5">kcal</p>
+                    <Form.Input name="급여 사료 열량(100g당)" type="number" unit="kcal" placeholder="300"/>
                 </div>
 
                 <Form.Button name="펫 생성" type="submit"/>

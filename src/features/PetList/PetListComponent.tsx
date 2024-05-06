@@ -23,7 +23,7 @@ export default function PetListComponent({pet} : {pet: PetProps}) {
         
         <div>
           <p className='text-lg font-bold'>이름 : {pet.name}</p>
-          <p className='text-sm'>품종 : {transBreed(pet.species, pet.breeds.name)}</p>
+          <p className='text-sm'>품종 : {transBreed(pet.breeds.species, pet!.breeds.name)}</p>
           <p className='text-sm'>생일 : {`${pet.birthDate[0]}년 ${pet.birthDate[1]}월`}</p>
         </div>
       </div>

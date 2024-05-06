@@ -5,12 +5,9 @@ export default function MemberLayout() {
     const token = localStorage.getItem('token')
     const navigate = useNavigate();
     useEffect(()=>{
-        console.log(token)
         if(token){
-            console.log('token있음')
         }
         else{
-            console.log('token없음')
             navigate('/signin')
         }
         

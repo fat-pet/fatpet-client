@@ -6,12 +6,16 @@ import FormSmallButton from './FormSmallButton';
 import FormDupInput from './FormDupInput';
 import FormSelectButton from './FormSelectButton';
 
+interface SubmitProps{
+    [key : string] : string
+} 
 
 interface FormProps{
     children : React.ReactNode;
-    onSubmit : (data: any)=>void;
+    onSubmit: (data: SubmitProps) => void;
     className ?: string
 }
+
 
 
 export default function Form({children, onSubmit, className}:FormProps) {

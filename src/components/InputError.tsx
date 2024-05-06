@@ -6,8 +6,8 @@ interface Props{
 }
 
 export default function InputError({name, dupName, dupId} : Props) {
-    const red = 'text-sm text-red-400'
-    const green = 'text-sm text-green-400'
+    const red = 'text-xs text-red-400 xxsm:text-sm'
+    const green = 'text-xs text-green-400 xxsm:text-sm'
 
     if(name==='닉네임'){
         if(dupName==='null'){

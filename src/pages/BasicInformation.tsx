@@ -14,8 +14,7 @@ interface BreedItem {
 }
 
 interface SubmitProps{
-    '이름' : string,
-    '급여 사료 열량(100g당)' : string
+    [key:string] : string
 }
 
 export default function BasicInformation() {

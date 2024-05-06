@@ -14,9 +14,8 @@ interface BreedItem {
     code :string;
 }
 
-interface SubmitProps{
-    '이름' : string,
-    '급여 사료 열량(100g당)' : string
+interface SubmitProps {
+    [key : string] : string
 }
 
 export default function BasicInformation() {

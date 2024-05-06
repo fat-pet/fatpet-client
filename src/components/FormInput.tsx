@@ -22,7 +22,7 @@ const FormInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxlen,
                 <div className="flex justify-between">
                     <span className="tracking-tighter">{name}</span>
                     
-                    <span className="text-sm text-red-500 pt-2">
+                    <span className="text-xs text-red-500 pt-2 xxsm:text-sm">
                         { errors[name] 
                         ? errors[name]?.message as string
                         : <InputError name={name} dupId={dupId} dupName={dupName}/>
@@ -46,7 +46,7 @@ const FormInput :React.FC<FormInputProps> = ({name, type="text", minlen, maxlen,
                         ...(maxlen && { maxLength: { value: maxlen, message: `${name}는 ${maxlen}글자 이하이어야 합니다.` }}),
                     })}
                     // Input 디자인 clasNmae
-                    className={`w-full mt-3 h-12 bg-gray-50 border-2 border-gray-200`}
+                    className={`w-full mt-3 h-12 bg-gray-50 border-2 border-gray-200 placeholder:text-sm`}
                     />
                     {/* 단위 ex) ~~~ cm kcal 등등 */}
                     {unit &&

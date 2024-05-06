@@ -7,10 +7,7 @@ import { useDupStore } from "@/stores/useStore";
 import { useEffect } from "react";
 
 interface Join {
-    "닉네임" : string;
-    "아이디" : string;
-    "비밀번호" : string;
-    "이메일" : string;
+  [key:string] : string
 }
 
 export default function Join() {

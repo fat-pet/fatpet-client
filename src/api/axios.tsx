@@ -1,17 +1,19 @@
 import axios from "axios";
 
+console.log(localStorage.getItem('token'))
 
 const api= axios.create({
     baseURL : import.meta.env.VITE_BASE_URL,
     headers:{
-        'Content-Type' : 'application/json'
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.getItem('token')}`
     }
 });
 
 
-if (localStorage.getItem('token')) {
-    api.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
-  }
+// if (localStorage.getItem('token')) {
+//     api.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+//   }
 
 export async function login(id : string, password : string){
     return await api.post('/api/members/signin',{
@@ -67,4 +69,10 @@ export async function editPet(name : string, neutered : boolean, feedCalaories :
 
 export async function getPetResult(id:number){
     return api.get(`/api/diagnoses?petId=${id}`)
+}
+
+export async function postDiagnoses(petId : number, weight : number, neckCirc : number, chestCirc : number, feedAmount:number ){
+    return api.post('/api/diagnoses',{
+        petId, weight, neckCirc, chestCirc, feedAmount
+    })
 }

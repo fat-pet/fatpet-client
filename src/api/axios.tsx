@@ -76,3 +76,14 @@ export async function postDiagnoses(petId : number, weight : number, neckCirc : 
         petId, weight, neckCirc, chestCirc, feedAmount
     })
 }
+
+//게시판
+export async function getPost(){
+    return api.get('/api/posts')
+}
+
+export async function postPost(title:string, content:string){
+    return api.post('/api/posts',{
+        title, content
+    })
+}

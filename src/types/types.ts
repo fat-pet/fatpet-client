@@ -27,6 +27,20 @@ export interface PetResult{
     feedAmount : number;
     bcs : string;
     der : number;
-    createdDate : Date;
+    createdDate : string;
     id : number
+}
+
+interface BoardMember{
+    email: string;
+    nickname : string;
+    loginId : string;
+}
+
+export interface BoardProps{
+    title : string;
+    createdDate : string;
+    member: BoardMember;
+    id : number;
+    content : string
 }

@@ -3,8 +3,7 @@ import Form from '@/components/Form'
 
 
 interface EditMember{
-    "이메일" : string;
-    "닉네임" : string;
+    [key: string] : string
 }
 
 interface Props{

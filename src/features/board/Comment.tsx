@@ -1,6 +1,5 @@
 import { deleteComment } from '@/api/axios';
 import { CommentProps } from '@/types/types';
-import React from 'react';
 import { FaUser, FaRegTrashAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,8 +1,7 @@
 import { putPost } from '@/api/axios';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FaCheck, FaUser } from 'react-icons/fa';
-import { CommentProps } from '@/types/types';
 
 export default function BoardEdit() {
     const { id } = useParams();

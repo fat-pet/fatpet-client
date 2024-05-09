@@ -1,6 +1,5 @@
 import { FaDog } from 'react-icons/fa6';
 import { FaCat } from 'react-icons/fa';
-// import React, from 'react'
 import transBreed from '@/utils/transBreed';
 import { PetProps } from '@/types/types';
 import { useNavigate } from 'react-router-dom';

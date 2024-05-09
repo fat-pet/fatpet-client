@@ -1,7 +1,7 @@
 import { getPost } from '@/api/axios';
 import BoardItem from '@/features/board/BoardItem';
 import { BoardProps } from '@/types/types';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 

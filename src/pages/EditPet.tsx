@@ -3,7 +3,7 @@ import Form from '@/components/Form';
 import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
-interface SumbitProps {
+interface SubmitProps {
     [key: string]: string;
 }
 
@@ -11,7 +11,7 @@ export default function EditPet() {
     const location = useLocation();
     const { id, name, neutered, feedCalories } = location.state;
     const neuteredRef = useRef<HTMLInputElement>(neutered);
-    function handleSubmit(data: SumbitProps) {
+    function handleSubmit(data: SubmitProps) {
         const feedCalories = parseInt(data['급여 사료 열량 (100g당)']);
         id &&
             editPet(

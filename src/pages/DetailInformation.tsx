@@ -13,8 +13,9 @@ export default function DetailInformation() {
     const petData = data ? JSON.parse(data) : '';
 
     const handleSubmit = (data: SubmitProps) => {
-        let apiData: ApiProps = {};
-        for (let key in data) {
+        const apiData: ApiProps = {};
+
+        for (const key in data) {
             apiData[key] = Number(data[key]);
         }
         postDiagnoses(

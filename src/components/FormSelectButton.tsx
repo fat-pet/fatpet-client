@@ -14,8 +14,6 @@ const FormSelectButton: React.FC<Props> = ({
     label,
     state,
     handleClick,
-    error,
-    errormessage,
 }) => {
     return (
         <button

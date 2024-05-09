@@ -1,4 +1,3 @@
-// import React from 'react'
 import { FaDog } from 'react-icons/fa6';
 import { FaCat } from 'react-icons/fa';
 import { PetProps } from '@/types/types';

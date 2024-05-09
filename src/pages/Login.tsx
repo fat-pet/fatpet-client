@@ -6,8 +6,7 @@ import { useTokenStore } from '@/stores/useStore';
 import { useEffect } from 'react';
 
 interface Login {
-  아이디: string;
-  비밀번호: string;
+  [key: string]: string;
 }
 
 export default function Login() {
@@ -16,7 +15,7 @@ export default function Login() {
   const token = localStorage.getItem('token');
 
   const handleLogin = (data: Login) => {
-    login(data['아이디'], data['비밀번호'])
+    login(data['id'], data['password'])
       .then((data) => {
         localStorage.setItem('token', data.data.body.token);
         setToken(data.data.body.token);
@@ -39,27 +38,29 @@ export default function Login() {
   }, []);
 
   return (
-    <div className='h-full flex flex-col justify-center'>
+    <div className="h-full flex flex-col justify-center">
       <Header />
-      <div className='h-2/3'>
-        <Form onSubmit={handleLogin} className='flex flex-col items-center'>
-          <div className='w-full mb-6'>
-            <Form.Input name='아이디' />
+      <div className="h-2/3">
+        <Form onSubmit={handleLogin} className="flex flex-col items-center">
+          <div className="w-full mb-6">
+            <Form.Input name="아이디" value="id" />
           </div>
-          <div className='w-full mb-16'>
-            <Form.Input name='비밀번호' type='password' />
+          <div className="w-full mb-16">
+            <Form.Input name="비밀번호" value="password" type="password" />
           </div>
-          <div className='w-full mb-3'>
+          <div className="w-full mb-3">
             <Form.Button
-              name='로그인'
-              type='submit'
-              className='bg-green-600 hover:opacity-70 transition-opacity text-white'
+              name="로그인"
+              type="submit"
+              className="bg-green-600 hover:opacity-70 transition-opacity text-white"
             />
           </div>
           <Link
             to={'/signup'}
-            className='block w-full py-3 text-center font-medium hover:opacity-70'>
-            아직 회원이 아나시라면? <span className='underline'>회원가입하기</span>
+            className="block w-full py-3 text-center font-medium hover:opacity-70"
+          >
+            아직 회원이 아나시라면?{' '}
+            <span className="underline">회원가입하기</span>
           </Link>
         </Form>
       </div>

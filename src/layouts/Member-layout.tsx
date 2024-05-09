@@ -12,8 +12,8 @@ export default function MemberLayout() {
   }, []);
 
   return (
-    <div className='max-w-[480px] border-x-2 w-full h-full '>
-      <div className='h-layout-main pt-12 px-8 overflow-auto scrollbar-hidden'>
+    <div className="max-w-[480px] border-x-2 w-full h-full ">
+      <div className="h-layout-main pt-12 px-8 overflow-auto scrollbar-hidden">
         <Outlet />
       </div>
       <BottomNav />

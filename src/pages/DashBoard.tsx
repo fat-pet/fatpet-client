@@ -3,10 +3,10 @@ import { FaGear } from 'react-icons/fa6';
 import { deletePet, getPetList } from '@/api/axios';
 import { useEffect, useState } from 'react';
 import { PetProps } from '@/types/types';
-import PetStatus from '@/features/dashBoard/PetStatus';
-import PetNotStatus from '@/features/dashBoard/PetNotStatus';
-import Diagnose from '@/features/dashBoard/Diagnose';
-import { ColumnBar } from '@/features/chart/ColumnBar';
+import PetStatus from '@/features/DashBoard/PetStatus';
+import PetNotStatus from '@/features/DashBoard/PetNotStatus';
+import Diagnose from '@/features/DashBoard/Diagnose';
+import { ColumnBar } from '@/features/Chart/ColumnBar';
 
 export default function DashBoard() {
   const [pet, setPet] = useState<PetProps | null>(null);
@@ -15,7 +15,9 @@ export default function DashBoard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    petData ? setPet(petData) : getPetList().then((data) => setPet(data.data.body[0]));
+    petData
+      ? setPet(petData)
+      : getPetList().then((data) => setPet(data.data.body[0]));
   }, []);
 
   function handleDelete() {
@@ -29,33 +31,41 @@ export default function DashBoard() {
   }
 
   return (
-    <div className='flex flex-col items-center font-bold tracking-tighter h-full '>
-      <header className='flex justify-between w-full items-center'>
-        <p className='text-lg'>대시보드</p>
-        <Link to='./editMember'>
-          <FaGear className='text-2xl' />
+    <div className="flex flex-col items-center tracking-tighter h-full ">
+      {/* 헤더 */}
+      <header className="flex justify-between w-full items-center">
+        <p className="text-lg font-bold">대시보드</p>
+        <Link to="./editMember">
+          <FaGear className="text-2xl" />
         </Link>
       </header>
 
-      <div className='w-full h-1/3 pt-10'>
-        {pet ? <PetStatus pet={pet as PetProps} handleDelete={handleDelete} /> : <PetNotStatus />}
+      {/* 펫 대쉬보드 */}
+      <div className="w-full h-1/3 pt-10">
+        {pet ? (
+          <PetStatus pet={pet as PetProps} handleDelete={handleDelete} />
+        ) : (
+          <PetNotStatus />
+        )}
       </div>
+
+      {/* BCS 검사하기 , 검사 기록보기 버튼 */}
+      <div className="w-full h-1/6 flex items-center">
+        {pet && <Diagnose />}
+      </div>
+
+      {/* 펫 변화추이 그래프 */}
       {pet && (
-        <div className='w-full h-1/6 flex items-center'>
-          <Diagnose />
-        </div>
-      )}
-      {pet && (
-        <div className='w-full h-3/5 flex flex-col justify-center'>
-          <span>펫 변화 추이</span>
-          <span className='text-sm text-gray-400'>(최근 3회)</span>
+        <div className="w-full h-3/5 flex flex-col justify-center">
+          <span className="font-bold">펫 변화 추이</span>
+          <span className="text-sm text-gray-400">(최근 3회)</span>
           <ColumnBar
-            name1='kg'
+            name1="kg"
             data1={datas.map((item) => item.kg)}
-            name2='BCS'
+            name2="BCS"
             data2={datas.map((item) => item.BCS)}
           />
-          <p className='text-sm text-gray-500'>
+          <p className="text-sm text-gray-500">
             *BCS(Body Condition Score) <br /> 펫의 비만도를 1~9만큼 측정한 값
           </p>
         </div>

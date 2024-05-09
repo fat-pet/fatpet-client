@@ -7,8 +7,7 @@ import { useTokenStore } from '@/stores/useStore';
 import { useEffect } from 'react';
 
 interface Login {
-    아이디: string;
-    비밀번호: string;
+    [key: string]: string;
 }
 
 export default function Login() {

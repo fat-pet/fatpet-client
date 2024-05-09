@@ -5,7 +5,7 @@ const CatBreed = [
     { id: 3, value: '러시안블루', code: 'RUS' },
     { id: 4, value: '스코티시폴드', code: 'SCO' },
     { id: 5, value: '샴', code: 'SIA' },
-    { id: 6, value: '터키시앙고라', code: 'TUR' }
+    { id: 6, value: '터키시앙고라', code: 'TUR' },
 ];
 
 export default CatBreed;

@@ -1,19 +1,17 @@
-import { getPetResult } from "@/api/axios";
-import ResultInformation from "@/features/petResultList/ResultInfomation";
-import { PetResult } from "@/types/types";
-import { useEffect, useState } from "react";
-
+import { getPetResult } from '@/api/axios';
+import ResultInformation from '@/features/petResultList/ResultInfomation';
+import { PetResult } from '@/types/types';
+import { useEffect, useState } from 'react';
 
 export default function PetResultList() {
-    const data = localStorage.getItem('petData')
+    const data = localStorage.getItem('petData');
     const petData = data ? JSON.parse(data) : null;
     const [petResult, setPetResult] = useState<PetResult[]>([]);
     useEffect(() => {
-        getPetResult(petData.id)
-        .then((res) => {
-            setPetResult(res.data.body)
-        })
-    }, [])
+        getPetResult(petData.id).then((res) => {
+            setPetResult(res.data.body);
+        });
+    }, []);
 
     return (
         <>
@@ -22,11 +20,10 @@ export default function PetResultList() {
             </header>
 
             <div className="w-full flex flex-col items-center">
-                <ResultInformation/>
-                <ResultInformation/>
-                <ResultInformation/>
+                <ResultInformation />
+                <ResultInformation />
+                <ResultInformation />
             </div>
         </>
     );
 }
-

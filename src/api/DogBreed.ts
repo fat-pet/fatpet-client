@@ -26,8 +26,7 @@ const DogBreed = [
     { id: 24, value: '슈나우저', code: 'SCH' },
     { id: 25, value: '쉽독', code: 'SHE' },
     { id: 26, value: '테리어', code: 'TER' },
-    { id: 27, value: '웰시코기', code: 'WEL' }
+    { id: 27, value: '웰시코기', code: 'WEL' },
 ];
-
 
 export default DogBreed;

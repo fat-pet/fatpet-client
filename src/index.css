@@ -2,22 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-html,body{
-    height : 100%;
-    width : 100%;
+html,
+body {
+    height: 100%;
+    width: 100%;
 }
 
 @font-face {
     font-family: 'Rastanty';
-    src: url('/src/assets/Rastanty\ Cortez.ttf')
-} 
+    src: url('/src/assets/Rastanty\ Cortez.ttf');
+}
 
 .scrollbar-hidden::-webkit-scrollbar {
     display: none;
-  }
-  
-  .scrollbar-hidden {
+}
+
+.scrollbar-hidden {
     -ms-overflow-style: none;
     scrollbar-width: none;
-  }
-  
+}

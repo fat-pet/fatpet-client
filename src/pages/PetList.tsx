@@ -7,10 +7,12 @@ import { Link } from 'react-router-dom';
 
 export default function PetList() {
     const [pet, setPet] = useState<PetProps[]>();
+    
     useEffect(() => {
         getPetList().then((data) => setPet(data.data.body));
     }, []);
     console.log(pet);
+
     return (
         <div className="mx-5 pt-10">
             <p className="text-xl font-bold mb-10">펫 목록</p>

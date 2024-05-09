@@ -1,4 +1,3 @@
-// import React from "react";
 import Form from '../components/Form';
 import { useNavigate } from 'react-router-dom';
 import { join } from '../api/axios';

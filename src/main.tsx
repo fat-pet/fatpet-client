@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -23,40 +22,35 @@ import BoardContent from './pages/BoardContent.tsx';
 import BoardEdit from './pages/BoardEdit.tsx';
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <BasicLayout />,
-        children: [
-            { index: true, element: <Main /> },
-            { path: '/signin', element: <Login /> },
-            { path: '/signup', element: <Join /> },
-            { path: '/inputData', element: <BasicInformation /> },
-            { path: '/inputData/detail', element: <DetailInformation /> },
-            { path: '/result', element: <Result /> },
-            { path: '/result/solution', element: <Solution /> },
-        ],
-    },
-
-    {
-        path: '/',
-        element: <MemberLayout />,
-        children: [
-            { path: '/dashboard', element: <DashBoard /> },
-            { path: '/dashboard/editPet', element: <EditPet /> },
-            { path: '/dashboard/resultList', element: <PetResultList /> },
-            { path: '/dashboard/petList', element: <PetList /> },
-            { path: '/petList/createPet', element: <CreatePet /> },
-            { path: '/dashboard/editMember', element: <EditMember /> },
-            { path: '/board', element: <Board /> },
-            { path: '/board/create', element: <BoardCreate /> },
-            { path: '/board/:id', element: <BoardContent /> },
-            { path: '/board/edit/:id', element: <BoardEdit /> },
-        ],
-    },
+  {
+    path: '/',
+    element: <BasicLayout />,
+    children: [
+      { index: true, element: <Main /> },
+      { path: '/signin', element: <Login /> },
+      { path: '/signup', element: <Join /> },
+      { path: '/inputData', element: <BasicInformation /> },
+      { path: '/inputData/detail', element: <DetailInformation /> },
+      { path: '/result', element: <Result /> },
+      { path: '/result/solution', element: <Solution /> },
+    ],
+  },
+  {
+    path: '/',
+    element: <MemberLayout />,
+    children: [
+      { path: '/dashboard', element: <DashBoard /> },
+      { path: '/dashboard/editPet', element: <EditPet /> },
+      { path: '/dashboard/resultList', element: <PetResultList /> },
+      { path: '/dashboard/petList', element: <PetList /> },
+      { path: '/petList/createPet', element: <CreatePet /> },
+      { path: '/dashboard/editMember', element: <EditMember /> },
+      { path: '/board', element: <Board /> },
+      { path: '/post/new', element: <BoardCreate /> },
+      { path: '/post/:id', element: <BoardContent /> },
+      { path: '/post/edit/:id', element: <BoardEdit /> },
+    ],
+  },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-        <RouterProvider router={router} />
-    </React.StrictMode>,
-);
+ReactDOM.createRoot(document.getElementById('root')!).render(<RouterProvider router={router} />);

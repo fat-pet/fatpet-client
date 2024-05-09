@@ -1,4 +1,4 @@
-const DogBreed = [
+const DogBreeds = [
     { id: 0, value: '비글', code: 'BEA' },
     { id: 1, value: '비숑프리제', code: 'BIC' },
     { id: 2, value: '불독', code: 'BUL' },
@@ -29,4 +29,4 @@ const DogBreed = [
     { id: 27, value: '웰시코기', code: 'WEL' },
 ];
 
-export default DogBreed;
+export default DogBreeds;

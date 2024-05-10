@@ -19,7 +19,7 @@ const BottomNav = () => {
         대시보드
       </Link>
       <Link
-        to="/dashboard/editMember"
+        to="/member/edit"
         className="flex flex-col items-center justify-center w-1/3"
       >
         <FaUserGear className="text-2xl xxsm:text-3xl" /> 내 정보 관리

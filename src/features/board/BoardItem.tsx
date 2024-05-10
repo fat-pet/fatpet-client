@@ -6,8 +6,8 @@ export default function BoardItem({ boardData }: { boardData: BoardProps }) {
 
   return (
     <div
-      onClick={() => navigate(`/board/${boardData.id}`)}
-      className="w-full h-16 border-b-2 flex flex-col justify-center tracking-tighter"
+      onClick={() => navigate(`/post/${boardData.id}`)}
+      className="w-full h-16 border-b-2 flex flex-col justify-center tracking-tighter hover:bg-gray-100 cursor-pointer"
     >
       <div className="font-bold">
         {boardData ? boardData.title : '게시글 제목'}

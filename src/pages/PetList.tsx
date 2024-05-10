@@ -20,7 +20,7 @@ export default function PetList() {
         {pet?.map((item) => {
           return <PetListComponent pet={item} />;
         })}
-        <Link to="/petList/createPet">
+        <Link to="/pet/new">
           <CiSquarePlus className="w-10 h-10" />
         </Link>
       </div>

@@ -9,7 +9,7 @@ export default function PetResultList() {
   const [petResult, setPetResult] = useState<PetResult[]>([]);
 
   useEffect(() => {
-    getPetResult(petData.id).then((res) => {
+    getPetResult(petData?.id).then((res) => {
       setPetResult(res.data.body);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -18,7 +18,7 @@ export default function PetResultList() {
   return (
     <>
       <header className="font-bold text-lg tracking-tighter">
-        {petData.name}의 검사 결과
+        {petData?.name}의 검사 결과
       </header>
 
       <div className="w-full flex flex-col items-center">

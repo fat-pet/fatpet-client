@@ -42,7 +42,7 @@ export default function DashBoard() {
       </header>
 
       {/* 펫 대쉬보드 */}
-      <div className="w-full h-1/3 pt-10">
+      <div className="w-full h-1/3 pt-5">
         {pet ? (
           <PetStatus pet={pet as PetProps} handleDelete={handleDelete} />
         ) : (
@@ -62,12 +62,12 @@ export default function DashBoard() {
           <span className="text-sm text-gray-400">(최근 3회)</span>
           <ColumnBar
             name1="kg"
-            data1={datas.map((item) => item.kg)}
+            data1={dummyData.map((item) => item.kg)}
             name2="BCS"
-            data2={datas.map((item) => item.BCS)}
+            data2={dummyData.map((item) => item.BCS)}
           />
           <p className="text-sm text-gray-500">
-            *BCS(Body Condition Score) <br /> 펫의 비만도를 1~9만큼 측정한 값
+            *BCS(Body Condition Score) : 펫의 비만도를 1~9만큼 측정한 값
           </p>
         </div>
       )}
@@ -75,7 +75,7 @@ export default function DashBoard() {
   );
 }
 
-export const datas = [
+export const dummyData = [
   {
     name: '4/17',
     kg: 35,

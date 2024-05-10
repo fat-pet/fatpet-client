@@ -34,8 +34,8 @@ export default function BasicInformation() {
     const date = dateRef.current!.value.split('-');
     const birthDate = `${date[0]}-${date[1]}`;
     const neutered = neuteredRef.current!.checked;
-    const feedCalories = parseInt(data['급여 사료 열량(100g당)']);
-    const name = data['이름'];
+    const feedCalories = parseInt(data['feedAmount']);
+    const name = data['name'];
     createPet(sex, name, species, code, birthDate, neutered, feedCalories).then(
       () => navigate('/dashboard/petList'),
     );
@@ -57,7 +57,7 @@ export default function BasicInformation() {
       >
         {/* 이름 */}
         <div className="w-full">
-          <Form.Input name="이름" placeholder="나비" />
+          <Form.Input name="이름" value="name" placeholder="나비" />
         </div>
 
         {/* 나이 */}
@@ -152,6 +152,7 @@ export default function BasicInformation() {
         <div className="flex mb-10 w-full">
           <Form.Input
             name="급여 사료 열량(100g당)"
+            value="feedAmount"
             type="number"
             unit="kcal"
             placeholder="300"

@@ -4,12 +4,13 @@ import InputError from './InputError';
 import { useDupStore } from '@/stores/useStore';
 
 interface FormInputProps {
-  name: string; // Input 위에 이름
+  name?: string; // Input 위에 이름
   type?: 'text' | 'password' | 'email' | 'number';
   minLen?: number; // 최소 글자 수
   maxLen?: number; // 최대 글자 수
   placeholder?: string;
   unit?: string; // 단위
+  value: string;
   className?: string;
 }
 
@@ -20,6 +21,7 @@ const FormInput: React.FC<FormInputProps> = ({
   maxLen,
   placeholder,
   unit,
+  value,
   className,
 }) => {
   const { register, errors } = useFormContext();
@@ -28,24 +30,24 @@ const FormInput: React.FC<FormInputProps> = ({
 
   return (
     <>
-      <label htmlFor={name} className="flex flex-col justify-start w-full">
+      <label htmlFor={value} className="flex flex-col justify-start w-full">
         <div className="flex justify-between items-end font-medium">
           <span>{name}</span>
           <span className="text-sm text-red-500">
-            {errors[name] ? (
-              (errors[name]?.message as string)
+            {errors[value] ? (
+              (errors[value]?.message as string)
             ) : (
-              <InputError name={name} dupId={dupId} dupName={dupName} />
+              <InputError name={value} dupId={dupId} dupName={dupName} />
             )}
           </span>
         </div>
 
         <div className="flex items-center">
           <input
-            id={name}
+            id={value}
             placeholder={placeholder}
             type={type}
-            {...register(name, {
+            {...register(value, {
               required: `필수입력 항목입니다.`,
               pattern: {
                 value: new RegExp(

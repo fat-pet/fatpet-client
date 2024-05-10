@@ -15,7 +15,7 @@ export default function Login() {
   const token = localStorage.getItem('token');
 
   const handleLogin = (data: Login) => {
-    login(data['아이디'], data['비밀번호'])
+    login(data['id'], data['password'])
       .then((data) => {
         localStorage.setItem('token', data.data.body.token);
         setToken(data.data.body.token);
@@ -44,10 +44,10 @@ export default function Login() {
       <div className="h-2/3">
         <Form onSubmit={handleLogin} className="flex flex-col items-center">
           <div className="w-full mb-6">
-            <Form.Input name="아이디" />
+            <Form.Input name="아이디" value="id" />
           </div>
           <div className="w-full mb-16">
-            <Form.Input name="비밀번호" type="password" />
+            <Form.Input name="비밀번호" value="password" type="password" />
           </div>
           <div className="w-full mb-3">
             <Form.Button

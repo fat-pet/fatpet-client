@@ -28,7 +28,7 @@ export default function Join() {
   const handleJoin = (data: Join): void => {
     console.log(dupId, dupName);
     if (dupId === true && dupName === true) {
-      join(data['이메일'], data['아이디'], data['비밀번호'], data['닉네임'])
+      join(data['email'], data['id'], data['password'], data['nickName'])
         .then(() => {
           alert('회원가입이 완료되었습니다.');
           setId('null');
@@ -58,6 +58,7 @@ export default function Join() {
             <div className="w-full mr-3">
               <Form.Input
                 name="닉네임"
+                value="nickName"
                 type="text"
                 minLen={2}
                 maxLen={10}
@@ -75,6 +76,7 @@ export default function Join() {
             <div className="w-full mr-3">
               <Form.Input
                 name="아이디"
+                value="id"
                 type="text"
                 minLen={4}
                 maxLen={12}
@@ -90,6 +92,7 @@ export default function Join() {
           <div className="w-full mb-5">
             <Form.Input
               name="비밀번호"
+              value="password"
               type="password"
               minLen={6}
               maxLen={16}
@@ -99,6 +102,7 @@ export default function Join() {
           <div className="w-full mb-12">
             <Form.Input
               name="이메일"
+              value="email"
               type="email"
               placeholder="email@example.com"
             />

@@ -12,10 +12,10 @@ export default function EditPet() {
   const { id, name, neutered, feedCalories } = location.state;
   const neuteredRef = useRef<HTMLInputElement>(neutered);
   function handleSubmit(data: SubmitProps) {
-    const feedCalories = parseInt(data['급여 사료 열량 (100g당)']);
+    const feedCalories = parseInt(data['feedAmount']);
     id &&
       editPet(
-        data['이름'],
+        data['name'],
         neuteredRef.current!.checked,
         feedCalories,
         parseInt(id),
@@ -30,13 +30,14 @@ export default function EditPet() {
         className="w-full h-2/3 flex flex-col justify-between mt-10"
       >
         <div>
-          <Form.Input name="이름" placeholder={name} />
+          <Form.Input name="이름" value="name" placeholder={name} />
           <div className="text-lg font-bold flex items-center my-10">
             중성화 여부 :{' '}
             <input type="checkbox" className="h-5 w-5 ml-5" ref={neuteredRef} />
           </div>
           <Form.Input
             name="급여 사료 열량 (100g당)"
+            value="feedAmount"
             placeholder={feedCalories}
           />
         </div>

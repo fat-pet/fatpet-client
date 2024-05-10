@@ -11,7 +11,7 @@ interface Props {
 
 export default function EditNickName({ setOpen }: Props) {
   const handleEdit = (data: EditMember) => {
-    editMember(data['이메일'], data['닉네임']).then(() => {
+    editMember(data['email'], data['nickName']).then(() => {
       setOpen(false);
     });
   };
@@ -27,8 +27,8 @@ export default function EditNickName({ setOpen }: Props) {
         className="flex flex-col items-center mt-10 justify-between h-full"
       >
         <div className="w-full h-1/3 flex flex-col justify-between items-center">
-          <Form.Input name="닉네임"></Form.Input>
-          <Form.Input name="이메일"></Form.Input>
+          <Form.Input name="닉네임" value="nickName"></Form.Input>
+          <Form.Input name="이메일" value="email"></Form.Input>
         </div>
         <div className="w-full h-1/3 flex flex-col items-center">
           <Form.Button name="변경" type="submit"></Form.Button>

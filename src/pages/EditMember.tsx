@@ -20,9 +20,7 @@ export default function EditMember() {
   };
 
   return (
-    <div
-      className={`w-full h-full relative  ${openNick || openResign ? 'bg-black bg-opacity-50' : ''}`}
-    >
+    <div className={`w-full h-full relative`}>
       <p className="text-xl font-bold tracking-tighter pb-10">회원 정보 관리</p>
 
       <div className="h-1/4 flex flex-col justify-between z-10">
@@ -38,7 +36,7 @@ export default function EditMember() {
       <div className="h-1/4 px-10 mt-40">
         <button
           onClick={() => setOpenResign(true)}
-          className={`border-red-400 border-2 text-red-400 w-full aspect-[5/1] text-xl font-bold ${openResign ? 'text-black border-black' : ''}`}
+          className={`border-red-400 border-2 text-red-400 w-full aspect-[5/1] text-xl font-bold hover:bg-red-300 hover:bg-opacity-50`}
         >
           회원 탈퇴
         </button>

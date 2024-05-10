@@ -31,6 +31,10 @@ export async function join(
   });
 }
 
+export async function resign() {
+  return await api.delete('/api/members');
+}
+
 export async function editMember(email: string, nickname: string) {
   return await api.put('/api/members', {
     email: email,
@@ -38,11 +42,7 @@ export async function editMember(email: string, nickname: string) {
   });
 }
 
-export async function resign() {
-  return await api.delete('/api/members');
-}
-
-export async function checkDup(id: string, nickname: string) {
+export async function checkdup(id: string, nickname: string) {
   return await api.get(`/api/members/check?loginId=${id}&nickname=${nickname}`);
 }
 

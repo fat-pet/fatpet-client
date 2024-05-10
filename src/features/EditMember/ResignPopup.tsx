@@ -25,13 +25,13 @@ export default function ResignPopup({ setOpen }: Props) {
       <div className="w-full flex justify-evenly mt-8">
         <button
           onClick={handleResign}
-          className="w-1/3 aspect-[3/1] border-black border text-red-400 font-bold"
+          className="w-1/3 aspect-[3/1] border text-red-400 font-bold rounded-lg hover:bg-gray-100"
         >
           탈퇴
         </button>
         <button
           onClick={() => setOpen(false)}
-          className="w-1/3 aspect-[3/1] border-black border"
+          className="w-1/3 aspect-[3/1] border rounded-lg hover:bg-gray-100"
         >
           취소
         </button>

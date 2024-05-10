@@ -18,13 +18,12 @@ export default function DetailInformation() {
     for (const key in data) {
       apiData[key] = Number(data[key]);
     }
-
     postDiagnoses(
       petData.id,
-      apiData['체중'],
-      apiData['목 둘레 길이'],
-      apiData['가슴 둘레 길이'],
-      apiData['사료 급여량(하루 평균)'],
+      apiData['weight'],
+      apiData['neckCirc'],
+      apiData['chestCirc'],
+      apiData['feedAmount'],
     );
   };
 
@@ -38,10 +37,25 @@ export default function DetailInformation() {
         onSubmit={handleSubmit}
         className="w-full h-full flex flex-col justify-evenly"
       >
-        <Form.Input name="체중" type="number" unit="kg" />
-        <Form.Input name="목 둘레" type="number" unit="cm" />
-        <Form.Input name="가슴 둘레" type="number" unit="cm" />
-        <Form.Input name="일일 사료 급여량" type="number" unit="kcal" />
+        <Form.Input name="체중" value="weight" type="number" unit="kg" />
+        <Form.Input
+          name="목 둘레 길이"
+          value="neckCirc"
+          type="number"
+          unit="cm"
+        />
+        <Form.Input
+          name="가슴 둘레 길이"
+          value="chestCirc"
+          type="number"
+          unit="cm"
+        />
+        <Form.Input
+          name="일일 사료 급여량"
+          value="feedAmount"
+          type="number"
+          unit="kcal"
+        />
         <Form.Button name="검사하기" className="mt-10 h-16" type="submit" />
       </Form>
     </div>

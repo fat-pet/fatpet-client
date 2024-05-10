@@ -32,38 +32,42 @@ export default function DashBoard() {
   }
 
   return (
-    <div className="flex flex-col items-center font-bold tracking-tighter h-full ">
+    <div className="flex flex-col items-center tracking-tighter h-full ">
+      {/* 헤더 */}
       <header className="flex justify-between w-full items-center">
-        <p className="text-lg">대시보드</p>
+        <p className="text-lg font-bold">대시보드</p>
         <Link to="./editMember">
           <FaGear className="text-2xl" />
         </Link>
       </header>
 
-      <div className="w-full h-1/3 pt-10">
+      {/* 펫 대쉬보드 */}
+      <div className="w-full h-1/3 pt-5">
         {pet ? (
           <PetStatus pet={pet as PetProps} handleDelete={handleDelete} />
         ) : (
           <PetNotStatus />
         )}
       </div>
-      {pet && (
-        <div className="w-full h-1/6 flex items-center">
-          <Diagnose />
-        </div>
-      )}
+
+      {/* BCS 검사하기 , 검사 기록보기 버튼 */}
+      <div className="w-full h-1/6 flex items-center">
+        {pet && <Diagnose />}
+      </div>
+
+      {/* 펫 변화추이 그래프 */}
       {pet && (
         <div className="w-full h-3/5 flex flex-col justify-center">
-          <span>펫 변화 추이</span>
+          <span className="font-bold">펫 변화 추이</span>
           <span className="text-sm text-gray-400">(최근 3회)</span>
           <ColumnBar
             name1="kg"
-            data1={datas.map((item) => item.kg)}
+            data1={dummyData.map((item) => item.kg)}
             name2="BCS"
-            data2={datas.map((item) => item.BCS)}
+            data2={dummyData.map((item) => item.BCS)}
           />
           <p className="text-sm text-gray-500">
-            *BCS(Body Condition Score) <br /> 펫의 비만도를 1~9만큼 측정한 값
+            *BCS(Body Condition Score) : 펫의 비만도를 1~9만큼 측정한 값
           </p>
         </div>
       )}
@@ -71,7 +75,7 @@ export default function DashBoard() {
   );
 }
 
-export const datas = [
+export const dummyData = [
   {
     name: '4/17',
     kg: 35,

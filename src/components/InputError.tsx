@@ -8,7 +8,7 @@ export default function InputError({ name, dupName, dupId }: Props) {
   const red = 'text-red-500 text-sm font-medium';
   const green = 'text-green-500 text-sm font-medium';
 
-  if (name === '닉네임') {
+  if (name === 'nickName') {
     if (dupName === 'null') {
       return <></>;
     } else if (dupName === true) {
@@ -18,7 +18,7 @@ export default function InputError({ name, dupName, dupId }: Props) {
     } else if (dupName === 'error') {
       return <p className={red}>2글자 이상, 10글자 이하이어야 합니다.</p>;
     }
-  } else if (name === '아이디') {
+  } else if (name === 'id') {
     if (dupId === 'null') {
       return <></>;
     } else if (dupId === true) {

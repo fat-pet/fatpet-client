@@ -3,8 +3,9 @@ import { FaDog } from 'react-icons/fa6';
 import { FaCat } from 'react-icons/fa';
 import { IoMdFemale, IoMdMale } from 'react-icons/io';
 import { useRef, useState } from 'react';
-import { createPet } from '@/api/axios';
 import DogBreed from '@/api/DogBreed';
+import { createPet } from '@/api/axios';
+import { useNavigate } from 'react-router-dom';
 import CatBreed from '@/api/CatBreed';
 
 interface BreedItem {
@@ -27,14 +28,18 @@ export default function BasicInformation() {
   );
   const dateRef = useRef<HTMLInputElement>(null);
   const neuteredRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   function handleSubmit(data: SubmitProps) {
+    console.log(dateRef);
     const date = dateRef.current!.value.split('-');
     const birthDate = `${date[0]}-${date[1]}`;
     const neutered = neuteredRef.current!.checked;
-    const feedCalories = parseInt(data['급여 사료 열량(100g당)']);
-    const name = data['이름'];
-    createPet(sex, name, species, code, birthDate, neutered, feedCalories);
+    const feedCalories = parseInt(data['feedAmount']);
+    const name = data['name'];
+    createPet(sex, name, species, code, birthDate, neutered, feedCalories).then(
+      () => navigate('/dashboard/petlist'),
+    );
   }
 
   function handleDropdown(breed: string, code: string) {
@@ -42,25 +47,15 @@ export default function BasicInformation() {
     setCode(code);
     setIsDropdownView(false);
   }
-
   return (
     <div className="flex flex-col items-center justify-center">
-      <p className="text-xl font-semibold mb-10">
-        반려동물의 정보를 입력해 주세요
+      <p className="text-xl font-bold mb-10">
+        반려동물의 기본정보를 입력해주세요
       </p>
       <Form
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center"
       >
-        {/* 나이 */}
-        <div className="flex my-5 w-full">
-          <div className="w-full mr-10">
-            <label>출생일(년, 월)</label>
-            <br />
-            <input type="date" ref={dateRef} className="border-2 h-12" />
-          </div>
-        </div>
-
         {/* 종류 */}
         <div className="w-full">
           <label>종류</label>

@@ -16,7 +16,7 @@ export default function BoardCreate() {
 
   return (
     <>
-      <header className="text-lg font-bold tracking-tighte">
+      <header className="text-lg font-bold tracking-tighter">
         <p>게시글 작성</p>
       </header>
 

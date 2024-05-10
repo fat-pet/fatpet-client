@@ -17,7 +17,7 @@ export default function BoardEdit() {
         Number(id),
         titleRef.current!.value,
         contentRef.current!.value,
-      ).then(() => navigate(`/board/${id}`));
+      ).then(() => navigate(`/post/${id}`));
     }
   };
 

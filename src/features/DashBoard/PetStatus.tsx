@@ -12,10 +12,10 @@ interface Props {
 
 export default function PetStatus({ pet, handleDelete }: Props) {
     return (
-        <div className="w-full h-full flex flex-col items-center">
+        <div className="w-full aspect-[3/1] flex flex-col items-center">
             <p className="w-full text-sm mb-3 ml-20">현재 선택 중인 펫</p>
 
-            <div className="w-5/6 h-40 bg-blue-400 rounded-xl px-5 text-white">
+            <div className="w-full h-40 bg-blue-400 rounded-xl px-5 text-white">
                 <div className="h-2/3 flex items-center pl-3 justify-between">
                     {pet?.breeds.species === 'DOG' ? (
                         <FaDog className="text-6xl" />

@@ -6,7 +6,7 @@ export default function Diagnose() {
         'w-1/3 h-12 border-2 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center mr-2 text-xs xsm:text-sm sm:text-base';
     const navigate = useNavigate();
     return (
-        <div className="w-full flex justify-around">
+        <div className="w-full flex justify-around h-16 items-center">
             <button
                 className={buttonStyle}
                 onClick={() => navigate('/inputData/detail')}

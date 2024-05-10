@@ -1,6 +1,9 @@
-import React from 'react';
 import { useFormContext } from '../contexts/FormContext';
+import InputError from './InputError';
+import { useDupStore } from '@/stores/useStore';
 import { josa } from '@toss/hangul';
+import useDebouncing from '@/hooks/useDebouncing';
+import { getDup } from '@/api/axios';
 
 interface FormInputProps {
   name?: string; // Input 위에 이름
@@ -13,25 +16,69 @@ interface FormInputProps {
   className?: string;
 }
 
-const FormInput: React.FC<FormInputProps> = ({
+const FormInputDup: React.FC<FormInputProps> = ({
   name,
   type = 'text',
-  minLen,
-  maxLen,
   placeholder,
   unit,
   value,
   className,
 }) => {
-  const { register, errors } = useFormContext();
+  const { register, errors, watch } = useFormContext();
+  const { dupId, dupName, setId, setName } = useDupStore();
+  const id = watch('id');
+  const nickName = watch('nickName');
+  const handleIdDup = () => {
+    if (id) {
+      if (id.length < 4 || id.length > 12) {
+        setId('error');
+      } else {
+        getDup(id, '').then((res) => {
+          res.data.body === false ? setId(true) : setId(false);
+        });
+      }
+    }
+  };
+  const handleNickNameDup = () => {
+    if (nickName) {
+      if (nickName.length < 2 || nickName.length > 10) {
+        setName('error');
+      } else {
+        getDup('', nickName).then((res) => {
+          res.data.body === false ? setName(true) : setName(false);
+        });
+      }
+    }
+  };
 
+  useDebouncing({
+    callback: handleIdDup,
+    delay: 1000,
+    dependency: id,
+    setState: setId,
+  });
+
+  useDebouncing({
+    callback: handleNickNameDup,
+    delay: 1000,
+    dependency: nickName,
+    setState: setName,
+  });
   return (
     <>
       <label htmlFor={value} className="flex flex-col justify-start w-full">
         <div className="flex justify-between items-end font-medium">
           <span>{name}</span>
           <span className="text-sm text-red-500">
-            {errors[value]?.message as string}
+            {errors[value] ? (
+              (errors[value]?.message as string)
+            ) : (
+              <InputError
+                name={value}
+                dupId={dupId as boolean}
+                dupName={dupName as boolean}
+              />
+            )}
           </span>
         </div>
 
@@ -48,18 +95,6 @@ const FormInput: React.FC<FormInputProps> = ({
                 ),
                 message: '띄어쓰기 또는 특수문자를 사용할 수 없습니다.',
               },
-              ...(minLen && {
-                minLength: {
-                  value: minLen,
-                  message: `${josa(name as string, '은/는')} ${minLen}글자 이상이어야 합니다.`,
-                },
-              }),
-              ...(maxLen && {
-                maxLength: {
-                  value: maxLen,
-                  message: `${name}는 ${maxLen}글자 이하이어야 합니다.`,
-                },
-              }),
             })}
             // Input 디자인 className
             className={`w-full mt-2 h-12 bg-gray-50 border outline-none px-3 font-medium border-gray-200 drop-shadow-sm ${className}`}
@@ -72,4 +107,4 @@ const FormInput: React.FC<FormInputProps> = ({
   );
 };
 
-export default FormInput;
+export default FormInputDup;

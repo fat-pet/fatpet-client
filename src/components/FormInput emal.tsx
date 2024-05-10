@@ -13,7 +13,7 @@ interface FormInputProps {
   className?: string;
 }
 
-const FormInput: React.FC<FormInputProps> = ({
+const FormInputEmail: React.FC<FormInputProps> = ({
   name,
   type = 'text',
   minLen,
@@ -43,10 +43,8 @@ const FormInput: React.FC<FormInputProps> = ({
             {...register(value, {
               required: `필수입력 항목입니다.`,
               pattern: {
-                value: new RegExp(
-                  value === 'password' ? '' : '^[가-힣A-Za-z0-9]*$',
-                ),
-                message: '띄어쓰기 또는 특수문자를 사용할 수 없습니다.',
+                value: new RegExp(''),
+                message: '띄어쓰기를 사용할 수 없습니다.',
               },
               ...(minLen && {
                 minLength: {
@@ -72,4 +70,4 @@ const FormInput: React.FC<FormInputProps> = ({
   );
 };
 
-export default FormInput;
+export default FormInputEmail;

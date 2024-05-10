@@ -40,11 +40,11 @@ const router = createBrowserRouter([
     element: <MemberLayout />,
     children: [
       { path: '/dashboard', element: <DashBoard /> },
-      { path: '/dashboard/editpet', element: <EditPet /> },
-      { path: '/dashboard/resultlist', element: <PetResultList /> },
-      { path: '/dashboard/petlist', element: <PetList /> },
-      { path: '/petlist/createpet', element: <CreatePet /> },
-      { path: '/dashboard/editmember', element: <EditMember /> },
+      { path: '/pet/edit', element: <EditPet /> },
+      { path: '/pet/resultlist', element: <PetResultList /> },
+      { path: '/pet/list', element: <PetList /> },
+      { path: '/pet/new', element: <CreatePet /> },
+      { path: '/member/edit', element: <EditMember /> },
       { path: '/board', element: <Board /> },
       { path: '/post/new', element: <BoardCreate /> },
       { path: '/post/:id', element: <BoardContent /> },
@@ -53,9 +53,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <RouterProvider router={router} />,
-);
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <RouterProvider router={router} />,
 );

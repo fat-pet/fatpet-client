@@ -18,7 +18,6 @@ export default function DetailInformation() {
     for (const key in data) {
       apiData[key] = Number(data[key]);
     }
-
     postDiagnoses(
       petData.id,
       apiData['weight'],
@@ -39,9 +38,14 @@ export default function DetailInformation() {
         className="w-full h-full flex flex-col justify-evenly"
       >
         <Form.Input name="체중" value="weight" type="number" unit="kg" />
-        <Form.Input name="목 둘레" value="neckCirc" type="number" unit="cm" />
         <Form.Input
-          name="가슴 둘레"
+          name="목 둘레 길이"
+          value="neckCirc"
+          type="number"
+          unit="cm"
+        />
+        <Form.Input
+          name="가슴 둘레 길이"
           value="chestCirc"
           type="number"
           unit="cm"

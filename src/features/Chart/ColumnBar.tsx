@@ -31,14 +31,18 @@ export function ColumnBar({ name1, data1, name2, data2 }: Props) {
   const data = {
     labels,
     datasets: [
+      // 왼족 막대 그래프
       {
         label: name1,
         data: data1.map((item) => item),
-        backgroundColor: '#51A1FF',
+        // 그래프 막대 색
+        backgroundColor: 'rgb(22 163 74)',
       },
+      //   오른쪽 막대 그래프
       {
         label: name2,
         data: data2.map((item) => item),
+        // 그래프 막대 색
         backgroundColor: '#E8E8E8',
       },
     ],

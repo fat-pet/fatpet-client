@@ -7,25 +7,20 @@ import { Link } from 'react-router-dom';
 
 export default function Board() {
   const [boardData, setBoardData] = useState<BoardProps[]>();
-
   useEffect(() => {
     getPost().then((res) => {
       setBoardData(res.data.body);
       console.log(res.data.body);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <div>
       <header className="text-lg font-bold tracking-tighter mb-3 flex justify-between ">
         <p>전체 게시판</p>
-        <div className="w-1/2 relative">
-          <input type="text" className="border-2 w-full rounded-xl" />
-          <CiSearch className="absolute top-1/2 -translate-y-1/2 right-2 text-2xl" />
-        </div>
       </header>
       <Link
-        to="./create"
+        to="/post/new"
         className="w-1/4 mb-2 border-2 rounded-lg hover:bg-slate-200 float-end flex justify-center"
       >
         글쓰기

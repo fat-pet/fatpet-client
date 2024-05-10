@@ -20,7 +20,6 @@ export default function BoardContent() {
   const navigate = useNavigate();
   const commentRef = useRef<HTMLInputElement>(null);
   const [data, setData] = useState<BoardContent>();
-
   useEffect(() => {
     if (id) {
       getPostContent(Number(id)).then((res) => {
@@ -44,7 +43,7 @@ export default function BoardContent() {
   };
 
   const handleEdit = () => {
-    navigate(`/board/edit/${id}`, { state: data });
+    navigate(`/post/edit/${id}`, { state: data });
   };
 
   return (

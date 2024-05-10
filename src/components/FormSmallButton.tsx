@@ -1,4 +1,4 @@
-import { checkDup } from '@/api/axios';
+import { checkdup } from '@/api/axios';
 import { useFormContext } from '@/contexts/FormContext';
 import { useDupStore } from '@/stores/useStore';
 import React from 'react';
@@ -21,7 +21,7 @@ const FormSmallButton: React.FC<FormButtonProps> = ({
     const Nickname: string = watch('닉네임');
     if (dup === '닉네임') {
       if (Nickname.length <= 12 && Nickname.length >= 4) {
-        checkDup(' ', Nickname).then((data) => {
+        checkdup(' ', Nickname).then((data) => {
           data.status === 200 ? setName(true) : setName(false);
         });
       } else {
@@ -29,7 +29,7 @@ const FormSmallButton: React.FC<FormButtonProps> = ({
       }
     } else if (dup === '아이디') {
       if (Id.length <= 12 && Id.length >= 4) {
-        checkDup(Id, ' ').then((data) => {
+        checkdup(Id, ' ').then((data) => {
           data.status === 200 ? setId(true) : setId(false);
         });
       } else {

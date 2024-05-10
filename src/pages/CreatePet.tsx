@@ -37,7 +37,7 @@ export default function BasicInformation() {
     const feedCalories = parseInt(data['feedAmount']);
     const name = data['name'];
     createPet(sex, name, species, code, birthDate, neutered, feedCalories).then(
-      () => navigate('/dashboard/petList'),
+      () => navigate('/dashboard/petlist'),
     );
   }
 
@@ -62,10 +62,14 @@ export default function BasicInformation() {
 
         {/* 나이 */}
         <div className="flex my-5 w-full">
-          <div className="w-full mr-10">
+          <div className="w-full">
             <label>나이</label>
             <br />
-            <input type="date" ref={dateRef} className="border-2 w-5/6 h-12" />
+            <input
+              type="date"
+              className="w-full mt-2 h-12 bg-gray-50 border rounded-md outline-none px-3 font-medium border-gray-200 placeholder:text-sm"
+              ref={dateRef}
+            />
           </div>
         </div>
 

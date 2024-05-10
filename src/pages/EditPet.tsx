@@ -30,14 +30,14 @@ export default function EditPet() {
         className="w-full h-2/3 flex flex-col justify-between mt-10"
       >
         <div>
-          <Form.Input name="이름" value='name' placeholder={name} />
+          <Form.Input name="이름" value="name" placeholder={name} />
           <div className="text-lg font-bold flex items-center my-10">
             중성화 여부 :{' '}
             <input type="checkbox" className="h-5 w-5 ml-5" ref={neuteredRef} />
           </div>
           <Form.Input
             name="급여 사료 열량 (100g당)"
-            value='feedAmount'
+            value="feedAmount"
             placeholder={feedCalories}
           />
         </div>

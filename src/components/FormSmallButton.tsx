@@ -1,4 +1,4 @@
-import { getDup } from '@/api/axios';
+import { checkdup } from '@/api/axios';
 import { useFormContext } from '@/contexts/FormContext';
 import { useDupStore } from '@/stores/useStore';
 import React from 'react';
@@ -21,7 +21,7 @@ const FormSmallButton: React.FC<FormButtonProps> = ({
     const Nickname: string = watch('닉네임');
     if (dup === '닉네임') {
       if (Nickname.length <= 12 && Nickname.length >= 4) {
-        getDup(' ', Nickname).then((data) => {
+        checkdup(' ', Nickname).then((data) => {
           data.status === 200 ? setName(true) : setName(false);
         });
       } else {
@@ -29,7 +29,7 @@ const FormSmallButton: React.FC<FormButtonProps> = ({
       }
     } else if (dup === '아이디') {
       if (Id.length <= 12 && Id.length >= 4) {
-        getDup(Id, ' ').then((data) => {
+        checkdup(Id, ' ').then((data) => {
           data.status === 200 ? setId(true) : setId(false);
         });
       } else {
@@ -39,16 +39,14 @@ const FormSmallButton: React.FC<FormButtonProps> = ({
   };
 
   return (
-    <div>
-      <button
-        type={type}
-        className="w-20 h-10 bg-[#333333] text-white tracking-tighter text-sm mb-1"
-        onClick={handleDup}
-        disabled={isSubmitting}
-      >
-        {name}
-      </button>
-    </div>
+    <button
+      type={type}
+      className="min-w-fit px-4 py-3 mb-0.5 bg-neutral-800 text-sm text-white font-semibold drop-shadow hover:opacity-70 transition-opacity"
+      onClick={handleDup}
+      disabled={isSubmitting}
+    >
+      {name}
+    </button>
   );
 };
 

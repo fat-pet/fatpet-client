@@ -31,7 +31,6 @@ export default function BasicInformation() {
   const navigate = useNavigate();
 
   function handleSubmit(data: SubmitProps) {
-    console.log(dateRef);
     const date = dateRef.current!.value.split('-');
     const birthDate = `${date[0]}-${date[1]}`;
     const neutered = neuteredRef.current!.checked;

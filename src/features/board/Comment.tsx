@@ -12,6 +12,7 @@ export default function Comment({ data }: Props) {
   const handleClick = () => {
     deleteComment(data.id).then(() => navigate(0));
   };
+
   return (
     <div className="px-4 py-3 tracking-tighter border-b-2">
       <header className="w-full flex items-center justify-between mb-1 font-bold">

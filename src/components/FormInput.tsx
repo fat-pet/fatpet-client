@@ -11,6 +11,7 @@ interface FormInputProps {
   placeholder?: string;
   unit?: string; // 단위
   value: string;
+  className?: string;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -21,6 +22,7 @@ const FormInput: React.FC<FormInputProps> = ({
   placeholder,
   unit,
   value,
+  className,
 }) => {
   const { register, errors } = useFormContext();
   const { dupId, dupName } = useDupStore();
@@ -28,9 +30,9 @@ const FormInput: React.FC<FormInputProps> = ({
 
   return (
     <>
-      <label htmlFor={name} className="flex flex-col justify-start w-full">
-        <div className="flex justify-between items-end">
-          <span className="font-medium">{name}</span>
+      <label htmlFor={value} className="flex flex-col justify-start w-full">
+        <div className="flex justify-between items-end font-medium">
+          <span>{name}</span>
           <span className="text-sm text-red-500">
             {errors[value] ? (
               (errors[value]?.message as string)
@@ -67,10 +69,10 @@ const FormInput: React.FC<FormInputProps> = ({
               }),
             })}
             // Input 디자인 className
-            className={`w-full mt-2 h-12 bg-gray-50 border rounded-md outline-none px-3 font-medium border-gray-200 placeholder:text-sm`}
+            className={`w-full mt-2 h-12 bg-gray-50 border outline-none px-3 font-medium border-gray-200 drop-shadow-sm ${className}`}
           />
           {/* 단위 ex) ~~~ cm kcal 등등 */}
-          {unit && <p className="ml-4">{unit}</p>}
+          {unit && <p className="ml-8">{unit}</p>}
         </div>
       </label>
     </>

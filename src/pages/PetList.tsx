@@ -1,5 +1,5 @@
 import { getPetList } from '@/api/axios';
-import PetListComponent from '@/features/PetList/PetListComponent';
+import PetListComponent from '@/features/petList/PetListComponent';
 import { PetProps } from '@/types/types';
 import { useEffect, useState } from 'react';
 import { CiSquarePlus } from 'react-icons/ci';
@@ -20,7 +20,7 @@ export default function PetList() {
         {pet?.map((item) => {
           return <PetListComponent pet={item} />;
         })}
-        <Link to="/petList/createPet">
+        <Link to="/pet/new">
           <CiSquarePlus className="w-10 h-10" />
         </Link>
       </div>

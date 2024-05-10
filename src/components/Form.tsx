@@ -22,9 +22,11 @@ export default function Form({ children, onSubmit, className }: FormProps) {
     formState: { isSubmitting, errors },
     watch,
   } = useForm<FieldValues>();
+
   const submit: SubmitHandler<FieldValues> = (data) => {
     onSubmit(data);
   };
+
   return (
     <FormContext.Provider value={{ register, isSubmitting, errors, watch }}>
       <form onSubmit={handleSubmit(submit)} className={className}>

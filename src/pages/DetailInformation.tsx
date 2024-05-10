@@ -37,11 +37,7 @@ export default function DetailInformation() {
         onSubmit={handleSubmit}
         className="w-full h-full flex flex-col justify-evenly"
       >
-        <Form.Input 
-          name="체중" 
-          value="weight" 
-          type="number" 
-          unit="kg" />
+        <Form.Input name="체중" value="weight" type="number" unit="kg" />
         <Form.Input
           name="목 둘레 길이"
           value="neckCirc"
@@ -55,7 +51,7 @@ export default function DetailInformation() {
           unit="cm"
         />
         <Form.Input
-          name="사료 급여량(하루 평균)"
+          name="일일 사료 급여량"
           value="feedAmount"
           type="number"
           unit="kcal"

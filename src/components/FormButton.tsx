@@ -19,7 +19,7 @@ const FormButton: React.FC<FormButtonProps> = ({
   return (
     <button
       type={type}
-      className={`w-full py-3.5 font-semibold ${className}`}
+      className={`w-full py-3.5 drop-shadow font-semibold ${className}`}
       onClick={onClick ? onClick : () => {}}
       disabled={isSubmitting}
     >

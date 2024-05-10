@@ -13,9 +13,9 @@ interface Props {
 export default function PetStatus({ pet, handleDelete }: Props) {
   return (
     <div className="w-full h-full flex flex-col items-center">
-      <p className="w-full text-sm mb-3 ml-20">현재 선택 중인 펫</p>
+      <p className="w-full text-sm mb-3 ml-20 font-bold">현재 선택 중인 펫</p>
 
-      <div className="w-5/6 h-40 bg-green-600 rounded-xl px-5 text-white">
+      <div className="w-5/6 h-40 bg-blue-400 rounded-xl px-5 text-white shadow-lg">
         <div className="h-2/3 flex items-center pl-3 justify-between">
           {pet?.breeds.species === 'DOG' ? (
             <FaDog className="text-6xl" />
@@ -36,13 +36,13 @@ export default function PetStatus({ pet, handleDelete }: Props) {
               생일 : {`${pet?.birthDate[0]}년 ${pet?.birthDate[1]}월`}
             </p>
           </div>
-          <Link to="./petList">
+          <Link to="/pet/list">
             <IoIosArrowForward className="text-4xl" />
           </Link>
         </div>
         <div className="h-1/3 border-t flex items-center text-center text-white text-sm xsm:text-base">
           <Link
-            to={`./editPet`}
+            to={`/pet/edit`}
             state={{
               id: pet.id,
               name: pet.name,

@@ -29,6 +29,7 @@ export default function BoardContent() {
     } else {
       navigate(-1);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

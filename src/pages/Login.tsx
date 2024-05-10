@@ -35,6 +35,7 @@ export default function Login() {
     if (token) {
       navigate('/dashboard');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -59,7 +60,7 @@ export default function Login() {
             to={'/signup'}
             className="block w-full py-3 text-center font-medium hover:opacity-70"
           >
-            아직 회원이 아나시라면?{' '}
+            아직 회원이 아니시라면?{' '}
             <span className="underline">회원가입하기</span>
           </Link>
         </Form>

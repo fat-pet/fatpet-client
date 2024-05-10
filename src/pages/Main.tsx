@@ -10,10 +10,12 @@ export default function Main() {
     <div className="h-full flex flex-col justify-center">
       <div className="mb-16">
         <Header />
-        <div className="bg-stone-100 p-6 border bg-opacity-50">
-          <p className="text-2xl font-semibold">우리 집 강아지도 비만일까?</p>
+        <div className="bg-sky-50 border p-7">
+          <p className="text-2xl font-semibold">
+            혹시, 우리 집 강아지도 비만일까?
+          </p>
           <p className="text-lg font-medium text-gray-500">
-            지금 바로 팻펫에서 비만도를 진단해 보세요.
+            지금 바로 반려동물의 비만도를 진단해 보세요.
           </p>
           <div className="flex justify-end">
             <img
@@ -40,7 +42,7 @@ export default function Main() {
             name="로그인 없이 진단하기"
             type="button"
             className="bg-neutral-800 hover:opacity-70 transition-opacity text-white"
-            onClick={() => navigate('/inputdata')}
+            onClick={() => navigate('/trial')}
           />
         </div>
       </Form>

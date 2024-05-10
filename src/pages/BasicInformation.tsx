@@ -48,34 +48,25 @@ export default function BasicInformation() {
     setIsDropdownView(false);
   }
   return (
-    <div className="flex flex-col items-center justify-center  text-lg">
-      <p className="text-xl font-bold tracking-tighter mb-10">
+    <div className="flex flex-col items-center justify-center">
+      <p className="text-xl font-bold mb-10">
         반려동물의 기본정보를 입력해주세요
       </p>
       <Form
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center"
       >
-        {/* 이름 */}
-        <div className="w-full">
-          <Form.Input name="이름" value="name" placeholder="나비" />
-        </div>
-
         {/* 나이 */}
         <div className="flex my-5 w-full">
-          <div className="w-full">
-            <label>나이</label>
+          <div className="w-full mr-10">
+            <label>출생일(년, 월)</label>
             <br />
-            <input
-              type="date"
-              className="w-full mt-2 h-12 bg-gray-50 border rounded-md outline-none px-3 font-medium border-gray-200 placeholder:text-sm"
-              ref={dateRef}
-            />
+            <input type="date" ref={dateRef} className="border-2 h-12" />
           </div>
         </div>
 
         {/* 종류 */}
-        <div className="w-full font-bold">
+        <div className="w-full">
           <label>종류</label>
           <div className="flex mt-4">
             <Form.SelectButton
@@ -96,7 +87,7 @@ export default function BasicInformation() {
         {/* 성별 */}
         <div className="my-5 w-full">
           <label>성별</label>
-          <div className="flex mt-2 w-full font-bold">
+          <div className="flex mt-2 w-full">
             <Form.SelectButton
               label="수컷"
               state={sex === 'MALE' ? true : false}
@@ -120,20 +111,19 @@ export default function BasicInformation() {
           </div>
         </div>
 
-        {/* 품종 (품종 데이터 받아와야하나?)*/}
+        {/* 품종*/}
         <div className="mb-5 relative w-full">
           <label>품종</label>
           <button
             type="button"
-            className="border-2 w-full h-12 flex items-center justify-center mt-3 rounded-md outline-none font-medium border-gray-200"
+            className="border w-5/6 h-12 flex items-center justify-center mt-3"
             onClick={() => setIsDropdownView(!isDropdownView)}
           >
             {breed}
           </button>
-          {/* w-full mt-2 h-12 bg-gray-50 border rounded-md outline-none px-3 font-medium border-gray-200 placeholder:text-sm */}
           {isDropdownView ? (
             <ul
-              className="border-2 w-full absolute top-20 z-10 h-40 overflow-auto"
+              className="border w-5/6 absolute top-20 z-10 h-40 overflow-auto"
               onBlur={() => console.log('hello')}
             >
               {(species === 'DOG' ? DogBreed : CatBreed).map(
@@ -141,7 +131,7 @@ export default function BasicInformation() {
                   return (
                     <li
                       onClick={() => handleDropdown(item.value, item.code)}
-                      className="border-b-2 h-10 flex justify-center items-center hover:cursor-pointer hover:bg-gray-200 bg-white"
+                      className="border-b h-10 flex justify-center items-center hover:cursor-pointer hover:bg-gray-200 bg-white"
                     >
                       {item.value}
                     </li>
@@ -153,19 +143,7 @@ export default function BasicInformation() {
             ''
           )}
         </div>
-
-        {/* 급여 사료 열량 */}
-        <div className="flex mb-10 w-full">
-          <Form.Input
-            name="급여 사료 열량(100g당)"
-            value="feedAmount"
-            type="number"
-            unit="kcal"
-            placeholder="300"
-          />
-        </div>
-
-        <Form.Button name="펫 생성" type="submit" />
+        <Form.Button name="다음" type="submit" />
       </Form>
     </div>
   );

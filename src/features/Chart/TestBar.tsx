@@ -32,7 +32,8 @@ export const options = {
 };
 
 const labels = ['January', 'February', 'March'];
-const datas = [
+
+const dummyData = [
   {
     name: '4/17',
     kg: 35,
@@ -49,17 +50,18 @@ const datas = [
     BCS: 5,
   },
 ];
+
 export const data = {
   labels,
   datasets: [
     {
       label: 'kg',
-      data: datas.map((item) => item.kg),
+      data: dummyData.map((item) => item.kg),
       backgroundColor: 'rgba(255, 99, 132, 0.5)',
     },
     {
       label: 'BCS',
-      data: datas.map((item) => item.BCS),
+      data: dummyData.map((item) => item.BCS),
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
     },
   ],

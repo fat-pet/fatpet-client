@@ -2,7 +2,6 @@ import { getPost } from '@/api/axios';
 import BoardItem from '@/features/board/BoardItem';
 import { BoardProps } from '@/types/types';
 import { useEffect, useState } from 'react';
-import { CiSearch } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 
 export default function Board() {
@@ -12,6 +11,7 @@ export default function Board() {
       setBoardData(res.data.body);
       console.log(res.data.body);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div>

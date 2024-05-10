@@ -10,12 +10,10 @@ export default function PetListComponent({ pet }: { pet: PetProps }) {
     localStorage.setItem('petData', JSON.stringify(pet));
     navigate('/dashboard');
   }
-  console.log(pet!.breeds.species, pet!.breeds.name);
-  console.log(transBreed(pet!.breeds.species, pet!.breeds.name));
 
   return (
     <div
-      className="w-full aspect-[3/1] rounded-xl bg-green-600 mb-10 flex items-center px-5 text-white hover:cursor-pointer"
+      className="w-full aspect-[2/1] rounded-xl bg-blue-400 mb-20 flex items-center px-5 text-white hover:cursor-pointer"
       onClick={handleClicked}
     >
       {pet?.breeds.species === 'DOG' ? (
@@ -27,7 +25,7 @@ export default function PetListComponent({ pet }: { pet: PetProps }) {
       <div>
         <p className="text-lg font-bold">이름 : {pet.name}</p>
         <p className="text-xs xxsm:text-sm">
-          품종 : {transBreed(pet!.breeds.species, pet!.breeds.name)}
+          품종 : {transBreed(pet.breeds.species, pet!.breeds.name)}
         </p>
         <p className="text-xs xxsm:text-sm">
           생일 : {`${pet.birthDate[0]}년 ${pet.birthDate[1]}월`}

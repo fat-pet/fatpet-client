@@ -42,7 +42,7 @@ export async function editMember(email: string, nickname: string) {
   });
 }
 
-export async function checkdup(id: string, nickname: string) {
+export async function getDup(id: string, nickname: string) {
   return await api.get(`/api/members/check?loginId=${id}&nickname=${nickname}`);
 }
 

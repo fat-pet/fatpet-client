@@ -15,14 +15,14 @@ export default function Join() {
   const { dupId, dupName, setId, setName } = useDupStore();
 
   useEffect(() => {
-    setId('null');
-    setName('null');
+    setId(undefined);
+    setName(undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleBack = () => {
-    setId('null');
-    setName('null');
+    setId(undefined);
+    setName(undefined);
     navigate('/signin');
   };
 
@@ -32,8 +32,8 @@ export default function Join() {
       join(data['email'], data['id'], data['password'], data['nickName'])
         .then(() => {
           alert('회원가입이 완료되었습니다.');
-          setId('null');
-          setName('null');
+          setId(undefined);
+          setName(undefined);
           navigate('/signin');
         })
         .catch((err) => {
@@ -54,10 +54,9 @@ export default function Join() {
           onSubmit={handleJoin}
           className="h-full flex flex-col items-center"
         >
-          {/* <div className="flex w-full items-end justify-between mb-5"> */}
           <div className="w-full mb-5">
             <div className="w-full mr-3">
-              <Form.Input
+              <Form.InputDup
                 name="닉네임"
                 value="nickName"
                 type="text"
@@ -66,16 +65,10 @@ export default function Join() {
                 placeholder="2글자 이상, 10글자 이하"
               />
             </div>
-            {/* <Form.SmallButton
-                            name="중복 확인"
-                            type="button"
-                            dup="닉네임"
-                        /> */}
           </div>
-          {/* <div className="flex w-full items-end justify-between mb-5"> */}
           <div className="w-full mb-5">
             <div className="w-full mr-3">
-              <Form.Input
+              <Form.InputDup
                 name="아이디"
                 value="id"
                 type="text"
@@ -101,10 +94,10 @@ export default function Join() {
             />
           </div>
           <div className="w-full mb-12">
-            <Form.Input
+            <Form.InputEmail
               name="이메일"
               value="email"
-              type="email"
+              type="text"
               placeholder="email@example.com"
             />
           </div>

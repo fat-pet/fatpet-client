@@ -10,10 +10,10 @@ export default function Main() {
     <div className='h-full flex flex-col justify-center'>
       <div className='mb-16'>
         <Header />
-        <div className='bg-stone-100 p-6 border bg-opacity-50'>
-          <p className='text-2xl font-semibold'>우리 집 강아지도 비만일까?</p>
+        <div className='bg-stone-100 p-6 bg-opacity-50 border drop-shadow-sm'>
+          <p className='text-2xl font-semibold'>혹시, 우리 집 강아지도 비만일까?</p>
           <p className='text-lg font-medium text-gray-500'>
-            지금 바로 팻펫에서 비만도를 진단해 보세요.
+            지금 바로 반려동물의 비만도를 진단해 보세요.
           </p>
           <div className='flex justify-end'>
             <img src='/footprint.png' alt='fatpet' className='w-14 opacity-30 mt-24' />

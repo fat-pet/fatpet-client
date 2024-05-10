@@ -27,8 +27,8 @@ const FormInput: React.FC<FormInputProps> = ({
   return (
     <>
       <label htmlFor={name} className='flex flex-col justify-start w-full'>
-        <div className='flex justify-between items-end'>
-          <span className='font-medium'>{name}</span>
+        <div className='flex justify-between items-end font-medium'>
+          <span>{name}</span>
           <span className='text-sm text-red-500'>
             {errors[name] ? (
               (errors[name]?.message as string)
@@ -57,7 +57,7 @@ const FormInput: React.FC<FormInputProps> = ({
               }),
             })}
             // Input 디자인 className
-            className={`w-full mt-2 h-12 bg-gray-50 border rounded-md outline-none px-3 font-medium border-gray-200 placeholder:text-sm`}
+            className={`w-full mt-2 h-12 bg-gray-50 border rounded-md outline-none px-3 font-medium border-gray-200 drop-shadow-sm`}
           />
           {/* 단위 ex) ~~~ cm kcal 등등 */}
           {unit && <p className='ml-8'>{unit}</p>}

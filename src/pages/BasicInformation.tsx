@@ -56,15 +56,6 @@ export default function BasicInformation() {
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center"
       >
-        {/* 나이 */}
-        <div className="flex my-5 w-full">
-          <div className="w-full mr-10">
-            <label>출생일(년, 월)</label>
-            <br />
-            <input type="date" ref={dateRef} className="border-2 h-12" />
-          </div>
-        </div>
-
         {/* 종류 */}
         <div className="w-full">
           <label>종류</label>

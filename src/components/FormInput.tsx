@@ -10,6 +10,7 @@ interface FormInputProps {
   maxLen?: number; // 최대 글자 수
   placeholder?: string;
   unit?: string; // 단위
+  className?: string;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -19,6 +20,7 @@ const FormInput: React.FC<FormInputProps> = ({
   maxLen,
   placeholder,
   unit,
+  className,
 }) => {
   const { register, errors } = useFormContext();
   const { dupId, dupName } = useDupStore();
@@ -26,10 +28,10 @@ const FormInput: React.FC<FormInputProps> = ({
 
   return (
     <>
-      <label htmlFor={name} className='flex flex-col justify-start w-full'>
-        <div className='flex justify-between items-end font-medium'>
+      <label htmlFor={name} className="flex flex-col justify-start w-full">
+        <div className="flex justify-between items-end font-medium">
           <span>{name}</span>
-          <span className='text-sm text-red-500'>
+          <span className="text-sm text-red-500">
             {errors[name] ? (
               (errors[name]?.message as string)
             ) : (
@@ -38,7 +40,7 @@ const FormInput: React.FC<FormInputProps> = ({
           </span>
         </div>
 
-        <div className='flex items-center'>
+        <div className="flex items-center">
           <input
             id={name}
             placeholder={placeholder}
@@ -46,21 +48,29 @@ const FormInput: React.FC<FormInputProps> = ({
             {...register(name, {
               required: `필수입력 항목입니다.`,
               pattern: {
-                value: new RegExp(name === '이메일' ? '' : '^[가-힣A-Za-z0-9]*$'),
+                value: new RegExp(
+                  name === '이메일' ? '' : '^[가-힣A-Za-z0-9]*$',
+                ),
                 message: '띄어쓰기 또는 특수문자를 사용할 수 없습니다.',
               },
               ...(minLen && {
-                minLength: { value: minLen, message: `${name}는 ${minLen}글자 이상이어야 합니다.` },
+                minLength: {
+                  value: minLen,
+                  message: `${name}는 ${minLen}글자 이상이어야 합니다.`,
+                },
               }),
               ...(maxLen && {
-                maxLength: { value: maxLen, message: `${name}는 ${maxLen}글자 이하이어야 합니다.` },
+                maxLength: {
+                  value: maxLen,
+                  message: `${name}는 ${maxLen}글자 이하이어야 합니다.`,
+                },
               }),
             })}
             // Input 디자인 className
-            className={`w-full mt-2 h-12 bg-gray-50 border rounded-md outline-none px-3 font-medium border-gray-200 drop-shadow-sm`}
+            className={`w-full mt-2 h-12 bg-gray-50 border outline-none px-3 font-medium border-gray-200 drop-shadow-sm ${className}`}
           />
           {/* 단위 ex) ~~~ cm kcal 등등 */}
-          {unit && <p className='ml-8'>{unit}</p>}
+          {unit && <p className="ml-8">{unit}</p>}
         </div>
       </label>
     </>

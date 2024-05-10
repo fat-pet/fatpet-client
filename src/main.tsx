@@ -29,8 +29,8 @@ const router = createBrowserRouter([
       { index: true, element: <Main /> },
       { path: '/signin', element: <Login /> },
       { path: '/signup', element: <Join /> },
-      { path: '/inputData', element: <BasicInformation /> },
-      { path: '/inputData/detail', element: <DetailInformation /> },
+      { path: '/trial', element: <BasicInformation /> },
+      { path: '/trial/detail', element: <DetailInformation /> },
       { path: '/result', element: <Result /> },
       { path: '/result/solution', element: <Solution /> },
     ],
@@ -53,4 +53,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<RouterProvider router={router} />);
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <RouterProvider router={router} />,
+);

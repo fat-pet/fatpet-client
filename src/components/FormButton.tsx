@@ -8,7 +8,12 @@ interface FormButtonProps {
   className?: string;
 }
 
-const FormButton: React.FC<FormButtonProps> = ({ name, type = 'button', onClick, className }) => {
+const FormButton: React.FC<FormButtonProps> = ({
+  name,
+  type = 'button',
+  onClick,
+  className,
+}) => {
   const { isSubmitting } = useFormContext();
 
   return (
@@ -16,7 +21,8 @@ const FormButton: React.FC<FormButtonProps> = ({ name, type = 'button', onClick,
       type={type}
       className={`w-full py-3.5 drop-shadow font-semibold ${className}`}
       onClick={onClick ? onClick : () => {}}
-      disabled={isSubmitting}>
+      disabled={isSubmitting}
+    >
       {name}
     </button>
   );

@@ -3,7 +3,6 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import BasicLayout from './layouts/Basic-layout.tsx';
 import Main from './pages/Main.tsx';
-import DetailInformation from './pages/DiagnosePet.tsx';
 import Result from './pages/Result.tsx';
 import Solution from './pages/Solution.tsx';
 import Login from './pages/Login.tsx';
@@ -41,7 +40,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/dashboard', element: <DashBoard /> },
       { path: '/pet/edit', element: <EditPet /> },
-      { path: '/pet/resultlist', element: <PetResultList /> },
+      { path: '/pet/diagnoses', element: <PetResultList /> },
       { path: '/pet/list', element: <PetList /> },
       { path: '/pet/new', element: <CreatePet /> },
       { path: '/pet/diagnose/:id', element: <DiagnosePet /> },

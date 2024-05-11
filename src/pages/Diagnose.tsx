@@ -21,7 +21,7 @@ export default function Diagnose() {
   const [species, setSpecies] = useState<string>('');
   const [isDropdownView, setIsDropdownView] = useState<boolean>(false);
   const [code, setCode] = useState<string>('');
-  const [error, setError] = useState<Boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const [breed, setBreed] = useState<string>();
   const navigate = useNavigate();
 

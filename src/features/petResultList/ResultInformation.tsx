@@ -1,4 +1,3 @@
-import React from 'react';
 import { RowBar } from '../chart/RowBar';
 
 export default function ResultInformation() {

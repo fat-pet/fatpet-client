@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { useEffect } from 'react';
 
 interface Props<T> {
   callback: () => void;
@@ -21,5 +21,6 @@ export default function useDebouncing<T>({
       clearTimeout(timer);
       setState(undefined);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dependency]);
 }

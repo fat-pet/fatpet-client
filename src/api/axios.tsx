@@ -1,14 +1,14 @@
 import axios from 'axios';
-
-const token = localStorage.getItem('token');
+import setInterceptors from './apiInterceptor';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
   },
 });
+
+setInterceptors(api);
 
 export async function login(id: string, password: string) {
   return await api.post('/api/members/signin', {

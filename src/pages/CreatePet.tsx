@@ -37,7 +37,7 @@ export default function BasicInformation() {
     const feedCalories = parseInt(data['feedAmount']);
     const name = data['name'];
     createPet(sex, name, species, code, birthDate, neutered, feedCalories).then(
-      () => navigate('/dashboard/petlist'),
+      () => navigate('/pet/list'),
     );
   }
 

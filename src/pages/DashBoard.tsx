@@ -36,7 +36,7 @@ export default function DashBoard() {
       {/* 헤더 */}
       <header className="flex justify-between w-full items-center">
         <p className="text-lg font-bold">대시보드</p>
-        <Link to="./editMember">
+        <Link to="/member/edit">
           <FaGear className="text-2xl" />
         </Link>
       </header>
@@ -52,7 +52,7 @@ export default function DashBoard() {
 
       {/* BCS 검사하기 , 검사 기록보기 버튼 */}
       <div className="w-full h-1/6 flex items-center">
-        {pet && <Diagnose />}
+        {pet && <Diagnose id={pet.id} />}
       </div>
 
       {/* 펫 변화추이 그래프 */}

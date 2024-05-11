@@ -1,4 +1,4 @@
-import { postDiagnoses } from '@/api/axios';
+import { postPetDiagnoses } from '@/api/axios';
 import Form from '@/components/Form';
 
 interface SubmitProps {
@@ -8,7 +8,7 @@ interface ApiProps {
   [key: string]: number;
 }
 
-export default function DetailInformation() {
+export default function DiagnosePet() {
   const data = localStorage.getItem('petData');
   const petData = data ? JSON.parse(data) : '';
 
@@ -18,7 +18,7 @@ export default function DetailInformation() {
     for (const key in data) {
       apiData[key] = Number(data[key]);
     }
-    postDiagnoses(
+    postPetDiagnoses(
       petData.id,
       apiData['weight'],
       apiData['neckCirc'],

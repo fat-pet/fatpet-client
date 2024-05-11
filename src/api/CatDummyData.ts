@@ -1,4 +1,4 @@
-const CatBreeds = [
+const CatDummyData = [
   { id: 0, value: '기타', code: 'ETC' },
   { id: 1, value: '코리안숏헤어', code: 'KOR' },
   { id: 2, value: '페르시안', code: 'PER' },
@@ -8,4 +8,4 @@ const CatBreeds = [
   { id: 6, value: '터키시앙고라', code: 'TUR' },
 ];
 
-export default CatBreeds;
+export default CatDummyData;

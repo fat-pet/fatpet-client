@@ -46,6 +46,7 @@ export async function getDup(id: string, nickname: string) {
   return await api.get(`/api/members/check?loginId=${id}&nickname=${nickname}`);
 }
 
+// Pet 관련 API
 export async function createPet(
   sex: string,
   name: string,
@@ -92,7 +93,9 @@ export async function getPetResult(id: number) {
   return api.get(`/api/diagnoses?petId=${id}`);
 }
 
-export async function postDiagnoses(
+// 비만도 진단 API
+
+export async function postPetDiagnoses(
   petId: number,
   weight: number,
   neckCirc: number,
@@ -101,6 +104,24 @@ export async function postDiagnoses(
 ) {
   return api.post('/api/diagnoses', {
     petId,
+    weight,
+    neckCirc,
+    chestCirc,
+    feedAmount,
+  });
+}
+
+export async function postDiagnoses(
+  age: string,
+  breed: string,
+  weight: number,
+  neckCirc: number,
+  chestCirc: number,
+  feedAmount: number,
+) {
+  return api.post('/api/diagnose/trial', {
+    age,
+    breed,
     weight,
     neckCirc,
     chestCirc,

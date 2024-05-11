@@ -3,10 +3,10 @@ import { FaDog } from 'react-icons/fa6';
 import { FaCat } from 'react-icons/fa';
 import { IoMdFemale, IoMdMale } from 'react-icons/io';
 import { useRef, useState } from 'react';
-import DogBreed from '@/api/DogBreed';
 import { createPet } from '@/api/axios';
 import { useNavigate } from 'react-router-dom';
-import CatBreed from '@/api/CatBreed';
+import DogDummyData from '@/api/DogDummyData';
+import CatDummyData from '@/api/CatDummyData';
 
 interface BreedItem {
   id: number;
@@ -67,7 +67,7 @@ export default function BasicInformation() {
             <br />
             <input
               type="date"
-              className="w-full mt-2 h-12 bg-gray-50 border rounded-md outline-none px-3 font-medium border-gray-200 placeholder:text-sm"
+              className="`w-full mt-2 h-12 bg-gray-50 border outline-none px-3 font-medium border-gray-200 drop-shadow-sm"
               ref={dateRef}
             />
           </div>
@@ -134,7 +134,7 @@ export default function BasicInformation() {
               className="border-2 w-5/6 absolute top-20 z-10 h-40 overflow-auto"
               onBlur={() => console.log('hello')}
             >
-              {(species === 'DOG' ? DogBreed : CatBreed).map(
+              {(species === 'DOG' ? DogDummyData : CatDummyData).map(
                 (item: BreedItem) => {
                   return (
                     <li

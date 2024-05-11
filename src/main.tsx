@@ -3,8 +3,7 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import BasicLayout from './layouts/Basic-layout.tsx';
 import Main from './pages/Main.tsx';
-import BasicInformation from './pages/BasicInformation.tsx';
-import DetailInformation from './pages/DetailInformation.tsx';
+import DetailInformation from './pages/DiagnosePet.tsx';
 import Result from './pages/Result.tsx';
 import Solution from './pages/Solution.tsx';
 import Login from './pages/Login.tsx';
@@ -20,6 +19,8 @@ import Board from './pages/Board.tsx';
 import BoardCreate from './pages/BoardCreate.tsx';
 import BoardContent from './pages/BoardContent.tsx';
 import BoardEdit from './pages/BoardEdit.tsx';
+import Diagnose from './pages/Diagnose.tsx';
+import DiagnosePet from './pages/DiagnosePet.tsx';
 
 const router = createBrowserRouter([
   {
@@ -29,8 +30,7 @@ const router = createBrowserRouter([
       { index: true, element: <Main /> },
       { path: '/signin', element: <Login /> },
       { path: '/signup', element: <Join /> },
-      { path: '/trial', element: <BasicInformation /> },
-      { path: '/trial/detail', element: <DetailInformation /> },
+      { path: '/trial', element: <Diagnose /> },
       { path: '/result', element: <Result /> },
       { path: '/result/solution', element: <Solution /> },
     ],
@@ -44,6 +44,7 @@ const router = createBrowserRouter([
       { path: '/pet/resultlist', element: <PetResultList /> },
       { path: '/pet/list', element: <PetList /> },
       { path: '/pet/new', element: <CreatePet /> },
+      { path: '/pet/diagnose/:id', element: <DiagnosePet /> },
       { path: '/member/edit', element: <EditMember /> },
       { path: '/board', element: <Board /> },
       { path: '/post/new', element: <BoardCreate /> },

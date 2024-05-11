@@ -13,7 +13,7 @@ export default function PetListComponent({ pet }: { pet: PetProps }) {
 
   return (
     <div
-      className="w-full aspect-[2/1] rounded-xl bg-blue-400 mb-20 flex items-center px-5 text-white hover:cursor-pointer"
+      className="w-full aspect-[2/1] rounded-xl bg-green-600 mb-20 flex items-center px-5 text-white hover:cursor-pointer"
       onClick={handleClicked}
     >
       {pet?.breeds.species === 'DOG' ? (

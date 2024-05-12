@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import BottomNav from './BottomNav-layout';
 import WithAuth from '@/utils/WithAuth';
 
+// eslint-disable-next-line react-refresh/only-export-components
 const MemberLayout = () => {
   return (
     <div className="max-w-[480px] border-x-2 w-full h-full ">
@@ -14,4 +14,5 @@ const MemberLayout = () => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default WithAuth(MemberLayout);

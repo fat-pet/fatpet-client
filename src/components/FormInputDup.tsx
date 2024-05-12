@@ -1,7 +1,6 @@
 import { useFormContext } from '../contexts/FormContext';
 import InputError from './InputError';
 import { useDupStore } from '@/stores/useStore';
-import { josa } from '@toss/hangul';
 import useDebouncing from '@/hooks/useDebouncing';
 import { getDup } from '@/api/axios';
 

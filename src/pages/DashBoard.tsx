@@ -75,6 +75,7 @@ export default function DashBoard() {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const dummyData = [
   {
     name: '4/17',

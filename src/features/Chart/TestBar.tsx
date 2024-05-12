@@ -18,6 +18,7 @@ ChartJS.register(
   Legend,
 );
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const options = {
   responsive: true,
   plugins: {
@@ -51,6 +52,7 @@ const dummyData = [
   },
 ];
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const data = {
   labels,
   datasets: [

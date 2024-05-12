@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import BottomNav from './BottomNav-layout';
-import WithAuth from '@/hocs/WithAuth';
+import WithAuth from '@/utils/WithAuth';
 
 const MemberLayout = () => {
   return (

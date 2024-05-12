@@ -25,7 +25,7 @@ export default function PetStatus({ pet, handleDelete }: Props) {
             <FaCat className="text-6xl" />
           )}
           <div className="flex flex-col justify-center w-1/2">
-            <p className="text-sm sm:text-base">이름 : {pet.name}</p>
+            <p className="text-lg font-bold">{pet.name}</p>
             <p className="text-xs">
               품종 : {transBreed(pet.breeds.species, pet!.breeds.name)}
             </p>

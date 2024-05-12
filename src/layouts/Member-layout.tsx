@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import BottomNav from './BottomNav-layout';
-import WithAuth from '@/hocs/WithAuth';
+import WithAuth from '@/utils/WithAuth';
 
 // eslint-disable-next-line react-refresh/only-export-components
 const MemberLayout = () => {

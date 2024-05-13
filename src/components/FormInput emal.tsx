@@ -13,7 +13,7 @@ interface FormInputProps {
   className?: string;
 }
 
-const FormInput: React.FC<FormInputProps> = ({
+const FormInputEmail: React.FC<FormInputProps> = ({
   name,
   type = 'text',
   minLen,
@@ -40,16 +40,11 @@ const FormInput: React.FC<FormInputProps> = ({
             id={value}
             placeholder={placeholder}
             type={type}
-            step="0.1"
             {...register(value, {
               required: `필수입력 항목입니다.`,
               pattern: {
-                value: new RegExp(
-                  value === 'id' || value === 'nickName'
-                    ? '^[가-힣A-Za-z0-9]*$'
-                    : '',
-                ),
-                message: `${value === 'id' || value === 'nickName' ? '띄어쓰기 또는 특수문자를 사용할 수 없습니다.' : '띄어쓰기를 사용할 수 없습니다'}`,
+                value: new RegExp(''),
+                message: '띄어쓰기를 사용할 수 없습니다.',
               },
               ...(minLen && {
                 minLength: {
@@ -68,11 +63,11 @@ const FormInput: React.FC<FormInputProps> = ({
             className={`w-full mt-2 h-12 bg-gray-50 border outline-none px-3 font-medium border-gray-200 drop-shadow-sm ${className}`}
           />
           {/* 단위 ex) ~~~ cm kcal 등등 */}
-          {unit && <p className="w-16 flex justify-center">{unit}</p>}
+          {unit && <p className="ml-8">{unit}</p>}
         </div>
       </label>
     </>
   );
 };
 
-export default FormInput;
+export default FormInputEmail;

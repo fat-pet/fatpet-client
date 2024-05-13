@@ -1,62 +1,45 @@
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-);
+import React from 'react';
+import ReactApexChart from 'react-apexcharts';
 
 interface Props {
-    name1: string;
-    data1: number[];
+  name: string;
+  data: number[];
 }
 
-const labels = ['목표체중', '현재 체중'];
+export function RowBar({ name, data }: Props) {
+  const options = {
+    chart: {
+      id: 'test-chart',
+    },
+    xaxis: {
+      categories: ['현재', '목표'],
+    },
+    // colors:['#F44336', '#22C55E', '#9C27B0'],
+    plotOptions: {
+      bar: {
+        horizontal: true,
+      },
+    },
+  };
 
-export function RowBar({ name1, data1 }: Props) {
-    const data = {
-        labels,
-        datasets: [
-            {
-                label: name1,
-                data: data1.map((item) => item),
-                backgroundColor: '#51A1FF',
-            },
-        ],
-    };
+  const series = [
+    {
+      name: name,
+      data: data,
+      color: '#22C55E',
+    },
+  ];
 
-    const option = {
-        indexAxis: 'y' as const,
-        elements: {
-            bar: {
-                borderWidth: 2,
-            },
-        },
-        plugin: {
-            legend: {
-                position: 'none',
-            },
-        },
-        responsive: true,
-    };
-
-    return (
-        <div className="w-full">
-            <div className="w-full h-24">
-                <Bar options={option} data={data} />
-            </div>
-        </div>
-    );
+  return (
+    <div className="w-full">
+      <p>{name}</p>
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="bar"
+        width={'100%'}
+        height={'80%'}
+      />
+    </div>
+  );
 }

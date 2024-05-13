@@ -6,10 +6,10 @@ interface TokenStore {
 }
 
 interface DupStore {
-  dupId: boolean | string;
-  dupName: boolean | string;
-  setId: (data: boolean | string) => void;
-  setName: (data: boolean | string) => void;
+  dupId: boolean | undefined | 'error';
+  dupName: boolean | undefined | 'error';
+  setId: (data: boolean | undefined | 'error') => void;
+  setName: (data: boolean | undefined | 'error') => void;
 }
 
 export const useTokenStore = create<TokenStore>()((set) => ({
@@ -18,8 +18,8 @@ export const useTokenStore = create<TokenStore>()((set) => ({
 }));
 
 export const useDupStore = create<DupStore>()((set) => ({
-  dupId: 'null',
-  dupName: 'null',
+  dupId: undefined,
+  dupName: undefined,
   setId: (data) => set(() => ({ dupId: data })),
   setName: (data) => set(() => ({ dupName: data })),
 }));

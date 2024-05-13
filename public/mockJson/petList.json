@@ -1,0 +1,24 @@
+{
+    "message": "string",
+    "body": [
+      {
+        "birthDate": {
+          "year": 0,
+          "month": "JANUARY",
+          "monthValue": 0,
+          "leapYear": true
+        },
+        "neutered": true,
+        "feedCalories": 0,
+        "breeds": {
+          "species": "DOG",
+          "sex": "FEMALE",
+          "avgWeightLow": 0,
+          "avgWeightHigh": 0,
+          "name": "string"
+        },
+        "name": "string",
+        "id": 0
+      }
+    ]
+  }

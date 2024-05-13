@@ -1,46 +1,59 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import BasicLayout from './layouts/Basic-layout.tsx'
-import Main from './pages/Main.tsx'
-import BasicInformation from './pages/BasicInformation.tsx'
-import DetailInformation from './pages/DetailInformation.tsx'
-import Result from './pages/Result.tsx'
-import Solution from './pages/Solution.tsx'
-import Login from './pages/Login.tsx'
-import EditPet from './pages/EditPet.tsx'
-import PetList from './pages/PetList.tsx'
-import PetResultList from './pages/PetResultList.tsx'
-import EditMember from './pages/EditMember.tsx'
-import Join from './pages/Join.tsx'
-import DashBoard from './pages/DashBoard.tsx'
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import BasicLayout from './layouts/Basic-layout.tsx';
+import Main from './pages/Main.tsx';
+import DetailInformation from './pages/DiagnosePet.tsx';
+import Result from './pages/Result.tsx';
+import Solution from './pages/Solution.tsx';
+import Login from './pages/Login.tsx';
+import EditPet from './pages/EditPet.tsx';
+import PetList from './pages/PetList.tsx';
+import PetResultList from './pages/PetResultList.tsx';
+import EditMember from './pages/EditMember.tsx';
+import Join from './pages/Join.tsx';
+import DashBoard from './pages/DashBoard.tsx';
+import CreatePet from './pages/CreatePet.tsx';
+import MemberLayout from './layouts/Member-layout.tsx';
+import Board from './pages/Board.tsx';
+import BoardCreate from './pages/BoardCreate.tsx';
+import BoardContent from './pages/BoardContent.tsx';
+import BoardEdit from './pages/BoardEdit.tsx';
+import Diagnose from './pages/Diagnose.tsx';
+import DiagnosePet from './pages/DiagnosePet.tsx';
 
 const router = createBrowserRouter([
   {
-    path : '/',
-    element : <BasicLayout/>,
-    children : [
-      {index: true, element:<Main/>},
-      {path: '/signin', element:<Login/>},
-      {path: '/signup', element:<Join/>},
-      {path: '/inputData', element:<BasicInformation/>},
-      {path: '/inputData/detail', element:<DetailInformation/>},
-      {path: '/result', element:<Result/>},
-      {path: '/result/solution', element:<Solution/>},
-      {path: '/dashboard', element:<DashBoard/>},
-      {path: '/editPet', element:<EditPet/>},
-      {path: '/resultList', element:<PetResultList/>},
-      {path: '/petList', element:<PetList/>},
-      {path: '/editMember', element:<EditMember/>},
-    ]
-
-  }
-])
-
+    path: '/',
+    element: <BasicLayout />,
+    children: [
+      { index: true, element: <Main /> },
+      { path: '/signin', element: <Login /> },
+      { path: '/signup', element: <Join /> },
+      { path: '/trial', element: <Diagnose /> },
+      { path: '/result', element: <Result /> },
+      { path: '/result/solution', element: <Solution /> },
+    ],
+  },
+  {
+    path: '/',
+    element: <MemberLayout />,
+    children: [
+      { path: '/dashboard', element: <DashBoard /> },
+      { path: '/pet/edit', element: <EditPet /> },
+      { path: '/pet/resultlist', element: <PetResultList /> },
+      { path: '/pet/list', element: <PetList /> },
+      { path: '/pet/new', element: <CreatePet /> },
+      { path: '/pet/diagnose/:id', element: <DiagnosePet /> },
+      { path: '/member/edit', element: <EditMember /> },
+      { path: '/board', element: <Board /> },
+      { path: '/post/new', element: <BoardCreate /> },
+      { path: '/post/:id', element: <BoardContent /> },
+      { path: '/post/edit/:id', element: <BoardEdit /> },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>,
-)
+  <RouterProvider router={router} />,
+);

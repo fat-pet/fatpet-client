@@ -4,7 +4,17 @@ module.exports = {
     "./index.html"  
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'xxsm' : '400px',
+        'xsm' : '420px',
+        'sm': '480px',
+      },
+      height:{
+        'layout-main' : '92%',
+        'layout-footer' : '8%'
+      }
+    },
   },
   plugins: [],
 }

@@ -1,27 +1,31 @@
-import { useFormContext } from "@/contexts/FormContext";
-import React from "react";
-interface FormButtonProps{
-    name?:string;
-    // icon?:IconType
-    onClick?: ()=>void;
-    type?:"button"| "submit";
+import { useFormContext } from '@/contexts/FormContext';
+import React from 'react';
+
+interface FormButtonProps {
+  name: string;
+  onClick?: () => void;
+  type?: 'button' | 'submit';
+  className?: string;
 }
 
-const FormButton:React.FC<FormButtonProps> = ({name, type="button", onClick })=>{
+const FormButton: React.FC<FormButtonProps> = ({
+  name,
+  type = 'button',
+  onClick,
+  className,
+}) => {
+  const { isSubmitting } = useFormContext();
 
-    const {isSubmitting} = useFormContext();
+  return (
+    <button
+      type={type}
+      className={`w-full py-3.5 drop-shadow font-semibold ${className}`}
+      onClick={onClick ? onClick : () => {}}
+      disabled={isSubmitting}
+    >
+      {name}
+    </button>
+  );
+};
 
-    return(
-        <button
-            type={type}
-            className="w-5/6 aspect-[6/1] bg-[#333333] text-white font-bold"
-            onClick={onClick ? onClick : ()=>{}}
-            disabled={isSubmitting}
-            >
-            {name}
-        </button>
-    
-    )
-}
-
-export default FormButton
+export default FormButton;

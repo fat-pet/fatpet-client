@@ -10,12 +10,12 @@ export default function Main() {
     <div className="h-full flex flex-col justify-center">
       <div className="mb-16">
         <Header />
-        <div className="bg-sky-50 border p-7">
+        <div className="bg-emerald-50 border p-7">
           <p className="text-2xl font-semibold">
             혹시, 우리 집 강아지도 비만일까?
           </p>
           <p className="text-lg font-medium text-gray-500">
-            지금 바로 반려동물의 비만도를 진단해 보세요.
+            팻펫에서 반려동물의 비만도를 진단해 보세요.
           </p>
           <div className="flex justify-end">
             <img

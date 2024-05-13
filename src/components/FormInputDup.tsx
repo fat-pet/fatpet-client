@@ -27,6 +27,7 @@ const FormInputDup: React.FC<FormInputProps> = ({
   const { dupId, dupName, setId, setName } = useDupStore();
   const id = watch('id');
   const nickName = watch('nickName');
+
   const handleIdDup = () => {
     if (id) {
       if (id.length < 4 || id.length > 12) {
@@ -38,6 +39,7 @@ const FormInputDup: React.FC<FormInputProps> = ({
       }
     }
   };
+
   const handleNickNameDup = () => {
     if (nickName) {
       if (nickName.length < 2 || nickName.length > 10) {

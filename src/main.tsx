@@ -3,7 +3,6 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import BasicLayout from './layouts/Basic-layout.tsx';
 import Main from './pages/Main.tsx';
-import DetailInformation from './pages/DiagnosePet.tsx';
 import Result from './pages/Result.tsx';
 import Solution from './pages/Solution.tsx';
 import Login from './pages/Login.tsx';

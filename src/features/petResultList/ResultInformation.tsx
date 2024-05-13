@@ -1,4 +1,4 @@
-import { RowBar } from '../chart/RowBar';
+import { RowBar } from "../Chart/RowBar";
 
 export default function ResultInformation() {
   return (

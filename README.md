@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+# Fatpet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+feat : 새로운 기능 추가
 
-Currently, two official plugins are available:
+fix : 버그 수정
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+docs : 문서 수정
 
-## Expanding the ESLint configuration
+style : 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+refactor : 코드 리펙토링
 
-- Configure the top-level `parserOptions` property like this:
+test : 테스트 코드, 리펙토링 테스트 코드 추가
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+chore : 빌드 업무 수정, 패키지 매니저 수정

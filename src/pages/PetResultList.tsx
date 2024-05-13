@@ -1,17 +1,13 @@
 import { getPetResult } from '@/api/axios';
 import ResultInformation from '@/features/petResultList/ResultInformation';
-import { PetResult } from '@/types/types';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function PetResultList() {
   const data = localStorage.getItem('petData');
   const petData = data ? JSON.parse(data) : null;
-  const [petResult, setPetResult] = useState<PetResult[]>([]);
 
   useEffect(() => {
-    getPetResult(petData?.id).then((res) => {
-      setPetResult(res.data.body);
-    });
+    getPetResult(petData?.id).then(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -1,7 +1,7 @@
 // import React from 'react';
 import Header from '@/components/Header';
 import Form from '../components/Form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Main() {
   const navigate = useNavigate();
@@ -30,21 +30,31 @@ export default function Main() {
         onSubmit={() => {}}
         className="w-full h-1/5 flex flex-col items-center justify-evenly mb-20"
       >
-        <div className="w-full">
+        <div className="w-full mb-3">
           <Form.Button
             name="로그인하기"
             type="button"
             className="bg-green-600 hover:opacity-70 transition-opacity text-white"
             onClick={() => navigate('/signin')}
           />
-          <p className="h-5"></p>
+        </div>
+
+        <Link
+          to={'/signup'}
+          className="block w-full py-3 text-center font-medium hover:opacity-70"
+        >
+          아직 회원이 아니시라면?{' '}
+          <span className="underline">회원가입하기</span>
+        </Link>
+
+        {/* <div className="w-full">
           <Form.Button
             name="로그인 없이 진단하기"
             type="button"
             className="bg-neutral-800 hover:opacity-70 transition-opacity text-white"
             onClick={() => navigate('/trial')}
           />
-        </div>
+        </div> */}
       </Form>
     </div>
   );

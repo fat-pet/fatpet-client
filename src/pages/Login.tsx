@@ -1,5 +1,5 @@
 import Form from '../components/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../api/axios';
 import Header from '@/components/Header';
 import { useTokenStore } from '@/stores/useStore';
@@ -56,13 +56,6 @@ export default function Login() {
               className="bg-green-600 hover:opacity-70 transition-opacity text-white"
             />
           </div>
-          <Link
-            to={'/signup'}
-            className="block w-full py-3 text-center font-medium hover:opacity-70"
-          >
-            아직 회원이 아니시라면?
-            <span className="underline">회원가입하기</span>
-          </Link>
         </Form>
       </div>
     </div>

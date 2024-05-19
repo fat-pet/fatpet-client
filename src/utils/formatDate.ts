@@ -7,13 +7,24 @@ export default function formatDate(dateArray: number[]) {
   if (adjustedHour >= 24) {
     adjustedHour -= 24;
     // 다음 날로 넘어감
-    year = year;
-    month = month;
     day = day + 1;
-    hour = hour;
-    minute = minute;
-    second = second;
-    millisecond = millisecond;
+    hour = adjustedHour;
+  }
+
+  if (month in [1, 3, 5, 7, 8, 10, 12] && day > 31) {
+    month = month + 1;
+    day = 1;
+  } else if (month in [4, 6, 9, 11] && day > 30) {
+    month = month + 1;
+    day = 1;
+  } else if (month === 2 && day > 28) {
+    month = month + 1;
+    day = 1;
+  }
+
+  if (month > 12) {
+    year = year + 1;
+    month = 1;
   }
 
   // 오후 오후/오전 구분 및 보정
@@ -24,9 +35,6 @@ export default function formatDate(dateArray: number[]) {
       adjustedHour -= 12;
     }
   }
-  console.log(hour + '시');
-  console.log(day + '일');
-  console.log(adjustedHour + '시 (변경)');
 
   // 시간과 분을 문자열로 포맷팅
   const formattedTime = `${adjustedHour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
@@ -37,7 +45,3 @@ export default function formatDate(dateArray: number[]) {
   // 최종 결과 반환
   return `${formattedDate} ${period} ${formattedTime}`;
 }
-
-// 예시 날짜 배열
-const dateArray = [2024, 5, 19, 13, 37, 9, 807347000];
-console.log(formatDate(dateArray)); // 출력: "24.05.19 오후 1:37"

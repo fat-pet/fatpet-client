@@ -67,7 +67,7 @@ export default function BoardContent() {
           </div>
         </p>
 
-        <p className="text-xl font-bold tracking-tighter mt-3">{data?.title}</p>
+        <p className="text-xl font-bold  mt-3">{data?.title}</p>
       </header>
 
       {/* 게시글 내용 */}

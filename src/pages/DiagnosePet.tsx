@@ -29,7 +29,7 @@ export default function DiagnosePet() {
 
   return (
     <div className="flex flex-col items-center h-full">
-      <p className="text-xl font-bold tracking-tighter mb-10">
+      <p className="text-xl font-bold  mb-10">
         반려동물의 상세정보를 입력해주세요
       </p>
 

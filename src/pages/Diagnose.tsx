@@ -43,9 +43,7 @@ export default function Diagnose() {
   }
   return (
     <div className="h-full flex flex-col items-center justify-center text-lg">
-      <p className="text-xl font-bold tracking-tighter mb-10">
-        반려동물의 정보를 입력해주세요
-      </p>
+      <p className="text-xl font-bold  mb-10">반려동물의 정보를 입력해주세요</p>
       <Form
         onSubmit={handleSubmit}
         className="h-full flex flex-col justify-between"
@@ -94,7 +92,7 @@ export default function Diagnose() {
             <p>품종</p>
             {error ? (
               <p className="text-red-500 text-sm font-medium">
-                필수입력 항목입니다.
+                필수 입력 항목입니다.
               </p>
             ) : (
               ''

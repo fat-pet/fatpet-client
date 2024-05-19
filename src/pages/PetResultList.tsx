@@ -13,7 +13,7 @@ export default function PetResultList() {
 
   return (
     <>
-      <header className="font-bold text-lg tracking-tighter">
+      <header className="font-bold text-lg ">
         {petData?.name}의 검사 결과
       </header>
 

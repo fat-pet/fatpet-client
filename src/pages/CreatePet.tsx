@@ -48,7 +48,7 @@ export default function BasicInformation() {
   }
   return (
     <div className="flex flex-col items-center justify-center font-bold text-lg">
-      <p className="text-xl font-bold tracking-tighter mb-10">
+      <p className="text-xl font-bold  mb-10">
         반려동물의 기본정보를 입력해주세요
       </p>
       <Form

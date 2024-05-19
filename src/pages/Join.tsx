@@ -104,7 +104,7 @@ export default function Join() {
           <Form.Button
             name="회원가입하기"
             type="submit"
-            className="bg-green-600 hover:opacity-70 transition-opacity text-white mb-4"
+            className="bg-green-600 hover:opacity-70 transition-opacity text-white mb-3"
           />
           <Form.Button
             name="뒤로가기"

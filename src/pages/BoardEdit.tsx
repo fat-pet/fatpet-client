@@ -39,7 +39,7 @@ export default function BoardEdit() {
           </div>
         </p>
         <input
-          className="text-xl font-bold tracking-tighter mt-3 w-full"
+          className="text-xl font-bold  mt-3 w-full"
           defaultValue={data?.title}
           ref={titleRef}
         />

@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Board() {
-  const [boardData, setBoardData] = useState<BoardProps[]>();
+  const [boardData, setBoardData] = useState<BoardProps[]>([]);
+
   useEffect(() => {
     getPost().then((res) => {
       setBoardData(res.data.body);
@@ -13,24 +14,122 @@ export default function Board() {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <div>
-      <header className="text-lg font-bold tracking-tighter mb-3 flex justify-between ">
-        <p>전체 게시판</p>
+      <header className="text-lg font-bold mb-2 flex justify-between px-4">
+        <h2 className="text-2xl font-bold">팻펫 커뮤니티</h2>
       </header>
       <Link
         to="/post/new"
-        className="w-1/4 mb-2 border-2 rounded-lg hover:bg-slate-200 float-end flex justify-center"
+        className="text-sm mb-6 float-end bg-green-100 rounded-md mr-4 px-3 py-1.5 text-green-600 font-semibold hover:opacity-70 transition-opacity"
       >
-        글쓰기
+        글 작성하기
       </Link>
-      <div className="flex flex-col w-full border-t-2">
-        {boardData !== undefined ? (
-          boardData.map((item: BoardProps) => {
-            return <BoardItem boardData={item} />;
-          })
+      <div className="flex flex-col w-full">
+        {boardData.length != 0 ? (
+          boardData.map((item: BoardProps) => <BoardItem boardData={item} />)
         ) : (
-          <div></div>
+          <>
+            <BoardItem
+              boardData={{
+                id: 1,
+                title: '코숏 다이어트 사료 추천해 주세요',
+                member: {
+                  email: '이메일',
+                  nickname: 'kkbk',
+                  loginId: 'kkbk',
+                },
+                content:
+                  '저희 집 뚱냥이들 사료를 바꾸려하는데, 다들 어떤 사료 드시나요?',
+                createdDate: '2024-05-19T05:40:26.546Z',
+              }}
+            />
+            <BoardItem
+              boardData={{
+                id: 1,
+                title: '코숏 다이어트 사료 추천해 주세요',
+                member: {
+                  email: '이메일',
+                  nickname: 'kkbk',
+                  loginId: 'kkbk',
+                },
+                content:
+                  '저희 집 뚱냥이들 사료를 바꾸려하는데, 다들 어떤 사료 드시나요?',
+                createdDate: '2024-05-19T05:40:26.546Z',
+              }}
+            />
+            <BoardItem
+              boardData={{
+                id: 1,
+                title: '코숏 다이어트 사료 추천해 주세요',
+                member: {
+                  email: '이메일',
+                  nickname: 'kkbk',
+                  loginId: 'kkbk',
+                },
+                content:
+                  '저희 집 뚱냥이들 사료를 바꾸려하는데, 다들 어떤 사료 드시나요?',
+                createdDate: '2024-05-19T05:40:26.546Z',
+              }}
+            />
+            <BoardItem
+              boardData={{
+                id: 1,
+                title: '코숏 다이어트 사료 추천해 주세요',
+                member: {
+                  email: '이메일',
+                  nickname: 'kkbk',
+                  loginId: 'kkbk',
+                },
+                content:
+                  '저희 집 뚱냥이들 사료를 바꾸려하는데, 다들 어떤 사료 드시나요?',
+                createdDate: '2024-05-19T05:40:26.546Z',
+              }}
+            />
+            <BoardItem
+              boardData={{
+                id: 1,
+                title: '코숏 다이어트 사료 추천해 주세요',
+                member: {
+                  email: '이메일',
+                  nickname: 'kkbk',
+                  loginId: 'kkbk',
+                },
+                content:
+                  '저희 집 뚱냥이들 사료를 바꾸려하는데, 다들 어떤 사료 드시나요?',
+                createdDate: '2024-05-19T05:40:26.546Z',
+              }}
+            />
+            <BoardItem
+              boardData={{
+                id: 1,
+                title: '코숏 다이어트 사료 추천해 주세요',
+                member: {
+                  email: '이메일',
+                  nickname: 'kkbk',
+                  loginId: 'kkbk',
+                },
+                content:
+                  '저희 집 뚱냥이들 사료를 바꾸려하는데, 다들 어떤 사료 드시나요?',
+                createdDate: '2024-05-19T05:40:26.546Z',
+              }}
+            />
+            <BoardItem
+              boardData={{
+                id: 1,
+                title: '코숏 다이어트 사료 추천해 주세요',
+                member: {
+                  email: '이메일',
+                  nickname: 'kkbk',
+                  loginId: 'kkbk',
+                },
+                content:
+                  '저희 집 뚱냥이들 사료를 바꾸려하는데, 다들 어떤 사료 드시나요?',
+                createdDate: '2024-05-19T05:40:26.546Z',
+              }}
+            />
+          </>
         )}
       </div>
     </div>

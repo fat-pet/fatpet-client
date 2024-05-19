@@ -17,11 +17,8 @@ export default function EditNickName({ setOpen }: Props) {
   };
 
   return (
-    <div className="w-11/12 border aspect-[1/1.5] z-10 p-10 bg-white rounded-lg">
-      <p className="text-xl font-bold tracking-tighter">
-        회원 닉네임 & 이메일 변경
-      </p>
-
+    <div className="w-11/12 border z-10 p-10 bg-white rounded-lg">
+      <p className="text-xl font-bold ">내 정보 수정하기</p>
       <Form
         onSubmit={handleEdit}
         className="flex flex-col items-center mt-10 justify-between h-full"

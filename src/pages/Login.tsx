@@ -26,7 +26,7 @@ export default function Login() {
       .catch((err) => {
         console.log(err);
         if (err.response.status == 400) {
-          alert('아이디 혹은 비밀번호가 틀립니다.');
+          alert('아이디 혹은 비밀번호를 다시 확인해 주세요.');
         }
       });
   };
@@ -60,7 +60,7 @@ export default function Login() {
             to={'/signup'}
             className="block w-full py-3 text-center font-medium hover:opacity-70"
           >
-            아직 회원이 아니시라면?
+            아직 회원이 아니시라면?{' '}
             <span className="underline">회원가입하기</span>
           </Link>
         </Form>

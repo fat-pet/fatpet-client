@@ -1,30 +1,19 @@
 export default function formatDate(dateArray: number[]) {
   // 배열에서 년, 월, 일, 시, 분, 초, 밀리초를 가져옴
-  const [year, month, day, hour, minute, second, millisecond] = dateArray;
+  let [year, month, day, hour, minute, second, millisecond] = dateArray;
 
   // UTC 시간대 보정 (+9시간)
   let adjustedHour = hour + 9;
   if (adjustedHour >= 24) {
     adjustedHour -= 24;
     // 다음 날로 넘어감
-    const date = new Date(
-      year,
-      month - 1,
-      day + 1,
-      adjustedHour,
-      minute,
-      second,
-      millisecond,
-    );
-    return formatDate([
-      date.getFullYear(),
-      date.getMonth() + 1,
-      date.getDate(),
-      adjustedHour,
-      minute,
-      second,
-      millisecond,
-    ]);
+    year = year;
+    month = month;
+    day = day + 1;
+    hour = hour;
+    minute = minute;
+    second = second;
+    millisecond = millisecond;
   }
 
   // 오후 오후/오전 구분 및 보정
@@ -35,6 +24,9 @@ export default function formatDate(dateArray: number[]) {
       adjustedHour -= 12;
     }
   }
+  console.log(hour + '시');
+  console.log(day + '일');
+  console.log(adjustedHour + '시 (변경)');
 
   // 시간과 분을 문자열로 포맷팅
   const formattedTime = `${adjustedHour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;

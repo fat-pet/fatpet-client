@@ -1,4 +1,6 @@
 import { BoardProps } from '@/types/types';
+import formatDate from '@/utils/formatDate';
+// import Date from '@/utils/Date';
 import { useNavigate } from 'react-router-dom';
 
 export default function BoardItem({ boardData }: { boardData: BoardProps }) {
@@ -24,8 +26,10 @@ export default function BoardItem({ boardData }: { boardData: BoardProps }) {
         {boardData ? truncateText(boardData.content) : '게시글 내용'}
       </div>
       <div className="flex text-gray-500 justify-between text-sm">
-        <p>{boardData ? boardData.member.nickname : '이상연'}</p>
-        <p>{boardData ? boardData.createdDate : '24.05.27 오후 1:40'}</p>
+        <p>{boardData ? boardData.member.nickname : '익명'}</p>
+        <p>
+          {boardData ? formatDate(boardData.createdDate) : '24.05.27 오후 1:40'}
+        </p>
       </div>
     </div>
   );

@@ -38,7 +38,7 @@ export interface Member {
 
 export interface BoardProps {
   title: string;
-  createdDate: string;
+  createdDate: number[];
   member: Member;
   id: number;
   content: string;

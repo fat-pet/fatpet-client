@@ -10,7 +10,7 @@ export default function PetNotStatus() {
         <p className="text-xl fo">등록된 펫이 없습니다</p>
         <button
           className="border-2 rounded-lg w-1/3 -mb-3 mt-2"
-          onClick={() => navigate('/petlist/createpet')}
+          onClick={() => navigate('/pet/new')}
         >
           등록하기
         </button>

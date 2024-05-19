@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const style =
-  'text-lg xsm:text-xl font-bold tracking-tighter border-b border-[#727272] h-1/3 flex items-center hover:cursor-pointer pl-3';
+  'text-lg hover:cursor-pointer font-medium mb-3 py-1 hover:opacity-50 transition-opacity';
 
 export default function EditMember() {
   const [openNick, setOpenNick] = useState<boolean>(false);
@@ -20,27 +20,23 @@ export default function EditMember() {
   };
 
   return (
-    <div className={`w-full h-full relative`}>
-      <p className="text-xl font-bold tracking-tighter pb-10">회원 정보 관리</p>
-
-      <div className="h-1/4 flex flex-col justify-between z-10">
-        <p className={`${style} , border-t`}>비밀번호 변경</p>
-        <p onClick={() => setOpenNick(true)} className={style}>
-          회원 닉네임 & 이메일 변경
-        </p>
-        <p onClick={() => handleLogout()} className={style}>
-          로그아웃
-        </p>
+    <div className="w-full h-full relative px-4">
+      <header className="mb-14">
+        <h2 className="text-2xl font-bold">내 정보 관리</h2>
+      </header>
+      <div onClick={() => handleLogout()} className={style}>
+        로그아웃
       </div>
-
-      <div className="h-1/4 px-10 mt-40">
-        <button
-          onClick={() => setOpenResign(true)}
-          className={`border-red-400 border-2 text-red-400 w-full aspect-[5/1] text-xl font-bold hover:bg-red-300 hover:bg-opacity-50`}
-        >
-          회원 탈퇴
-        </button>
+      <div onClick={() => setOpenNick(true)} className={style}>
+        내 정보 수정하기
       </div>
+      <div className={style}>비밀번호 변경하기</div>
+      <button
+        onClick={() => setOpenResign(true)}
+        className="text-red-600 text-lg hover:cursor-pointer font-medium mb-2 py-1 hover:opacity-50 transition-opacity"
+      >
+        회원 탈퇴하기
+      </button>
 
       {openNick ? (
         <div className="z-30 absolute top-32 w-full flex justify-center">
@@ -52,7 +48,6 @@ export default function EditMember() {
 
       {openResign ? (
         <div className="z-30 absolute top-32 w-full flex justify-center">
-          {' '}
           <ResignPopup setOpen={setOpenResign} />
         </div>
       ) : (

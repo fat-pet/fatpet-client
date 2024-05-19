@@ -2,9 +2,8 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { FormContext } from '../contexts/FormContext';
 import FormInput from './FormInput';
 import FormButton from './FormButton';
-// import FormSmallButton from './FormSmallButton';
 import FormSelectButton from './FormSelectButton';
-import FormInputEmail from './FormInput emal';
+import FormInputEmail from './FormInputEmail';
 import FormInputDup from './FormInputDup';
 
 interface SubmitProps {

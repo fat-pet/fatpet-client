@@ -13,7 +13,7 @@ export default function Comment({ data }: Props) {
     deleteComment(data.id).then(() => navigate(0));
   };
   return (
-    <div className="px-4 py-3 tracking-tighter border-b-2">
+    <div className="px-4 py-3  border-b-2">
       <header className="w-full flex items-center justify-between mb-1 font-bold">
         <div className="flex items-center">
           <FaUser className="text-2xl text-gray-400 mr-2" />

@@ -1,5 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { FaGear } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
 import { deletePet, getPetList } from '@/api/axios';
 import { useEffect, useState } from 'react';
 import { PetProps } from '@/types/types';
@@ -32,17 +31,14 @@ export default function DashBoard() {
   }
 
   return (
-    <div className="flex flex-col items-center tracking-tighter h-full ">
+    <div className="px-4">
       {/* 헤더 */}
-      <header className="flex justify-between w-full items-center">
-        <p className="text-lg font-bold">대시보드</p>
-        <Link to="/member/edit">
-          <FaGear className="text-2xl" />
-        </Link>
+      <header className="w-full text-lg font-bold mb-2 flex justify-between ">
+        <h2 className="text-2xl font-bold">팻펫 대시보드</h2>
       </header>
 
       {/* 펫 대쉬보드 */}
-      <div className="w-full h-1/3 pt-5">
+      <div className="w-full mt-5">
         {pet ? (
           <PetStatus pet={pet as PetProps} handleDelete={handleDelete} />
         ) : (

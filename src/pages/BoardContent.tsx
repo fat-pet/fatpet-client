@@ -5,10 +5,11 @@ import { FaEdit, FaRegTrashAlt, FaUser } from 'react-icons/fa';
 import { HiOutlinePaperAirplane } from 'react-icons/hi2';
 import { CommentProps } from '@/types/types';
 import Comment from '@/features/board/Comment';
+import formatDate from '@/utils/formatDate';
 
 interface BoardContent {
   id: number;
-  createdDate: string;
+  createdDate: number[];
   nickname: string;
   title: string;
   content: string;
@@ -54,7 +55,9 @@ export default function BoardContent() {
             <FaUser className="text-4xl rounded-lg border-gray-500 border-2" />
             <p className="flex flex-col ml-2">
               <p className="font-bold text-lg">{data?.nickname}</p>
-              <p className="text-gray-400">{`${data?.createdDate[0]}/${data?.createdDate[1]}/${data?.createdDate[2]}`}</p>
+              <p className="text-gray-400">
+                {data ? formatDate(data?.createdDate) : <></>}
+              </p>
             </p>
           </div>
           <div>

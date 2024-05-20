@@ -14,7 +14,7 @@ const Diagnose: React.FC<Props> = ({ id }) => {
     <div className="w-full flex justify-around font-bold my-5">
       <button
         className={buttonStyle}
-        onClick={() => navigate(`/pet/diagnose/${id}`)}
+        onClick={() => navigate(`/diagnose/${id}`)}
       >
         <FaStethoscope className="w-5 h-5 mr-2 " />
         BCS 검사하기

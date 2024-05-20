@@ -87,7 +87,7 @@ export default function BoardContent() {
         </div>
 
         <form
-          className="w-full flex justify-between items-center absolute -bottom-10 border-t-2 h-10"
+          className="w-full flex justify-between items-center absolute -bottom-10 h-10"
           onSubmit={handleSubmit}
         >
           <input

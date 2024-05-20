@@ -26,13 +26,11 @@ export default function BasicInformation() {
   const [breed, setBreed] = useState<string>(
     `품종을 선택해주세요 ${isDropdownView ? '▲' : '▼'}`,
   );
-  const dateRef = useRef<HTMLInputElement>(null);
   const neuteredRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   function handleSubmit(data: SubmitProps) {
-    const date = dateRef.current!.value.split('-');
-    const birthDate = `${date[0]}-${date[1]}`;
+    const birthDate = `${data['year']}-${data['month']}`;
     const neutered = neuteredRef.current!.checked;
     const feedCalories = parseInt(data['feedAmount']);
     const name = data['name'];
@@ -47,13 +45,13 @@ export default function BasicInformation() {
     setIsDropdownView(false);
   }
   return (
-    <div className="flex flex-col items-center justify-center font-bold text-lg">
+    <div className="flex flex-col items-center justify-between text-lg w-full">
       <p className="text-xl font-bold  mb-10">
         반려동물의 기본정보를 입력해주세요
       </p>
       <Form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center justify-center"
+        className="flex w-full h-full flex-col items-center justify-between"
       >
         {/* 이름 */}
         <div className="w-full">
@@ -61,41 +59,50 @@ export default function BasicInformation() {
         </div>
 
         {/* 나이 */}
-        <div className="flex my-5 w-full">
-          <div className="w-full">
-            <label>나이</label>
-            <br />
-            <input
-              type="date"
-              className="`w-full mt-2 h-12 bg-gray-50 border outline-none px-3 font-medium border-gray-200 drop-shadow-sm"
-              ref={dateRef}
+        <div className="flex w-full items-end">
+          <div className="w-2/5">
+            <Form.Input
+              name="나이"
+              value="year"
+              unit="년"
+              type="number"
+              placeholder="2024"
+            />
+          </div>
+          <div className="w-2/5">
+            <Form.Input
+              name=""
+              value="month"
+              unit="월"
+              type="number"
+              placeholder="03"
             />
           </div>
         </div>
 
         {/* 종류 */}
         <div className="w-full">
-          <label>종류</label>
-          <div className="flex mt-4">
+          <label className="font-medium">종류</label>
+          <div className="flex">
             <Form.SelectButton
               label="강아지"
               state={species === 'DOG' ? true : false}
-              icon={<FaDog className="w-7 h-7 mr-2" />}
+              icon={<FaDog className="w-7 h-7 mr-2 text-gray-500" />}
               handleClick={() => setSpecies('DOG')}
             />
             <Form.SelectButton
               label="고양이"
               state={species === 'CAT' ? true : false}
-              icon={<FaCat className="w-7 h-7 mr-2" />}
+              icon={<FaCat className="w-7 h-7 mr-2 text-gray-500" />}
               handleClick={() => setSpecies('CAT')}
             />
           </div>
         </div>
 
         {/* 성별 */}
-        <div className="my-5 w-full">
-          <label>성별</label>
-          <div className="flex mt-2 w-full">
+        <div className="w-full">
+          <label className="font-medium">성별</label>
+          <div className="flex w-full">
             <Form.SelectButton
               label="수컷"
               state={sex === 'MALE' ? true : false}
@@ -120,18 +127,18 @@ export default function BasicInformation() {
         </div>
 
         {/* 품종 (품종 데이터 받아와야하나?)*/}
-        <div className="mb-5 relative w-full">
-          <label>품종</label>
+        <div className="relative w-full">
+          <label className="font-medium">품종</label>
           <button
             type="button"
-            className="border-2 w-5/6 h-12 flex items-center justify-center mt-3"
+            className="border-2 w-full h-12 flex items-center justify-center"
             onClick={() => setIsDropdownView(!isDropdownView)}
           >
             {breed}
           </button>
           {isDropdownView ? (
             <ul
-              className="border-2 w-5/6 absolute top-20 z-10 h-40 overflow-auto"
+              className="border-2 w-full absolute top-20 z-10 h-40 overflow-auto"
               onBlur={() => console.log('hello')}
             >
               {(species === 'DOG' ? DogDummyData : CatDummyData).map(
@@ -163,7 +170,11 @@ export default function BasicInformation() {
           />
         </div>
 
-        <Form.Button name="펫 생성" type="submit" />
+        <Form.Button
+          name="펫 생성"
+          type="submit"
+          className="bg-neutral-800 hover:opacity-70 transition-opacity text-white"
+        />
       </Form>
     </div>
   );

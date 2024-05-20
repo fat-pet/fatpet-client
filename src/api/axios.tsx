@@ -100,14 +100,13 @@ export async function postPetDiagnoses(
   weight: number,
   neckCirc: number,
   chestCirc: number,
-  feedAmount: number,
 ) {
   return api.post('/api/diagnoses', {
     petId,
     weight,
     neckCirc,
     chestCirc,
-    feedAmount,
+    feedAmount: 50,
   });
 }
 

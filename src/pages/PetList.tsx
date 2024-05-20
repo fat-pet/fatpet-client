@@ -16,7 +16,7 @@ export default function PetList() {
   return (
     <div className="mx-5 pt-10">
       <p className="text-xl font-bold mb-10">펫 목록</p>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center border-t-2">
         {pet?.map((item) => {
           return <PetListComponent pet={item} />;
         })}

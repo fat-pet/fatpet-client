@@ -4,8 +4,8 @@ import { FaCat } from 'react-icons/fa';
 import { useState } from 'react';
 import { postDiagnoses } from '@/api/axios';
 import { useNavigate } from 'react-router-dom';
-import DogDummyData from '@/api/DogDummyData';
-import CatDummyData from '@/api/CatDummyData';
+import { dogDummy } from '@/api/dogDummy';
+import { catDummy } from '@/api/catDummy';
 
 interface BreedItem {
   id: number;
@@ -114,7 +114,7 @@ export default function Diagnose() {
               className="border-2 w-full absolute top-20 z-10 h-40 overflow-auto"
               onBlur={() => console.log('hello')}
             >
-              {(species === 'DOG' ? DogDummyData : CatDummyData).map(
+              {(species === 'DOG' ? dogDummy : catDummy).map(
                 (item: BreedItem) => {
                   return (
                     <li

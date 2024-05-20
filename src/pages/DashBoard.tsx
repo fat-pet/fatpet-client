@@ -31,42 +31,44 @@ export default function DashBoard() {
   }
 
   return (
-    <div className="px-4">
+    <div className="px-4 h-full">
       {/* 헤더 */}
       <header className="w-full text-lg font-bold mb-2 flex justify-between ">
         <h2 className="text-2xl font-bold">팻펫 대시보드</h2>
       </header>
 
       {/* 펫 대쉬보드 */}
-      <div className="w-full mt-5">
-        {pet ? (
-          <PetStatus pet={pet as PetProps} handleDelete={handleDelete} />
-        ) : (
-          <PetNotStatus />
+      <div className="h-full flex flex-col justify-between">
+        <div className="w-full mt-5">
+          {pet ? (
+            <PetStatus pet={pet as PetProps} handleDelete={handleDelete} />
+          ) : (
+            <PetNotStatus />
+          )}
+        </div>
+
+        {/* BCS 검사하기 , 검사 기록보기 버튼 */}
+        <div className="w-full h-1/6 flex items-center">
+          {pet && <Diagnose id={pet.id} />}
+        </div>
+
+        {/* 펫 변화추이 그래프 */}
+        {pet && (
+          <div className="w-full h-3/5 flex flex-col justify-center">
+            <span className="font-bold">펫 변화 추이</span>
+            <span className="text-sm text-gray-400">(최근 3회)</span>
+            <ColumnBar
+              name1="kg"
+              data1={dummyData.map((item) => item.kg)}
+              name2="BCS"
+              data2={dummyData.map((item) => item.BCS)}
+            />
+            <p className="text-sm text-gray-500">
+              *BCS(Body Condition Score) : 펫의 비만도를 1~9만큼 측정한 값
+            </p>
+          </div>
         )}
       </div>
-
-      {/* BCS 검사하기 , 검사 기록보기 버튼 */}
-      <div className="w-full h-1/6 flex items-center">
-        {pet && <Diagnose id={pet.id} />}
-      </div>
-
-      {/* 펫 변화추이 그래프 */}
-      {pet && (
-        <div className="w-full h-3/5 flex flex-col justify-center">
-          <span className="font-bold">펫 변화 추이</span>
-          <span className="text-sm text-gray-400">(최근 3회)</span>
-          <ColumnBar
-            name1="kg"
-            data1={dummyData.map((item) => item.kg)}
-            name2="BCS"
-            data2={dummyData.map((item) => item.BCS)}
-          />
-          <p className="text-sm text-gray-500">
-            *BCS(Body Condition Score) : 펫의 비만도를 1~9만큼 측정한 값
-          </p>
-        </div>
-      )}
     </div>
   );
 }

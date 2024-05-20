@@ -20,6 +20,9 @@ import BoardCreate from './pages/BoardCreate.tsx';
 import BoardContent from './pages/BoardContent.tsx';
 import BoardEdit from './pages/BoardEdit.tsx';
 import DiagnosePet from './pages/DiagnosePet.tsx';
+import AdminLayout from './layouts/Admin-layout.tsx';
+import Admin from './pages/Admin.tsx';
+import AdminEditBreed from './pages/AdminEditBreed.tsx';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +52,15 @@ const router = createBrowserRouter([
       { path: '/post/new', element: <BoardCreate /> },
       { path: '/post/:id', element: <BoardContent /> },
       { path: '/post/edit/:id', element: <BoardEdit /> },
+    ],
+  },
+
+  {
+    path: '/',
+    element: <AdminLayout />,
+    children: [
+      { path: '/admin', element: <Admin /> },
+      { path: '/admin/breed', element: <AdminEditBreed /> },
     ],
   },
 ]);

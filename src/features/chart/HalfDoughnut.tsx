@@ -33,7 +33,7 @@ export default function HalfDoughnut() {
     );
 
     gradient.addColorStop(0, 'rgba(255, 235, 155, 1)');
-    gradient.addColorStop(1, 'rgba(255, 235, 155, 0)');
+    gradient.addColorStop(1, 'rgba(232, 232, 232, 0)');
 
     // 데이터셋에 그라데이션 색상 적용
     chart.data.datasets[0].backgroundColor = gradient;
@@ -55,7 +55,7 @@ export default function HalfDoughnut() {
   const Options = {};
 
   return (
-    <div className="w-2/3 h-48 flex justify-center">
+    <div className="w-2/3 h-64 flex justify-center items-start">
       <Doughnut
         ref={chartRef}
         width={100}

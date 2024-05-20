@@ -2,11 +2,9 @@ import Form from '@/components/Form';
 import { FaDog } from 'react-icons/fa6';
 import { FaCat } from 'react-icons/fa';
 import { IoMdFemale, IoMdMale } from 'react-icons/io';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { createPet } from '@/api/axios';
 import { useNavigate } from 'react-router-dom';
-import DogDummyData from '@/api/DogDummyData';
-import CatDummyData from '@/api/CatDummyData';
 
 interface BreedItem {
   id: number;
@@ -26,8 +24,24 @@ export default function BasicInformation() {
   const [breed, setBreed] = useState<string>(
     `품종을 선택해주세요 ${isDropdownView ? '▲' : '▼'}`,
   );
+  const [dogData, setDogData] = useState<BreedItem[]>([]);
+  const [catData, setCatData] = useState<BreedItem[]>([]);
   const neuteredRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Fetch dog data
+    fetch('/mockJson/dogDummyData.json')
+      .then((response) => response.json())
+      .then((data) => setDogData(data))
+      .catch((error) => console.error('Error fetching dog data:', error));
+
+    // Fetch cat data
+    fetch('/mockJson/catDummyData.json')
+      .then((response) => response.json())
+      .then((data) => setCatData(data))
+      .catch((error) => console.error('Error fetching cat data:', error));
+  }, []);
 
   function handleSubmit(data: SubmitProps) {
     const birthDate = `${data['year']}-${data['month']}`;
@@ -44,9 +58,10 @@ export default function BasicInformation() {
     setCode(code);
     setIsDropdownView(false);
   }
+
   return (
     <div className="flex flex-col items-center justify-between text-lg w-full">
-      <p className="text-xl font-bold  mb-10">
+      <p className="text-xl font-bold mb-10">
         반려동물의 기본정보를 입력해주세요
       </p>
       <Form
@@ -126,7 +141,7 @@ export default function BasicInformation() {
           </div>
         </div>
 
-        {/* 품종 (품종 데이터 받아와야하나?)*/}
+        {/* 품종 */}
         <div className="relative w-full">
           <label className="font-medium">품종</label>
           <button
@@ -136,26 +151,18 @@ export default function BasicInformation() {
           >
             {breed}
           </button>
-          {isDropdownView ? (
-            <ul
-              className="border-2 w-full absolute top-20 z-10 h-40 overflow-auto"
-              onBlur={() => console.log('hello')}
-            >
-              {(species === 'DOG' ? DogDummyData : CatDummyData).map(
-                (item: BreedItem) => {
-                  return (
-                    <li
-                      onClick={() => handleDropdown(item.value, item.code)}
-                      className="border-b-2 h-10 flex justify-center items-center hover:cursor-pointer hover:bg-gray-200 bg-white"
-                    >
-                      {item.value}
-                    </li>
-                  );
-                },
-              )}
+          {isDropdownView && (
+            <ul className="border-2 w-full absolute top-20 z-10 h-40 overflow-auto bg-white">
+              {(species === 'DOG' ? dogData : catData).map((item) => (
+                <li
+                  key={item.id}
+                  onClick={() => handleDropdown(item.value, item.code)}
+                  className="border-b-2 h-10 flex justify-center items-center hover:cursor-pointer hover:bg-gray-200"
+                >
+                  {item.value}
+                </li>
+              ))}
             </ul>
-          ) : (
-            ''
           )}
         </div>
 

@@ -56,14 +56,16 @@ export default function Diagnose() {
             unit="년"
             type="number"
             placeholder="2024"
+            className="w-1/3"
           />
-          <p className="w-1/3"></p>
+          <div className="w-1/2"></div>
           <Form.Input
             name=""
             value="month"
             unit="월"
             type="number"
             placeholder="03"
+            className="w-1/3"
           />
         </div>
 

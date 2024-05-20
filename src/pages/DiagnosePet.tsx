@@ -29,7 +29,6 @@ export default function DiagnosePet() {
       apiData['weight'],
       apiData['neckCirc'],
       apiData['chestCirc'],
-      apiData['feedAmount'],
     ).then((res) => {
       setIsLoding(false);
       navigate(`/diagnose/result/${petData.id}`, { state: { value: res } });

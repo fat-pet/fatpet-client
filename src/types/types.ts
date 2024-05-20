@@ -50,3 +50,9 @@ export interface CommentProps {
   content: string;
   member: Member;
 }
+
+export interface BreedItem {
+  id: number;
+  value: string;
+  code: string;
+}

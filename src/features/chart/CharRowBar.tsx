@@ -2,22 +2,26 @@ import ReactApexChart from 'react-apexcharts';
 
 interface Props {
   name: string;
+  unit: string;
   data: number[];
+  color?: string;
 }
 
-export function RowBar({ name, data }: Props) {
+export function RowBar({ name, data, unit, color = '#22C55E' }: Props) {
   const options = {
     chart: {
       id: 'test-chart',
+      toolbar: {
+        show: false, // 툴바 비활성화
+      },
     },
-    xaxis: {
-      categories: ['현재', '목표'],
-    },
-    // colors:['#F44336', '#22C55E', '#9C27B0'],
     plotOptions: {
       bar: {
         horizontal: true,
       },
+    },
+    yaxis: {
+      show: false,
     },
   };
 
@@ -25,19 +29,22 @@ export function RowBar({ name, data }: Props) {
     {
       name: name,
       data: data,
-      color: '#22C55E',
+      color: color, //그래프 색
     },
   ];
 
   return (
-    <div className="w-full">
-      <p>{name}</p>
+    <div className="w-full relative">
+      <div className="absolute flex items-center">
+        <p>{name}</p>
+        <p className="text-sm text-gray-400 ml-1">{`(${unit})`}</p>
+      </div>
       <ReactApexChart
         options={options}
         series={series}
         type="bar"
-        width={'100%'}
-        height={'80%'}
+        width={'120%'}
+        height={'70%'}
       />
     </div>
   );

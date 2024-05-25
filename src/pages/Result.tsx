@@ -26,9 +26,7 @@ export default function Result() {
         </div>
         <div className="w-full flex flex-col items-center mt-10">
           <p className="text-2xl font-bold">AI 솔루션</p>
-          <div className="w-full h-auto border-2">
-            
-          </div>
+          <div className="w-full h-auto border-2"></div>
         </div>
       </div>
     </div>

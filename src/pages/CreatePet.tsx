@@ -48,6 +48,7 @@ export default function BasicInformation() {
     const neutered = neuteredRef.current!.checked;
     const feedCalories = parseInt(data['feedAmount']);
     const name = data['name'];
+    console.log('create');
     createPet(sex, name, species, code, birthDate, neutered, feedCalories).then(
       () => navigate('/pet/list'),
     );

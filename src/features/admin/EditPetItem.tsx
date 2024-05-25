@@ -1,32 +1,45 @@
-import { BreedItem } from '@/types/types';
+import { deleteBreed, putBreed } from '@/api/axios';
+import { Breed } from '@/types/types';
+import transBreed from '@/utils/transBreed';
 import { useState } from 'react';
 
 interface Props {
-  item: BreedItem;
+  item: Breed;
 }
 
 export default function EditPetItem({ item }: Props) {
   const [isEdit, setIsEdit] = useState<boolean>(false);
-
+  const { id, code, species, name, sex, avgWeightHigh, avgWeightLow } = item;
   function handleEdit() {
     if (isEdit == true) {
+      putBreed(id, code, avgWeightLow, avgWeightHigh);
     }
     setIsEdit(!isEdit);
   }
 
-  function handleDelete() {}
+  function handleDelete() {
+    deleteBreed(id);
+  }
   return (
-    <tr className="border-b" key={item.id}>
-      <td className="p-2 text-center">{item.value}</td>
+    <tr className="border-b" key={id}>
+      <td className="p-2 text-center">{`${transBreed(species, name)} ${sex === 'MALE' ? '(수컷)' : '(암컷)'}`}</td>
       <td className="p-2 text-center">
         {isEdit ? (
-          <input
-            type="text"
-            placeholder={'100g'}
-            className="w-full text-center"
-          />
+          <div className="flex">
+            <input
+              type="text"
+              placeholder={`${String(avgWeightLow)}g`}
+              className="w-full text-center"
+            />
+            ~
+            <input
+              type="text"
+              placeholder={`${String(avgWeightHigh)}g`}
+              className="w-full text-center"
+            />
+          </div>
         ) : (
-          <div>100g</div>
+          <div>{`${avgWeightLow}g ~ ${avgWeightHigh}g`}</div>
         )}
       </td>
       <td className="p-2 flex justify-center">

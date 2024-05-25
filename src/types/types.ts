@@ -8,7 +8,7 @@ interface breed {
 
 export interface PetProps {
   birthDate: [number, number]; // [year, month]
-  breeds: breed; // 견종
+  breed: breed; // 견종
   avgWeightHigh: number; // 평균 체중 상한선
   avgWeightLow: number; // 평균 체중 하한선
   name: string; // 이름
@@ -55,4 +55,14 @@ export interface BreedItem {
   id: number;
   value: string;
   code: string;
+}
+
+export interface Breed {
+  species: string;
+  name: string;
+  code: number;
+  sex: string;
+  avgWeightLow: number;
+  avgWeightHigh: number;
+  id: number;
 }

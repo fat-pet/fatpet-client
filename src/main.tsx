@@ -23,6 +23,7 @@ import DiagnosePet from './pages/DiagnosePet.tsx';
 import AdminLayout from './layouts/Admin-layout.tsx';
 import Admin from './pages/Admin.tsx';
 import AdminEditBreed from './pages/AdminEditBreed.tsx';
+import AdminAddBreed from './pages/AdminAddBreed.tsx';
 
 const router = createBrowserRouter([
   {
@@ -60,7 +61,8 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       { path: '/admin', element: <Admin /> },
-      { path: '/admin/breed', element: <AdminEditBreed /> },
+      { path: '/admin/edit/breed', element: <AdminEditBreed /> },
+      { path: '/admin/add/breed', element: <AdminAddBreed /> },
     ],
   },
 ]);

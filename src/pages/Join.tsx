@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 
 interface Join {
   [key: string]: string;
-  [key: string]: string;
 }
 
 export default function Join() {

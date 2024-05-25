@@ -13,15 +13,19 @@ export default function Login() {
   const navigate = useNavigate();
   const { setToken } = useTokenStore();
   const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
 
   const handleLogin = (data: Login) => {
     login(data['id'], data['password'])
-      .then((data) => {
-        localStorage.setItem('token', data.data.body.token);
-        setToken(data.data.body.token);
-      })
-      .then(() => {
-        navigate('/dashboard');
+      .then((res) => {
+        localStorage.setItem('token', res.data.body.token);
+        localStorage.setItem('role', res.data.body.role);
+        setToken(res.data.body.token);
+        if (res.data.body.role === 'ADMIN') {
+          navigate('/admin');
+        } else {
+          navigate('/dashboard');
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -33,7 +37,11 @@ export default function Login() {
 
   useEffect(() => {
     if (token) {
-      navigate('/dashboard');
+      if (role === 'ADMIN') {
+        navigate('/admin');
+      } else {
+        navigate('/dashboard');
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

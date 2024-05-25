@@ -1,50 +1,47 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { useRef, useEffect } from 'react';
-import { Chart } from 'node_modules/chart.js/dist';
+import 'chart.js/auto';
+
+interface Props {
+  weight: string;
+}
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function HalfDoughnut() {
+export default function HalfDoughnut({ weight = '정상' }: Props) {
   const chartRef = useRef(null);
 
   useEffect(() => {
-    const chart: Chart = chartRef.current;
-    if (!chart) {
-      return;
+    const chart: any = chartRef.current;
+    if (chart) {
+      const ctx = chart.ctx;
+      const width = chart.width;
+
+      // 무게에 따라 그라데이션 색 설정
+      let color = '#16A34A';  //정상일 때는 초록
+      if (weight === '저체중') { //저체중일 때는 파랑
+        color = '#60a5fa';
+      } else if (weight === '과체중') { // 과체중일 때는 빨강
+        color = '#DD4141';
+      }
+
+      // 왼쪽에서 오른쪽으로 그라데이션 생성
+      const gradient = ctx.createLinearGradient(0, 0, width, 0);
+      gradient.addColorStop(0, 'rgba(232, 232, 232, 1)'); // 투명 회색
+      gradient.addColorStop(1, color); // 진한 초록
+
+      // 데이터셋에 그라데이션 색상 적용
+      chart.data.datasets[0].backgroundColor = gradient;
+      chart.update(); // 업데이트 호출
     }
-    const ctx = chart.ctx;
-    const width = chart.width;
-    const height = chart.height;
-
-    // 원의 중심 좌표와 반지름 계산
-    const centerX = width / 2;
-    const centerY = height / 2;
-    const innerRadius = (width / 2) * 0.7; // cutout 비율을 반영
-    const outerRadius = width / 2;
-
-    const gradient = ctx.createRadialGradient(
-      centerX,
-      centerY,
-      innerRadius,
-      centerX,
-      centerY,
-      outerRadius,
-    );
-
-    gradient.addColorStop(0, 'rgba(255, 235, 155, 1)');
-    gradient.addColorStop(1, 'rgba(232, 232, 232, 0)');
-
-    // 데이터셋에 그라데이션 색상 적용
-    chart.data.datasets[0].backgroundColor = gradient;
-    chart.update();
   }, []);
 
   const Data = {
     datasets: [
       {
         data: [30, 70],
-        backgroundColor: ['#ffeb9b', '#E8E8E8'],
+        backgroundColor: ['#16A34A', '#E8E8E8'],
         circumference: 180,
         rotation: 270,
         cutout: '70%',
@@ -52,17 +49,15 @@ export default function HalfDoughnut() {
     ],
   };
 
-  const Options = {};
+  const Options = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
 
   return (
-    <div className="w-2/3 h-64 flex justify-center items-start">
-      <Doughnut
-        ref={chartRef}
-        width={100}
-        height={100}
-        data={Data}
-        options={Options}
-      ></Doughnut>
+    <div className="w-2/3 flex justify-center items-center relative">
+      <Doughnut ref={chartRef} data={Data} options={Options} />
+      <div className="absolute text-2xl font-bold mt-16">{weight}</div>
     </div>
   );
 }

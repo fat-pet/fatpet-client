@@ -1,4 +1,3 @@
-import React from 'react';
 import { IconType } from 'react-icons/lib';
 
 interface Props {
@@ -8,7 +7,7 @@ interface Props {
   Icon?: IconType;
 }
 
-export default function SimpleResult({ name, value, comment, Icon }: Props) {
+export default function SimpleResult({ name, value, comment }: Props) {
   return (
     <div className="w-2/5 flex justify-between px-5">
       <div className="w-full aspect-[1/1] border-2 rounded-xl p-3 flex flex-col justify-between">

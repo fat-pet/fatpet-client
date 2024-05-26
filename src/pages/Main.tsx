@@ -1,7 +1,7 @@
 // import React from 'react';
 import Header from '@/components/Header';
 import Form from '../components/Form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Main() {
   const navigate = useNavigate();
@@ -36,6 +36,7 @@ export default function Main() {
           className="bg-green-600 hover:opacity-70 transition-opacity text-white"
           onClick={() => navigate('/signin')}
         />
+
       </Form>
     </div>
   );

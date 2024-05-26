@@ -1,7 +1,7 @@
 import { FaDog } from 'react-icons/fa6';
 import { FaCat } from 'react-icons/fa';
 import { PetProps } from '@/types/types';
-import transBreed from '@/utils/transBreed';
+import transBreed from '@/utils/formatBreed';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 

@@ -1,6 +1,6 @@
 import { deleteBreed, putBreed } from '@/api/axios';
 import { Breed } from '@/types/types';
-import transBreed from '@/utils/transBreed';
+import transBreed from '@/utils/formatBreed';
 import { useState } from 'react';
 
 interface Props {

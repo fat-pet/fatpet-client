@@ -1,4 +1,3 @@
-import React from 'react';
 import HalfDoughnut from '@/features/chart/HalfDoughnut';
 import SimpleResult from '@/features/result/SimpleResult';
 import { useLocation } from 'react-router-dom';

@@ -1,7 +1,6 @@
 import { PetResult } from '@/types/types';
 import { RowBar } from '../chart/CharRowBar';
-import SimpleResult from '../result/SimpleResult';
-import transBreed from '@/utils/transBreed';
+import transBreed from '@/utils/formatBreed';
 import { useEffect, useState } from 'react';
 import { getBreed } from '@/api/axios';
 

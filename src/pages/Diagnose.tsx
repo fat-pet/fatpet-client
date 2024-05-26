@@ -4,8 +4,8 @@ import { FaCat } from 'react-icons/fa';
 import { useState } from 'react';
 import { postDiagnoses } from '@/api/axios';
 import { useNavigate } from 'react-router-dom';
-import DogDummyData from '@/api/DogDummyData';
-import CatDummyData from '@/api/CatDummyData';
+import { dogDummy } from '@/api/dogDummy';
+import { catDummy } from '@/api/catDummy';
 
 interface BreedItem {
   id: number;
@@ -43,9 +43,7 @@ export default function Diagnose() {
   }
   return (
     <div className="h-full flex flex-col items-center justify-center text-lg">
-      <p className="text-xl font-bold tracking-tighter mb-10">
-        반려동물의 정보를 입력해주세요
-      </p>
+      <p className="text-xl font-bold  mb-10">반려동물의 정보를 입력해주세요</p>
       <Form
         onSubmit={handleSubmit}
         className="h-full flex flex-col justify-between"
@@ -58,14 +56,16 @@ export default function Diagnose() {
             unit="년"
             type="number"
             placeholder="2024"
+            className="w-1/3"
           />
-          <p className="w-1/3"></p>
+          <div className="w-1/2"></div>
           <Form.Input
             name=""
             value="month"
             unit="월"
             type="number"
             placeholder="03"
+            className="w-1/3"
           />
         </div>
 
@@ -94,7 +94,7 @@ export default function Diagnose() {
             <p>품종</p>
             {error ? (
               <p className="text-red-500 text-sm font-medium">
-                필수입력 항목입니다.
+                필수 입력 항목입니다.
               </p>
             ) : (
               ''
@@ -114,7 +114,7 @@ export default function Diagnose() {
               className="border-2 w-full absolute top-20 z-10 h-40 overflow-auto"
               onBlur={() => console.log('hello')}
             >
-              {(species === 'DOG' ? DogDummyData : CatDummyData).map(
+              {(species === 'DOG' ? dogDummy : catDummy).map(
                 (item: BreedItem) => {
                   return (
                     <li

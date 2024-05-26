@@ -37,14 +37,15 @@ const FormInputEmail: React.FC<FormInputProps> = ({
 
         <div className="flex items-center">
           <input
+            spellCheck={false}
             id={value}
             placeholder={placeholder}
             type={type}
             {...register(value, {
-              required: `필수입력 항목입니다.`,
+              required: `필수 입력 항목입니다.`,
               pattern: {
                 value: new RegExp(''),
-                message: '띄어쓰기를 사용할 수 없습니다.',
+                message: '띄어쓰기는 사용할 수 없습니다.',
               },
               ...(minLen && {
                 minLength: {
@@ -60,7 +61,7 @@ const FormInputEmail: React.FC<FormInputProps> = ({
               }),
             })}
             // Input 디자인 className
-            className={`w-full mt-2 h-12 bg-gray-50 border outline-none px-3 font-medium border-gray-200 drop-shadow-sm ${className}`}
+            className={`w-full mt-1 py-2.5 bg-gray-50 border outline-none px-3 font-medium border-gray-200 drop-shadow-sm ${className}`}
           />
           {/* 단위 ex) ~~~ cm kcal 등등 */}
           {unit && <p className="ml-8">{unit}</p>}

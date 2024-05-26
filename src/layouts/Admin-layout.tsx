@@ -1,18 +1,16 @@
+import withAuthAdmin from '@/utils/WithAuthAdmin';
 import { Outlet } from 'react-router-dom';
-import BottomNav from './BottomNav-layout';
-import WithAuth from '@/utils/WithAuth';
 
 // eslint-disable-next-line react-refresh/only-export-components
-const MemberLayout = () => {
+const AdminLayout = () => {
   return (
     <div className="max-w-[480px] shadow w-full h-full ">
-      <div className="h-layout-main pt-14 px-2 overflow-auto scrollbar-hidden">
+      <div className="h-full pt-14 px-2 overflow-auto scrollbar-hidden">
         <Outlet />
       </div>
-      <BottomNav />
     </div>
   );
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
-export default WithAuth(MemberLayout);
+export default withAuthAdmin(AdminLayout);

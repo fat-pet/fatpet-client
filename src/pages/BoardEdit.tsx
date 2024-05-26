@@ -2,6 +2,7 @@ import { putPost } from '@/api/axios';
 import { useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FaCheck, FaUser } from 'react-icons/fa';
+import formatDate from '@/utils/formatDate';
 
 export default function BoardEdit() {
   const { id } = useParams();
@@ -29,7 +30,10 @@ export default function BoardEdit() {
             <FaUser className="text-4xl rounded-lg border-gray-500 border-2" />
             <p className="flex flex-col ml-2">
               <p className="font-bold text-lg">{data?.nickname}</p>
-              <p className="text-gray-400">{`${data?.createdDate[0]}/${data?.createdDate[1]}/${data?.createdDate[2]}`}</p>
+              <p className="text-gray-400">
+                {' '}
+                {data ? formatDate(data?.createdDate) : <></>}
+              </p>
             </p>
           </div>
           <div>
@@ -39,7 +43,7 @@ export default function BoardEdit() {
           </div>
         </p>
         <input
-          className="text-xl font-bold tracking-tighter mt-3 w-full"
+          className="text-xl font-bold  mt-3 w-full"
           defaultValue={data?.title}
           ref={titleRef}
         />

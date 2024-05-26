@@ -13,27 +13,35 @@ export default function Login() {
   const navigate = useNavigate();
   const { setToken } = useTokenStore();
   const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
 
   const handleLogin = (data: Login) => {
     login(data['id'], data['password'])
-      .then((data) => {
-        localStorage.setItem('token', data.data.body.token);
-        setToken(data.data.body.token);
-      })
-      .then(() => {
-        navigate('/dashboard');
+      .then((res) => {
+        localStorage.setItem('token', res.data.body.token);
+        localStorage.setItem('role', res.data.body.role);
+        setToken(res.data.body.token);
+        if (res.data.body.role === 'ADMIN') {
+          navigate('/admin');
+        } else {
+          navigate('/dashboard');
+        }
       })
       .catch((err) => {
         console.log(err);
         if (err.response.status == 400) {
-          alert('아이디 혹은 비밀번호가 틀립니다.');
+          alert('아이디 혹은 비밀번호를 다시 확인해 주세요.');
         }
       });
   };
 
   useEffect(() => {
     if (token) {
-      navigate('/dashboard');
+      if (role === 'ADMIN') {
+        navigate('/admin');
+      } else {
+        navigate('/dashboard');
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -56,6 +64,14 @@ export default function Login() {
               className="bg-green-600 hover:opacity-70 transition-opacity text-white"
             />
           </div>
+          <Link
+            to={'/signup'}
+            className="block w-full py-3 text-center font-medium hover:opacity-70"
+          >
+            아직 회원이 아니시라면?{' '}
+            <span className="underline">회원가입하기</span>
+          </Link>
+
         </Form>
       </div>
     </div>

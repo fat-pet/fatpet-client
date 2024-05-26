@@ -85,17 +85,18 @@ const FormInputDup: React.FC<FormInputProps> = ({
 
         <div className="flex items-center">
           <input
+            spellCheck={false}
             id={value}
             placeholder={placeholder}
             type={type}
             {...register(value, {
-              required: `필수입력 항목입니다.`,
+              required: `필수 입력 항목입니다.`,
               pattern: {
                 value: new RegExp('^[가-힣A-Za-z0-9]*$'),
-                message: '띄어쓰기 또는 특수문자를 사용할 수 없습니다.',
+                message: '띄어쓰기나 특수문자는 사용할 수 없습니다.',
               },
             })}
-            className={`w-full mt-2 h-12 bg-gray-50 border outline-none px-3 font-medium border-gray-200 drop-shadow-sm ${className}`}
+            className={`w-full mt-1 py-2.5 bg-gray-50 border outline-none px-3 font-medium border-gray-200 drop-shadow-sm ${className}`}
           />
           {unit && <p className="w-16 flex justify-center">{unit}</p>}
         </div>

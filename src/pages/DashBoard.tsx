@@ -1,5 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { FaGear } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
 import { deletePet, getPetList } from '@/api/axios';
 import { useEffect, useState } from 'react';
 import { PetProps } from '@/types/types';
@@ -32,45 +31,44 @@ export default function DashBoard() {
   }
 
   return (
-    <div className="flex flex-col items-center tracking-tighter h-full ">
+    <div className="px-4 h-full">
       {/* 헤더 */}
-      <header className="flex justify-between w-full items-center">
-        <p className="text-lg font-bold">대시보드</p>
-        <Link to="/member/edit">
-          <FaGear className="text-2xl" />
-        </Link>
+      <header className="w-full text-lg font-bold mb-2 flex justify-between ">
+        <h2 className="text-2xl font-bold">팻펫 대시보드</h2>
       </header>
 
       {/* 펫 대쉬보드 */}
-      <div className="w-full h-1/3 pt-5">
-        {pet ? (
-          <PetStatus pet={pet as PetProps} handleDelete={handleDelete} />
-        ) : (
-          <PetNotStatus />
+      <div className="h-full flex flex-col justify-between">
+        <div className="w-full mt-5">
+          {pet ? (
+            <PetStatus pet={pet as PetProps} handleDelete={handleDelete} />
+          ) : (
+            <PetNotStatus />
+          )}
+        </div>
+
+        {/* BCS 검사하기 , 검사 기록보기 버튼 */}
+        <div className="w-full h-1/6 flex items-center">
+          {pet && <Diagnose id={pet.id} />}
+        </div>
+
+        {/* 펫 변화추이 그래프 */}
+        {pet && (
+          <div className="w-full h-3/5 flex flex-col justify-center">
+            <span className="font-bold">펫 변화 추이</span>
+            <span className="text-sm text-gray-400">(최근 3회)</span>
+            <ColumnBar
+              name1="체중 (kg)"
+              data1={dummyData.map((item) => item.kg)}
+              name2="일일 권장 사료량 (kcal)"
+              data2={dummyData.map((item) => item.kcal)}
+            />
+            <p className="text-sm text-gray-500">
+              *BCS(Body Condition Score) : 펫의 비만도를 1~9만큼 측정한 값
+            </p>
+          </div>
         )}
       </div>
-
-      {/* BCS 검사하기 , 검사 기록보기 버튼 */}
-      <div className="w-full h-1/6 flex items-center">
-        {pet && <Diagnose id={pet.id} />}
-      </div>
-
-      {/* 펫 변화추이 그래프 */}
-      {pet && (
-        <div className="w-full h-3/5 flex flex-col justify-center">
-          <span className="font-bold">펫 변화 추이</span>
-          <span className="text-sm text-gray-400">(최근 3회)</span>
-          <ColumnBar
-            name1="kg"
-            data1={dummyData.map((item) => item.kg)}
-            name2="BCS"
-            data2={dummyData.map((item) => item.BCS)}
-          />
-          <p className="text-sm text-gray-500">
-            *BCS(Body Condition Score) : 펫의 비만도를 1~9만큼 측정한 값
-          </p>
-        </div>
-      )}
     </div>
   );
 }
@@ -80,16 +78,16 @@ export const dummyData = [
   {
     name: '4/17',
     kg: 35,
-    BCS: 8,
+    kcal: 215,
   },
   {
     name: '4/25',
     kg: 25,
-    BCS: 6,
+    kcal: 320,
   },
   {
     name: '5/6',
     kg: 23,
-    BCS: 5,
+    kcal: 345,
   },
 ];

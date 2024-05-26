@@ -11,15 +11,15 @@ interface Props {
 }
 
 export default function PetStatus({ pet, handleDelete }: Props) {
-  console.log(pet.breeds.species, pet!.breeds.name);
-  console.log(transBreed(pet.breeds.species, pet!.breeds.name));
+  console.log(pet.breed.species, pet!.breed.name);
+  console.log(transBreed(pet.breed.species, pet!.breed.name));
   return (
     <div className="w-full h-full flex flex-col  items-center">
       <p className="w-full text-sm mb-3 ml-20 font-bold">현재 선택 중인 펫</p>
 
       <div className="w-5/6 h-40 bg-green-600 rounded-xl px-5 text-white shadow-lg">
         <div className="h-2/3 flex items-center pl-3 justify-between">
-          {pet?.breeds.species === 'DOG' ? (
+          {pet?.breed.species === 'DOG' ? (
             <FaDog className="text-6xl" />
           ) : (
             <FaCat className="text-6xl" />
@@ -27,10 +27,10 @@ export default function PetStatus({ pet, handleDelete }: Props) {
           <div className="flex flex-col justify-center w-1/2">
             <p className="text-lg font-bold">{pet.name}</p>
             <p className="text-xs">
-              품종 : {transBreed(pet.breeds.species, pet!.breeds.name)}
+              품종 : {transBreed(pet.breed.species, pet!.breed.name)}
             </p>
             <p className="text-xs">
-              성별 : {pet?.breeds.sex === 'MALE' ? '수컷' : '암컷'}
+              성별 : {pet?.breed.sex === 'MALE' ? '수컷' : '암컷'}
             </p>
             <p className="text-xs  sm:block">
               생일 : {`${pet?.birthDate[0]}년 ${pet?.birthDate[1]}월`}

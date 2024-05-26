@@ -28,33 +28,15 @@ export default function Main() {
       </div>
       <Form
         onSubmit={() => {}}
-        className="w-full h-1/5 flex flex-col items-center justify-evenly mb-20"
+        className="w-full flex flex-col items-center justify-evenly mb-28"
       >
-        <div className="w-full mb-3">
-          <Form.Button
-            name="로그인하기"
-            type="button"
-            className="bg-green-600 hover:opacity-70 transition-opacity text-white"
-            onClick={() => navigate('/signin')}
-          />
-        </div>
+        <Form.Button
+          name="로그인하기"
+          type="button"
+          className="bg-green-600 hover:opacity-70 transition-opacity text-white"
+          onClick={() => navigate('/signin')}
+        />
 
-        <Link
-          to={'/signup'}
-          className="block w-full py-3 text-center font-medium hover:opacity-70"
-        >
-          아직 회원이 아니시라면?{' '}
-          <span className="underline">회원가입하기</span>
-        </Link>
-
-        {/* <div className="w-full">
-          <Form.Button
-            name="로그인 없이 진단하기"
-            type="button"
-            className="bg-neutral-800 hover:opacity-70 transition-opacity text-white"
-            onClick={() => navigate('/trial')}
-          />
-        </div> */}
       </Form>
     </div>
   );

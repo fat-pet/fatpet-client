@@ -13,21 +13,21 @@ export default function PetListComponent({ pet }: { pet: PetProps }) {
 
   return (
     <div
-      className="w-full aspect-[2/1] rounded-xl bg-green-600 mb-20 flex items-center px-5 text-white hover:cursor-pointer"
+      className="w-full aspect-[4/1] flex items-center px-5 border-b-2 hover:cursor-pointer hover:bg-gray-200"
       onClick={handleClicked}
     >
-      {pet?.breeds.species === 'DOG' ? (
-        <FaDog className="w-24 h-24 mr-5" />
+      {pet?.breed.species === 'DOG' ? (
+        <FaDog className="w-16 h-16 mr-5 text-gray-400" />
       ) : (
-        <FaCat className="w-24 h-24 mr-5" />
+        <FaCat className="w-16 h-16 mr-5 text-gray-400" />
       )}
 
       <div>
-        <p className="text-lg font-bold">이름 : {pet.name}</p>
-        <p className="text-xs xxsm:text-sm">
-          품종 : {transBreed(pet.breeds.species, pet!.breeds.name)}
+        <p className="text-lg font-bold">{pet.name}</p>
+        <p className="text-xs">
+          품종 : {transBreed(pet.breed.species, pet!.breed.name)}
         </p>
-        <p className="text-xs xxsm:text-sm">
+        <p className="text-xs">
           생일 : {`${pet.birthDate[0]}년 ${pet.birthDate[1]}월`}
         </p>
       </div>

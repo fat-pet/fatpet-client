@@ -6,7 +6,7 @@ import {
   Title,
   Tooltip,
   Legend,
-  scales,
+  ChartOptions, // 추가
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
@@ -32,7 +32,7 @@ export function ColumnBar({ name1, data1, name2, data2 }: Props) {
   const data = {
     labels,
     datasets: [
-      // 왼족 막대 그래프
+      // 왼쪽 막대 그래프
       {
         label: name1,
         yAxisID: 'A',
@@ -40,7 +40,7 @@ export function ColumnBar({ name1, data1, name2, data2 }: Props) {
         // 그래프 막대 색
         backgroundColor: 'rgb(22 163 74)',
       },
-      //   오른쪽 막대 그래프
+      // 오른쪽 막대 그래프
       {
         label: name2,
         yAxisID: 'B',
@@ -51,14 +51,16 @@ export function ColumnBar({ name1, data1, name2, data2 }: Props) {
     ],
   };
 
-  const option = {
+  const options: ChartOptions<'bar'> = {
     responsive: true,
     scales: {
       A: {
+        type: 'linear', // 추가
         beginAtZero: true,
         position: 'left',
       },
       B: {
+        type: 'linear', // 추가
         beginAtZero: true,
         position: 'right',
       },
@@ -67,7 +69,7 @@ export function ColumnBar({ name1, data1, name2, data2 }: Props) {
 
   return (
     <div className="w-full my-5">
-      <Bar options={option} data={data} />
+      <Bar options={options} data={data} />
     </div>
   );
 }

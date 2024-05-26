@@ -21,12 +21,12 @@ export default function PetResultList() {
       </header>
 
       <div className="w-full flex flex-col items-center">
-        {/* {resultData?.map((item) => {
+        {resultData?.map((item) => {
           return <ResultInformation key={item.id} data={item} />;
-        })} */}
+        })}
+        {/* <ResultInformation />
         <ResultInformation />
-        <ResultInformation />
-        <ResultInformation />
+        <ResultInformation /> */}
       </div>
     </>
   );

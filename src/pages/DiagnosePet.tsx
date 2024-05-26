@@ -7,9 +7,6 @@ import { useNavigate } from 'react-router-dom';
 interface SubmitProps {
   [key: string]: string;
 }
-interface ApiProps {
-  [key: string]: number;
-}
 
 export default function DiagnosePet() {
   const data = localStorage.getItem('petData');
@@ -18,7 +15,6 @@ export default function DiagnosePet() {
   const petData = data ? JSON.parse(data) : '';
 
   const handleSubmit = (data: SubmitProps) => {
-    const apiData: ApiProps = {};
     setIsLoding(true);
 
     postPetDiagnoses(

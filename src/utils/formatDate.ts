@@ -1,6 +1,6 @@
 export default function formatDate(dateArray: number[]) {
   // 배열에서 년, 월, 일, 시, 분, 초, 밀리초를 가져옴
-  let [year, month, day, hour, minute, second, millisecond] = dateArray;
+  let [year, month, day, hour, minute] = dateArray;
 
   // UTC 시간대 보정 (+9시간)
   let adjustedHour = hour + 9;

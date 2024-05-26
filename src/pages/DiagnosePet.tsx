@@ -21,17 +21,16 @@ export default function DiagnosePet() {
     const apiData: ApiProps = {};
     setIsLoding(true);
 
-    for (const key in data) {
-      apiData[key] = Number(data[key]);
-    }
     postPetDiagnoses(
       petData.id,
-      apiData['weight'],
-      apiData['neckCirc'],
-      apiData['chestCirc'],
+      Number(data['weight']),
+      Number(data['neckCirc']),
+      Number(data['chestCirc']),
     ).then((res) => {
       setIsLoding(false);
-      navigate(`/diagnose/result/${petData.id}`, { state: { value: res } });
+      navigate(`/diagnose/result/${petData.id}`, {
+        state: { value: res.data.body, weight: data['weight'] },
+      });
     });
   };
 

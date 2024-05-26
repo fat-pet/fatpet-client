@@ -12,6 +12,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.28.14",
     "@toss/hangul": "^1.7.0",
+    "@types/chart.js": "^2.9.41",
     "antd": "^5.16.2",
     "axios": "^1.6.8",
     "chart.js": "^4.4.2",

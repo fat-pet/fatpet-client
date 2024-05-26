@@ -61,7 +61,7 @@ export default function BasicInformation() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-between text-lg w-full">
+    <div className="h-full flex flex-col items-center justify-between text-lg w-full">
       <p className="text-xl font-bold mb-10">
         반려동물의 기본정보를 입력해주세요
       </p>

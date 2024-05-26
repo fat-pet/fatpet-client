@@ -58,10 +58,10 @@ export default function DashBoard() {
             <span className="font-bold">펫 변화 추이</span>
             <span className="text-sm text-gray-400">(최근 3회)</span>
             <ColumnBar
-              name1="kg"
+              name1="체중 (kg)"
               data1={dummyData.map((item) => item.kg)}
-              name2="BCS"
-              data2={dummyData.map((item) => item.BCS)}
+              name2="일일 권장 사료량 (kcal)"
+              data2={dummyData.map((item) => item.kcal)}
             />
             <p className="text-sm text-gray-500">
               *BCS(Body Condition Score) : 펫의 비만도를 1~9만큼 측정한 값
@@ -78,16 +78,16 @@ export const dummyData = [
   {
     name: '4/17',
     kg: 35,
-    BCS: 8,
+    kcal: 215,
   },
   {
     name: '4/25',
     kg: 25,
-    BCS: 6,
+    kcal: 320,
   },
   {
     name: '5/6',
     kg: 23,
-    BCS: 5,
+    kcal: 345,
   },
 ];

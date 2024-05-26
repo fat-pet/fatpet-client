@@ -25,6 +25,8 @@ export default function PetResultList() {
           return <ResultInformation key={item.id} data={item} />;
         })} */}
         <ResultInformation />
+        <ResultInformation />
+        <ResultInformation />
       </div>
     </>
   );

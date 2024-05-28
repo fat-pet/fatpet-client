@@ -1,13 +1,26 @@
+import { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
 interface Props {
   name: string;
   unit: string;
   data: number[];
-  color?: string;
+  bcs?: string;
 }
 
-export function RowBar({ name, data, unit, color = '#22C55E' }: Props) {
+export function RowBar({ name, data, unit, bcs = 'IDEAL' }: Props) {
+  const [color, setColor] = useState<string>();
+  useEffect(() => {
+    if (bcs === 'UNDER') {
+      setColor('#60a5fa');
+    } else if (bcs === 'IDEAL') {
+      setColor('#22C55E');
+    } else {
+      setColor('#DD4141');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const options = {
     chart: {
       id: 'test-chart',

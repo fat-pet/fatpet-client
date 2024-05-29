@@ -63,9 +63,6 @@ export default function DashBoard() {
               name2="일일 권장 사료량 (kcal)"
               data2={dummyData.map((item) => item.kcal)}
             />
-            <p className="text-sm text-gray-500">
-              *BCS(Body Condition Score) : 펫의 비만도를 1~9만큼 측정한 값
-            </p>
           </div>
         )}
       </div>

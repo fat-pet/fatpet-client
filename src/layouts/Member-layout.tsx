@@ -9,7 +9,9 @@ const MemberLayout = () => {
       <div className="h-layout-main pt-14 px-2 overflow-auto scrollbar-hidden">
         <Outlet />
       </div>
-      <BottomNav />
+      <div className="h-layout-footer">
+        <BottomNav />
+      </div>
     </div>
   );
 };

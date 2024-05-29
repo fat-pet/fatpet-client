@@ -134,14 +134,14 @@ export default function BasicInformation() {
             <p className="flex items-center w-1/2">
               중성화여부
               <input
-                ref={neuteredRef}
-                className="w-5 h-5 ml-3"
+                // ref={neuteredRef}
+                className="w-5 h-5 ml-3 border-2"
                 type="checkbox"
+                checked={false}
               />
             </p>
           </div>
         </div>
-
         {/* 품종 */}
         <div className="relative w-full">
           <label className="font-medium">품종</label>

@@ -1,10 +1,7 @@
-import { IconType } from 'react-icons/lib';
-
 interface Props {
   name: string;
   value: string;
   comment?: string;
-  Icon?: IconType;
 }
 
 export default function SimpleResult({ name, value, comment }: Props) {
@@ -16,7 +13,7 @@ export default function SimpleResult({ name, value, comment }: Props) {
         </div>
         <div className="text-2xl font-medium">{value}</div>
         <div className="text-gray-400 w-full text-center ">
-          <p className="whitespace-pre-line">{comment}</p>
+          <p className="text-sm whitespace-pre-line">{comment}</p>
         </div>
       </div>
     </div>

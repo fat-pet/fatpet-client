@@ -24,9 +24,6 @@ export default function PetResultList() {
         {resultData?.map((item) => {
           return <ResultInformation key={item.id} data={item} />;
         })}
-        {/* <ResultInformation />
-        <ResultInformation />
-        <ResultInformation /> */}
       </div>
     </>
   );

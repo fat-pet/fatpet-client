@@ -76,11 +76,6 @@ export default function Join() {
                 placeholder="4글자 이상, 12글자 이하"
               />
             </div>
-            {/* <Form.SmallButton
-                            name="중복 확인"
-                            type="button"
-                            dup="아이디"
-                        /> */}
           </div>
           <div className="w-full mb-5">
             <Form.Input

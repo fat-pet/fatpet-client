@@ -7,7 +7,7 @@ const BottomNav = () => {
   const curPath = location.pathname;
 
   return (
-    <div className="h-layout-footer border-t w-full flex justify-between font-semibold xxsm:text-lg">
+    <div className="h-full border-t w-full flex justify-between font-semibold xxsm:text-lg">
       <Link
         to="/board"
         className={`text-xs flex flex-col items-center justify-center w-1/3 ${curPath == '/board' ? 'opacity-100' : 'opacity-30'}`}

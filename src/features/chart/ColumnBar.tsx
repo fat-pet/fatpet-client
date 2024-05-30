@@ -68,7 +68,7 @@ export function ColumnBar({ name1, data1, name2, data2 }: Props) {
   };
 
   return (
-    <div className="w-full my-5">
+    <div className="w-full">
       <Bar options={options} data={data} />
     </div>
   );

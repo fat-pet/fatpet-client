@@ -71,7 +71,6 @@ export default function Login() {
             아직 회원이 아니시라면?{' '}
             <span className="underline">회원가입하기</span>
           </Link>
-
         </Form>
       </div>
     </div>

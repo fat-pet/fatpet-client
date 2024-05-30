@@ -1,5 +1,8 @@
 import HalfDoughnut from '@/features/chart/HalfDoughnut';
+import GptResult from '@/features/result/GptResult';
 import SimpleResult from '@/features/result/SimpleResult';
+import formatGPT from '@/utils/formatGPT';
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 interface ValueProps {
@@ -15,7 +18,7 @@ interface Props {
   weight: string;
 }
 
-function formatBSC(bcs: string): string {
+function formatBSC(bcs: string): '정상' | '저체중' | '과체중' {
   if (bcs === 'UNDER') {
     return '저체중';
   } else if (bcs === 'IDEAL') {
@@ -29,6 +32,9 @@ export default function Result() {
   const location = useLocation();
   const state = location.state as Props | undefined;
   const petData = localStorage.getItem('petData');
+  const [gptAnswer] = useState<string[][]>(
+    formatGPT(state!.value!.gptSolution),
+  );
   const feedAmount = petData && JSON.parse(petData)['feedCalories'];
   // 기본값 설정
   const value: ValueProps = state?.value || {
@@ -39,9 +45,6 @@ export default function Result() {
     gptSolution: 'AI 솔루션 내용',
   };
   const weight = state?.weight || '3.6kg';
-  const gpt = value.gptSolution.split('\n\n');
-  console.log(gpt);
-
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <header className="font-bold text-2xl">검사 결과</header>
@@ -60,11 +63,9 @@ export default function Result() {
           />
         </div>
         <div className="w-full flex flex-col items-center mt-10">
-          <p className="text-2xl font-bold">AI 솔루션</p>
-          <div className="w-full h-auto border-2 p-4">{gpt[0]}</div>
-          <div className="w-full h-auto border-2 p-4">{gpt[1]}</div>
-          <div className="w-full h-auto border-2 p-4">{gpt[2]}</div>
-          <div className="w-full h-auto border-2 p-4">{gpt[3]}</div>
+          {gptAnswer.map((item, key) => {
+            return <GptResult key={key} gptAnswer={item} />;
+          })}
         </div>
       </div>
     </div>

@@ -24,11 +24,12 @@ interface Props {
   data1: number[];
   name2: string;
   data2: number[];
+  date: string[];
 }
 
-const labels = ['3/21', '3/28', '4/2'];
-
-export function ColumnBar({ name1, data1, name2, data2 }: Props) {
+export function ColumnBar({ name1, data1, name2, data2, date }: Props) {
+  const labels = date;
+  console.log(date);
   const data = {
     labels,
     datasets: [

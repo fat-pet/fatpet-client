@@ -53,7 +53,7 @@ export async function createPet(
   species: string,
   breedName: string,
   birthDate: string,
-  neutered: boolean,
+  neutered: undefined | HTMLInputElement,
   feedCalories: number,
 ) {
   return await api.post('/api/pets', {
@@ -91,6 +91,10 @@ export async function editPet(
 
 export async function getPetResult(id: number) {
   return await api.get(`/api/diagnoses?petId=${id}`);
+}
+
+export async function deletePetResult(id: number) {
+  return await api.delete(`/api/diagnoses/${id}`);
 }
 
 // 비만도 진단 API

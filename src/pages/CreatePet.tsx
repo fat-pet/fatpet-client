@@ -26,7 +26,7 @@ export default function BasicInformation() {
   );
   const [dogData, setDogData] = useState<BreedItem[]>([]);
   const [catData, setCatData] = useState<BreedItem[]>([]);
-  const neuteredRef = useRef<HTMLInputElement>(null);
+  const neuteredRef = useRef<HTMLInputElement>();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,10 +45,10 @@ export default function BasicInformation() {
 
   function handleSubmit(data: SubmitProps) {
     const birthDate = `${data['year']}-${data['month']}`;
-    const neutered = neuteredRef.current!.checked;
+    const neutered = neuteredRef?.current;
     const feedCalories = parseInt(data['feedAmount']);
     const name = data['name'];
-    console.log('create');
+    console.log(neutered);
     createPet(sex, name, species, code, birthDate, neutered, feedCalories).then(
       () => navigate('/pet/list'),
     );
@@ -137,7 +137,6 @@ export default function BasicInformation() {
                 // ref={neuteredRef}
                 className="w-5 h-5 ml-3 border-2"
                 type="checkbox"
-                checked={false}
               />
             </p>
           </div>

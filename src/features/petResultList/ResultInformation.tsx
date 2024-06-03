@@ -2,12 +2,14 @@ import { PetResult } from '@/types/types';
 import { RowBar } from '../chart/CharRowBar';
 import transBreed from '@/utils/formatBreed';
 import { useEffect, useState } from 'react';
-import { getBreed } from '@/api/axios';
+import { deletePetResult, getBreed } from '@/api/axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function ResultInformation({ data }: { data?: PetResult }) {
   const storage = localStorage.getItem('petData');
   const petData = storage && JSON.parse(storage);
   const [weight, setWeight] = useState<string[]>();
+  const navigate = useNavigate();
   useEffect(() => {
     getBreed().then((res) => {
       console.log(res);
@@ -17,7 +19,6 @@ export default function ResultInformation({ data }: { data?: PetResult }) {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   function formatBCS(bcs: string) {
     if (bcs === 'UNDER') {
       return '저체중';
@@ -28,10 +29,22 @@ export default function ResultInformation({ data }: { data?: PetResult }) {
     }
   }
 
+  function handleDelete() {
+    deletePetResult(data!.id).then(() => {
+      navigate(0);
+    });
+  }
+
   return (
     <div className="w-full my-10 ">
       <div className="text-sm text-gray-400 mb-3">3월 26일 BCS 검사표</div>
-      <div className="w-full h-full border-[1px] border-gray-300 flex flex-col items-center justify-center aspect-[3/2] rounded-xl py-10 font-bold space-y-5 shadow-md">
+      <div className="w-full h-full border-[1px] border-gray-300 flex flex-col items-center justify-center aspect-[3/2] rounded-xl py-10 font-bold space-y-5 shadow-md relative">
+        <button
+          onClick={handleDelete}
+          className="absolute top-5 right-5 text-red-400"
+        >
+          삭제
+        </button>
         <div className="text-center">
           <p>검사 결과 : {data?.bcs ? formatBCS(data.bcs) : '과체중'}</p>
           <p className="text-sm text-gray-400">{`${transBreed(petData?.breed.species, petData.breed.name)}의 평균 무게는 ${weight ? `${weight[0]} ~ ${weight[1]}` : '3.6kg ~ 4.8kg'} 입니다`}</p>

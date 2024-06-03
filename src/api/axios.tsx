@@ -93,6 +93,10 @@ export async function getPetResult(id: number) {
   return await api.get(`/api/diagnoses?petId=${id}`);
 }
 
+export async function deletePetResult(id: number) {
+  return await api.delete(`/api/diagnoses/${id}`);
+}
+
 // 비만도 진단 API
 
 export async function postPetDiagnoses(

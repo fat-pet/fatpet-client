@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { deletePet, getPetList } from '@/api/axios';
+import { deletePet, getPetList, getPetResult } from '@/api/axios';
 import { useEffect, useState } from 'react';
-import { PetProps } from '@/types/types';
+import { PetProps, PetResult } from '@/types/types';
 import PetStatus from '@/features/dashBoard/PetStatus';
 import PetNotStatus from '@/features/dashBoard/PetNotStatus';
 import Diagnose from '@/features/dashBoard/Diagnose';
@@ -11,6 +11,7 @@ export default function DashBoard() {
   const [pet, setPet] = useState<PetProps | null>(null);
   const LSData: string | null = localStorage.getItem('petData');
   const petData = LSData ? JSON.parse(LSData) : '';
+  const [petGraphData, getPetGraphData] = useState<PetResult[]>();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,6 +33,42 @@ export default function DashBoard() {
       navigate('/dashboard');
     });
   }
+  console.log(petGraphData);
+  const dummyData = petGraphData && [
+    petGraphData[0]
+      ? {
+          date: `${petGraphData[0].createdDate[1]}/${petGraphData[0].createdDate[2]}`,
+          kg: petGraphData[0].weight,
+          kcal: petGraphData[0].der,
+        }
+      : {
+          date: '',
+          kg: 0,
+          kcal: 0,
+        },
+    petGraphData[1]
+      ? {
+          date: `${petGraphData[1].createdDate[1]}/${petGraphData[1].createdDate[2]}`,
+          kg: petGraphData[1].weight,
+          kcal: petGraphData[1].der,
+        }
+      : {
+          date: '',
+          kg: 0,
+          kcal: 0,
+        },
+    petGraphData[2]
+      ? {
+          date: `${petGraphData[2].createdDate[1]}/${petGraphData[2].createdDate[2]}`,
+          kg: petGraphData[2].weight,
+          kcal: petGraphData[2].der,
+        }
+      : {
+          date: '',
+          kg: 0,
+          kcal: 0,
+        },
+  ];
 
   return (
     <div className="px-4 h-full overflow-hidden">
@@ -62,9 +99,10 @@ export default function DashBoard() {
             <span className="text-sm text-gray-400">(최근 3회)</span>
             <ColumnBar
               name1="체중 (kg)"
-              data1={dummyData.map((item) => item.kg)}
+              data1={dummyData ? dummyData.map((item) => item?.kg) : []}
+              date={dummyData ? dummyData.map((item) => item?.date) : []}
               name2="일일 권장 사료량 (kcal)"
-              data2={dummyData.map((item) => item.kcal)}
+              data2={dummyData ? dummyData!.map((item) => item?.kcal) : []}
             />
           </div>
         )}
@@ -72,22 +110,3 @@ export default function DashBoard() {
     </div>
   );
 }
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const dummyData = [
-  {
-    name: '4/17',
-    kg: 35,
-    kcal: 215,
-  },
-  {
-    name: '4/25',
-    kg: 25,
-    kcal: 320,
-  },
-  {
-    name: '5/6',
-    kg: 23,
-    kcal: 345,
-  },
-];

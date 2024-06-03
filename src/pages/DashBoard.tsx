@@ -17,12 +17,10 @@ export default function DashBoard() {
   useEffect(() => {
     petData
       ? setPet(petData)
-      : getPetList().then((data) => setPet(data.data.body[0]));
-
-    getPetResult(petData.id).then((res) => {
-      getPetGraphData(res.data.body);
-    });
-
+      : getPetList().then((data) => {
+          setPet(data.data.body[0]);
+          localStorage.setItem('petData', JSON.stringify(data.data.body[0]));
+        });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

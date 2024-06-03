@@ -53,7 +53,7 @@ export async function createPet(
   species: string,
   breedName: string,
   birthDate: string,
-  neutered: undefined | HTMLInputElement,
+  neutered: boolean,
   feedCalories: number,
 ) {
   return await api.post('/api/pets', {

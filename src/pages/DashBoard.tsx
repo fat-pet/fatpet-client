@@ -37,21 +37,39 @@ export default function DashBoard() {
   }
   console.log(petGraphData);
   const dummyData = petGraphData && [
-    petGraphData[0] && {
-      date: `${petGraphData[0].createdDate[1]}/${petGraphData[0].createdDate[2]}`,
-      kg: petGraphData[0].weight,
-      kcal: petGraphData[0].der,
-    },
-    petGraphData[1] && {
-      date: `${petGraphData[1].createdDate[1]}/${petGraphData[1].createdDate[2]}`,
-      kg: petGraphData[1].weight,
-      kcal: petGraphData[1].der,
-    },
-    petGraphData[2] && {
-      date: `${petGraphData[2].createdDate[1]}/${petGraphData[2].createdDate[2]}`,
-      kg: petGraphData[2].weight,
-      kcal: petGraphData[2].der,
-    },
+    petGraphData[0]
+      ? {
+          date: `${petGraphData[0].createdDate[1]}/${petGraphData[0].createdDate[2]}`,
+          kg: petGraphData[0].weight,
+          kcal: petGraphData[0].der,
+        }
+      : {
+          date: '',
+          kg: 0,
+          kcal: 0,
+        },
+    petGraphData[1]
+      ? {
+          date: `${petGraphData[1].createdDate[1]}/${petGraphData[1].createdDate[2]}`,
+          kg: petGraphData[1].weight,
+          kcal: petGraphData[1].der,
+        }
+      : {
+          date: '',
+          kg: 0,
+          kcal: 0,
+        },
+    petGraphData[2]
+      ? {
+          date: `${petGraphData[2].createdDate[1]}/${petGraphData[2].createdDate[2]}`,
+          kg: petGraphData[2].weight,
+          kcal: petGraphData[2].der,
+        }
+      : {
+          date: '',
+          kg: 0,
+          kcal: 0,
+        },
   ];
 
   return (

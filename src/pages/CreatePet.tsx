@@ -26,7 +26,7 @@ export default function BasicInformation() {
   );
   const [dogData, setDogData] = useState<BreedItem[]>([]);
   const [catData, setCatData] = useState<BreedItem[]>([]);
-  const neuteredRef = useRef<HTMLInputElement>();
+  const neuteredRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,13 +45,21 @@ export default function BasicInformation() {
 
   function handleSubmit(data: SubmitProps) {
     const birthDate = `${data['year']}-${data['month']}`;
-    const neutered = neuteredRef?.current;
+    const neutered = neuteredRef?.current && neuteredRef!.current.checked;
     const feedCalories = parseInt(data['feedAmount']);
     const name = data['name'];
     console.log(neutered);
-    createPet(sex, name, species, code, birthDate, neutered, feedCalories).then(
-      () => navigate('/pet/list'),
-    );
+    neutered !== null &&
+      sex &&
+      createPet(
+        sex,
+        name,
+        species,
+        code,
+        birthDate,
+        neutered,
+        feedCalories,
+      ).then(() => navigate('/pet/list'));
   }
 
   function handleDropdown(breed: string, code: string) {
@@ -134,7 +142,7 @@ export default function BasicInformation() {
             <p className="flex items-center w-1/2">
               중성화여부
               <input
-                // ref={neuteredRef}
+                ref={neuteredRef}
                 className="w-5 h-5 ml-3 border-2"
                 type="checkbox"
               />

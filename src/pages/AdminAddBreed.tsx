@@ -4,23 +4,28 @@ import { FaDog } from 'react-icons/fa6';
 import { FaCat } from 'react-icons/fa';
 import { IoMdFemale, IoMdMale } from 'react-icons/io';
 import { postBreed } from '@/api/axios';
+import { useNavigate } from 'react-router-dom';
 
 interface DataProps {
   [key: string]: string;
 }
 
 export default function AdminAddBreed() {
+  const navigate = useNavigate();
   const [species, setSpecies] = useState<string>('');
   const [sex, setSex] = useState<string>('');
   function handleSubmit(data: DataProps) {
     postBreed(
       species,
+      data['nameKor'],
       data['name'],
       Number(data['code']),
       sex,
       Number(data['avgWeightLow']),
       Number(data['avgWeightHigh']),
-    );
+    ).then(() => {
+      navigate('/admin');
+    });
   }
   return (
     <div className="h-full">
@@ -31,8 +36,14 @@ export default function AdminAddBreed() {
           className="h-full flex flex-col justify-between"
         >
           <Form.Input
-            value="name"
+            value="nameKor"
             name="품종 이름"
+            type="text"
+            placeholder="비글"
+          />
+          <Form.Input
+            value="name"
+            name="품종 영문이니셜"
             type="text"
             placeholder="BIG"
           />
@@ -97,7 +108,7 @@ export default function AdminAddBreed() {
           <Form.Button
             name="추가하기"
             type="submit"
-            className="bg-neutral-800 hover:opacity-70 transition-opacity text-white"
+            className="bg-neutral-800 hover:opacity-70 transition-opacity text-white mt-10"
           />
         </Form>
       </div>

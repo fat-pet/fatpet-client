@@ -181,6 +181,7 @@ export async function getBreed() {
 
 export async function postBreed(
   species: string,
+  nameKor: string,
   name: string,
   code: number,
   sex: string,
@@ -189,6 +190,7 @@ export async function postBreed(
 ) {
   return await api.post(`/api/breeds`, {
     species,
+    nameKor,
     name,
     code,
     sex,
@@ -211,5 +213,5 @@ export async function putBreed(
 }
 
 export async function deleteBreed(id: number) {
-  return await api.post(`/api/breeds/${id}`);
+  return await api.delete(`/api/breeds/${id}`);
 }

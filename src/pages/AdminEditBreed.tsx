@@ -2,6 +2,7 @@ import { getBreed } from '@/api/axios';
 import EditPetItem from '@/features/admin/EditPetItem';
 import { Breed } from '@/types/types';
 import { useEffect, useState } from 'react';
+
 export default function AdminEditBreed() {
   const [species, setSpecies] = useState<'DOG' | 'CAT'>('DOG');
   const [dogData, setDogData] = useState<Breed[]>([]);
@@ -9,11 +10,17 @@ export default function AdminEditBreed() {
 
   useEffect(() => {
     getBreed().then((res) => {
+      const dogs: Breed[] = [];
+      const cats: Breed[] = [];
       res.data.body.forEach((item: Breed) => {
-        item?.species === 'DOG'
-          ? setDogData((prev) => [...prev, item])
-          : setCatData((prev) => [...prev, item]);
+        if (item?.species === 'DOG') {
+          dogs.push(item);
+        } else if (item?.species === 'CAT') {
+          cats.push(item);
+        }
       });
+      setDogData(dogs);
+      setCatData(cats);
     });
   }, []);
 
@@ -51,11 +58,25 @@ export default function AdminEditBreed() {
         </thead>
         {species === 'CAT' ? (
           <tbody>
-            {catData?.map((item) => <EditPetItem key={item.id} item={item} />)}
+            {catData?.map((item) => (
+              <EditPetItem
+                key={item.id}
+                item={item}
+                setDogData={setDogData}
+                setCatData={setCatData}
+              />
+            ))}
           </tbody>
         ) : (
           <tbody>
-            {dogData?.map((item) => <EditPetItem key={item.id} item={item} />)}
+            {dogData?.map((item) => (
+              <EditPetItem
+                key={item.id}
+                item={item}
+                setDogData={setDogData}
+                setCatData={setCatData}
+              />
+            ))}
           </tbody>
         )}
       </table>

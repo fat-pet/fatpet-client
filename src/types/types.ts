@@ -62,6 +62,7 @@ export interface Breed {
   name: string;
   code: number;
   sex: string;
+  nameKor: string;
   avgWeightLow: number;
   avgWeightHigh: number;
   id: number;

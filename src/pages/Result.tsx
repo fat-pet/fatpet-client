@@ -2,6 +2,7 @@ import HalfDoughnut from '@/features/chart/HalfDoughnut';
 import GptResult from '@/features/result/GptResult';
 import SimpleResult from '@/features/result/SimpleResult';
 import formatGPT from '@/utils/formatGPT';
+import formatWeight from '@/utils/formatWeight';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -54,11 +55,11 @@ export default function Result() {
           <SimpleResult
             name="체중"
             value={`${weight}kg`}
-            comment={`적정 평균 무게\n${value.avgWeightLow}kg~${value.avgWeightHigh}kg`}
+            comment={`적정 평균 무게\n${formatWeight(value.avgWeightLow)}kg~${formatWeight(value.avgWeightHigh)}kg`}
           />
           <SimpleResult
             name="일일 권장 칼로리"
-            value={`${value.der}kcal`}
+            value={`${Math.floor(value.der)}kcal`}
             comment={`적정 사료량 : ${Math.ceil((value.der / feedAmount) * 100)}g`}
           />
         </div>

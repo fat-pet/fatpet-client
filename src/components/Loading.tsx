@@ -12,7 +12,7 @@ export default function Loading({ IsLoading }: Props) {
         <div className="h-1 w-1 animate-ping rounded-full bg-black delay-150 "></div>
         <div className="h-1 w-1 animate-ping rounded-full bg-black delay-300"></div>
       </div>
-      <div className="mt-5">검사중 입니다</div>
+      <div className="mt-5">검사 중입니다</div>
     </div>
   );
 }

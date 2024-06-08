@@ -1,5 +1,6 @@
 import { deleteBreed, getBreed, putBreed } from '@/api/axios';
 import { Breed } from '@/types/types';
+import formatWeight from '@/utils/formatWeight';
 import { useRef, useState } from 'react';
 
 interface Props {
@@ -16,8 +17,8 @@ export default function EditPetItem({ item, setDogData, setCatData }: Props) {
 
   function handleEdit() {
     if (isEdit && lowRef.current && highRef.current) {
-      const avgWeightLow = Number(lowRef.current.value);
-      const avgWeightHigh = Number(highRef.current.value);
+      const avgWeightLow = formatWeight(Number(lowRef.current.value));
+      const avgWeightHigh = formatWeight(Number(highRef.current.value));
 
       avgWeightHigh &&
         avgWeightLow &&
@@ -66,20 +67,20 @@ export default function EditPetItem({ item, setDogData, setCatData }: Props) {
           <div className="flex">
             <input
               type="text"
-              placeholder={`${String(avgWeightLow)}kg`}
+              placeholder={`${formatWeight(Number(avgWeightLow))}kg`}
               className="w-full text-center"
               ref={lowRef}
             />
             ~
             <input
               type="text"
-              placeholder={`${String(avgWeightHigh)}kg`}
+              placeholder={`${formatWeight(Number(avgWeightHigh))}kg`}
               className="w-full text-center"
               ref={highRef}
             />
           </div>
         ) : (
-          <div>{`${avgWeightLow}kg ~ ${avgWeightHigh}kg`}</div>
+          <div>{`${formatWeight(avgWeightLow)}kg ~ ${formatWeight(avgWeightHigh)}kg`}</div>
         )}
       </td>
       <td className="p-2 flex justify-center">

@@ -12,6 +12,20 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export default function HalfDoughnut({ weight = '정상' }: Props) {
   const chartRef = useRef<Chart<'doughnut'> | null>(null);
   const [data, setData] = useState<number[]>([50, 50]);
+  const [color, setColor] = useState<string>('#16A34A');
+
+  useEffect(() => {
+    if (weight === '저체중') {
+      setColor('#60a5fa');
+      setData([30, 70]);
+    } else if (weight === '과체중') {
+      setColor('#DD4141');
+      setData([70, 30]);
+    } else {
+      setColor('#16A34A');
+      setData([50, 50]);
+    }
+  }, [weight]);
 
   useEffect(() => {
     const chart = chartRef.current;
@@ -19,35 +33,20 @@ export default function HalfDoughnut({ weight = '정상' }: Props) {
       const ctx = chart.ctx;
       const width = chart.width;
 
-      // 무게에 따라 그라데이션 색 설정
-      let color = '#16A34A'; // 정상일 때는 초록
-
-      if (weight === '저체중') {
-        // 저체중일 때는 파랑
-        color = '#60a5fa';
-        setData([30, 70]);
-      } else if (weight === '과체중') {
-        // 과체중일 때는 빨강
-        color = '#DD4141';
-        setData([70, 30]);
-      }
-
-      // 왼쪽에서 오른쪽으로 그라데이션 생성
       const gradient = ctx.createLinearGradient(0, 0, width, 0);
       gradient.addColorStop(0, 'rgba(232, 232, 232, 1)'); // 투명 회색
-      gradient.addColorStop(1, color); // 진한 초록
+      gradient.addColorStop(1, color); // 진한 초록, 파랑, 빨강
 
-      // 데이터셋에 그라데이션 색상 적용
-      chart.data.datasets[0].backgroundColor = gradient;
+      chart.data.datasets[0].backgroundColor = [gradient, '#E8E8E8'];
       chart.update(); // 업데이트 호출
     }
-  }, [weight]);
+  }, [color, data]);
 
   const Data = {
     datasets: [
       {
         data: data,
-        backgroundColor: ['#16A34A', '#E8E8E8'],
+        backgroundColor: [color, '#E8E8E8'],
         circumference: 180,
         rotation: 270,
         cutout: '70%',

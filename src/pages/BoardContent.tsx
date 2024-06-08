@@ -74,7 +74,7 @@ export default function BoardContent() {
       </header>
 
       {/* 게시글 내용 */}
-      <div className="mt-3 w-full">{data?.content}</div>
+      <div className="mt-3 w-full whitespace-pre-wrap">{data?.content}</div>
 
       {/* 댓글 */}
       <div className="border-t-2 mt-10">

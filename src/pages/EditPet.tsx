@@ -1,7 +1,7 @@
 import { editPet } from '@/api/axios';
 import Form from '@/components/Form';
 import { useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface SubmitProps {
   [key: string]: string;
@@ -9,6 +9,7 @@ interface SubmitProps {
 
 export default function EditPet() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { id, name, neutered, feedCalories } = location.state;
   const neuteredRef = useRef<HTMLInputElement>(neutered);
   function handleSubmit(data: SubmitProps) {
@@ -19,7 +20,10 @@ export default function EditPet() {
         neuteredRef.current!.checked,
         feedCalories,
         parseInt(id),
-      );
+      ).then(() => {
+        navigate('/dashboard');
+        localStorage.removeItem('petData');
+      });
   }
   return (
     <div className="flex flex-col items-center font-bold h-full">
@@ -41,7 +45,11 @@ export default function EditPet() {
             placeholder={feedCalories}
           />
         </div>
-        <Form.Button name="수정하기" type="submit" />
+        <Form.Button
+          name="수정하기"
+          type="submit"
+          className="bg-neutral-800 hover:opacity-70 transition-opacity text-white"
+        />
       </Form>
     </div>
   );

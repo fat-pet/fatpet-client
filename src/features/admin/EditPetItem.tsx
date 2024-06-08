@@ -18,21 +18,24 @@ export default function EditPetItem({ item, setDogData, setCatData }: Props) {
     if (isEdit && lowRef.current && highRef.current) {
       const avgWeightLow = Number(lowRef.current.value);
       const avgWeightHigh = Number(highRef.current.value);
-      putBreed(id, code, avgWeightLow, avgWeightHigh).then(() => {
-        getBreed().then((res) => {
-          const dogs: Breed[] = [];
-          const cats: Breed[] = [];
-          res.data.body.forEach((item: Breed) => {
-            if (item?.species === 'DOG') {
-              dogs.push(item);
-            } else if (item?.species === 'CAT') {
-              cats.push(item);
-            }
+
+      avgWeightHigh &&
+        avgWeightLow &&
+        putBreed(id, code, avgWeightLow, avgWeightHigh).then(() => {
+          getBreed().then((res) => {
+            const dogs: Breed[] = [];
+            const cats: Breed[] = [];
+            res.data.body.forEach((item: Breed) => {
+              if (item?.species === 'DOG') {
+                dogs.push(item);
+              } else if (item?.species === 'CAT') {
+                cats.push(item);
+              }
+            });
+            setDogData(dogs);
+            setCatData(cats);
           });
-          setDogData(dogs);
-          setCatData(cats);
         });
-      });
     }
     setIsEdit(!isEdit);
   }

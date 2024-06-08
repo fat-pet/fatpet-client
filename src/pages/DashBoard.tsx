@@ -10,23 +10,33 @@ import { ColumnBar } from '@/features/chart/ColumnBar';
 export default function DashBoard() {
   const [pet, setPet] = useState<PetProps | null>(null);
   const LSData: string | null = localStorage.getItem('petData');
-  console.log(LSData);
   const petData = LSData ? JSON.parse(LSData) : '';
   const [petGraphData, getPetGraphData] = useState<PetResult[]>();
   const navigate = useNavigate();
 
   useEffect(() => {
-    petData
-      ? setPet(petData)
-      : getPetList().then((data) => {
-          if (data.data.body[0]) {
-            setPet(data.data.body[0]);
-            localStorage.setItem('petData', JSON.stringify(data.data.body[0]));
-            getPetResult(data.data.body[0].id).then((res) => {
-              getPetGraphData(res.data.body);
-            });
-          }
-        });
+    petData ? localPet() : nonLocalPet();
+
+    function localPet() {
+      setPet(petData);
+      getPetResult(petData.id).then((res) => {
+        console.log(res.data.body);
+        getPetGraphData(res.data.body);
+      });
+    }
+    function nonLocalPet() {
+      getPetList().then((data) => {
+        if (data.data.body[0]) {
+          setPet(data.data.body[0]);
+          localStorage.setItem('petData', JSON.stringify(data.data.body[0]));
+          getPetResult(data.data.body[0].id).then((res) => {
+            console.log(res.data.body);
+            getPetGraphData(res.data.body);
+          });
+        }
+      });
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

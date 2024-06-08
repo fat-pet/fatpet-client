@@ -96,13 +96,13 @@ export default function AdminAddBreed() {
           <Form.Input
             value="avgWeightLow"
             name="평균 최저무게"
-            unit="g"
+            unit="kg"
             type="number"
           />
           <Form.Input
             value="avgWeightHigh"
             name="평균 최고무게"
-            unit="g"
+            unit="kg"
             type="number"
           />
           <Form.Button
